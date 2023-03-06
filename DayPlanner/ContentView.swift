@@ -7,15 +7,20 @@
 
 import SwiftUI
 
+class AppVariables: ObservableObject {
+    @Published var selectedTab: Int = 0
+}
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        VStack{
+            BottomBar(
+                AnyView(List()),
+                AnyView(Planner()),
+                AnyView(Settings())
+            )
+            .environmentObject(AppVariables())
         }
-        .padding()
     }
 }
 
