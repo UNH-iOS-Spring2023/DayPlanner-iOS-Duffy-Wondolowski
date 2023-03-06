@@ -8,20 +8,11 @@
 import SwiftUI
 
 struct CustomElements: View {
-    
-    @State var txtUsername: String = ""
-    
+        
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        
-        CustomTextField(
-            placeHolder: "Password",
-            imageName: "person",
-            bColor: "textColorBlack",
-            tOpacity: 0.6,
-            value: $txtUsername
-        )
     }
+    
 }
 
 struct CustomElements_Previews: PreviewProvider {
