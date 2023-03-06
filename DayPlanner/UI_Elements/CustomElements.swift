@@ -46,23 +46,20 @@ struct CustomTextField: View{
                 .frame(width: 20, height: 20)
                 .padding(.leading, 20)
                 .foregroundColor(Color(bColor).opacity(tOpacity))
-                .padding(5)
             
             if placeHolder == "Password" || placeHolder == "Confirm Password" {
-                ZStack{
+                ZStack(alignment: .leading){
                     if value.isEmpty {
-                        
                         Text(placeHolder)
                             .foregroundColor(Color(bColor).opacity(tOpacity))
                             .padding(.leading, 12)
                             .font(.system(size: 20))
-                        
                     }
+                    
                     SecureField("", text: $value)
                         .padding(.leading, 12)
                         .font(.system(size: 20))
                         .frame(height: 45)
-                    
                 }
             }
             
@@ -88,5 +85,5 @@ struct CustomTextField: View{
                 .stroke(.blue, lineWidth: 2)
         )        
     }
-    
 }
+
