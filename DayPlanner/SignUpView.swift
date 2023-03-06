@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SignUpView: View {
     
+    @State var isLinkActive = false;
+    
     @State var txtEmail: String = ""
     @State var txtFullName: String = ""
     @State var txtUsername: String = ""
@@ -16,70 +18,87 @@ struct SignUpView: View {
     @State var txtPasswordConfirm: String = ""
     
     var body: some View {
-        VStack {
-            Text("Welcome to Sign Up!")
+                
+        NavigationView {
             
-            VStack{
+            VStack {
                 
-                CustomTextField(
-                    placeHolder: "Email",
-                    imageName: "envelope",
-                    bColor: "textColorBlack",
-                    tOpacity: 0.6,
-                    value: $txtEmail
-                )
-                CustomTextField(
-                    placeHolder: "Full Name",
-                    imageName: "person.fill",
-                    bColor: "textColorBlack",
-                    tOpacity: 0.6,
-                    value: $txtFullName
-                )
-                CustomTextField(
-                    placeHolder: "Username",
-                    imageName: "person",
-                    bColor: "textColorBlack",
-                    tOpacity: 0.6,
-                    value: $txtUsername
-                )
-                CustomTextField(
-                    placeHolder: "Password",
-                    imageName: "lock.fill",
-                    bColor: "textColorBlack",
-                    tOpacity: 0.6,
-                    value: $txtPassword
-                )
-                CustomTextField(
-                    placeHolder: "Password Confirm",
-                    imageName: "lock",
-                    bColor: "textColorBlack",
-                    tOpacity: 0.6,
-                    value: $txtPasswordConfirm
-                )
+                Text("Welcome to Sign Up!")
                 
-            }
-            
-            HStack{
+                VStack (spacing: 20){
+                    
+                    CustomTextField(
+                        placeHolder: "Email",
+                        imageName: "envelope",
+                        bColor: "textColorBlack",
+                        tOpacity: 0.6,
+                        width: CGFloat.infinity,
+                        height: 40,
+                        value: $txtEmail
+                    )
+                    CustomTextField(
+                        placeHolder: "Full Name",
+                        imageName: "person.fill",
+                        bColor: "textColorBlack",
+                        tOpacity: 0.6,
+                        width: CGFloat.infinity,
+                        height: 40,
+                        value: $txtFullName
+                    )
+                    CustomTextField(
+                        placeHolder: "Username",
+                        imageName: "person",
+                        bColor: "textColorBlack",
+                        tOpacity: 0.6,
+                        width: CGFloat.infinity,
+                        height: 40,
+                        value: $txtUsername
+                    )
+                    CustomTextField(
+                        placeHolder: "Password",
+                        imageName: "lock.fill",
+                        bColor: "textColorBlack",
+                        tOpacity: 0.6,
+                        width: CGFloat.infinity,
+                        height: 40,
+                        value: $txtPassword
+                    )
+                    CustomTextField(
+                        placeHolder: "Password Confirm",
+                        imageName: "lock",
+                        bColor: "textColorBlack",
+                        tOpacity: 0.6,
+                        width: CGFloat.infinity,
+                        height: 40,
+                        value: $txtPasswordConfirm
+                    )
+                    
+                }
                 
-                Button(action: signIn){
-                    Text("Login")
-                }.buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.roundedRectangle(radius: 10))
-                
-                Button(action: signUp){
-                    Text("Sign Up")
-                }.buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.roundedRectangle(radius: 10))
-                
-            }
-            
-        }.padding()
+                HStack{
+                    
+                    NavigationLink(destination: SignInView(), isActive: $isLinkActive) {
+                        Button(action: {self.isLinkActive = true}){
+                            Text("Login")
+                        }.buttonStyle(.borderedProminent)
+                            .buttonBorderShape(.roundedRectangle(radius: 10))
+                    }
+                    
+                    Button(action: signUp){
+                        Text("Sign Up")
+                    }.buttonStyle(.borderedProminent)
+                        .buttonBorderShape(.roundedRectangle(radius: 10))
+                    
+                }
+                            
+            }.padding(40)
+        }
     }
 }
 
 func signInLink(){
     
-    
+
     
 }
 

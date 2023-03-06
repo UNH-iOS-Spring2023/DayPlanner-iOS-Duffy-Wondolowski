@@ -27,6 +27,8 @@ struct CustomTextField: View{
     var imageName: String
     var bColor: String
     var tOpacity: Double
+    var width: CGFloat
+    var height: CGFloat
     @Binding var value: String
     
     var body: some View{
@@ -71,7 +73,9 @@ struct CustomTextField: View{
                     
                 }
             }
-        }.overlay(
+        }
+        .frame(width: width, height: height)
+        .overlay(
             RoundedRectangle(cornerRadius: 16)
                 .stroke(.blue, lineWidth: 2)
         )        

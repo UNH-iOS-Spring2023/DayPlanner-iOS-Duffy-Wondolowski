@@ -9,49 +9,60 @@ import SwiftUI
 
 struct SignInView: View {
     
+    @State var isLinkActive = false;
+    
     @State var txtUsername: String = ""
     @State var txtPassword: String = ""
     
     var body: some View {
         
-        VStack{
-            
-            Text("Welcome to DayPlanner!")
+        NavigationView {
             
             VStack{
                 
-                CustomTextField(
-                    placeHolder: "Username",
-                    imageName: "person",
-                    bColor: "textColorBlack",
-                    tOpacity: 0.6,
-                    value: $txtUsername
-                )
-                CustomTextField(
-                    placeHolder: "Password",
-                    imageName: "lock",
-                    bColor: "textColorBlack",
-                    tOpacity: 0.6,
-                    value: $txtPassword
-                )
+                Text("Welcome to DayPlanner!")
                 
-            }
-            
-            HStack{
+                VStack (spacing: 30){
+                    
+                    CustomTextField(
+                        placeHolder: "Username",
+                        imageName: "person",
+                        bColor: "textColorBlack",
+                        tOpacity: 0.6,
+                        width: CGFloat.infinity,
+                        height: 40,
+                        value: $txtUsername
+                    )
+                    CustomTextField(
+                        placeHolder: "Password",
+                        imageName: "lock",
+                        bColor: "textColorBlack",
+                        tOpacity: 0.6,
+                        width: CGFloat.infinity,
+                        height: 40,
+                        value: $txtPassword
+                    )
+                    
+                }
                 
-                Button(action: signIn){
-                    Text("Login")
-                }.buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.roundedRectangle(radius: 10))
+                HStack{
+                    
+                    Button(action: signIn){
+                        Text("Login")
+                    }.buttonStyle(.borderedProminent)
+                        .buttonBorderShape(.roundedRectangle(radius: 10))
+                                       
+                }
                 
-                Button(action: signUp){
-                    Text("Sign Up")
-                }.buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.roundedRectangle(radius: 10))
+                NavigationLink(destination: SignUpView(), isActive: $isLinkActive) {
+                    Button(action: {self.isLinkActive = true}){
+                        Text("SignUp")
+                    }.buttonStyle(.borderedProminent)
+                        .buttonBorderShape(.roundedRectangle(radius: 10))
+                }
                 
-            }
-            
-        }.padding()
+            }.padding(40)
+        }
         
     }
     
