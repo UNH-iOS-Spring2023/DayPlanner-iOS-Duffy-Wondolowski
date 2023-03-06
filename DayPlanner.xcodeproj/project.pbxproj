@@ -11,6 +11,10 @@
 		F694C5B029B55E0500536551 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5AF29B55E0500536551 /* ContentView.swift */; };
 		F694C5B229B55E0700536551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F694C5B129B55E0700536551 /* Assets.xcassets */; };
 		F694C5B529B55E0700536551 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F694C5B429B55E0700536551 /* Preview Assets.xcassets */; };
+		F694C5DA29B560E400536551 /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5D929B560E400536551 /* BottomBar.swift */; };
+		F694C5DF29B5682600536551 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5DE29B5682600536551 /* List.swift */; };
+		F694C5E129B5682F00536551 /* Planner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5E029B5682F00536551 /* Planner.swift */; };
+		F694C5E329B5683900536551 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5E229B5683900536551 /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,10 @@
 		F694C5B429B55E0700536551 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F694C5BA29B55E0700536551 /* DayPlannerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DayPlannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F694C5C429B55E0700536551 /* DayPlannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DayPlannerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F694C5D929B560E400536551 /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
+		F694C5DE29B5682600536551 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		F694C5E029B5682F00536551 /* Planner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planner.swift; sourceTree = "<group>"; };
+		F694C5E229B5683900536551 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +94,10 @@
 		F694C5AC29B55E0500536551 /* DayPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				F694C5DD29B5680A00536551 /* Settings */,
+				F694C5DC29B5680300536551 /* Planner */,
+				F694C5DB29B567FC00536551 /* List */,
+				F694C5D729B560A600536551 /* UI */,
 				F694C5AD29B55E0500536551 /* DayPlannerApp.swift */,
 				F694C5AF29B55E0500536551 /* ContentView.swift */,
 				F694C5B129B55E0700536551 /* Assets.xcassets */,
@@ -100,6 +112,38 @@
 				F694C5B429B55E0700536551 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F694C5D729B560A600536551 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F694C5D929B560E400536551 /* BottomBar.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F694C5DB29B567FC00536551 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				F694C5DE29B5682600536551 /* List.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		F694C5DC29B5680300536551 /* Planner */ = {
+			isa = PBXGroup;
+			children = (
+				F694C5E029B5682F00536551 /* Planner.swift */,
+			);
+			path = Planner;
+			sourceTree = "<group>";
+		};
+		F694C5DD29B5680A00536551 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F694C5E229B5683900536551 /* Settings.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +276,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F694C5E329B5683900536551 /* Settings.swift in Sources */,
 				F694C5B029B55E0500536551 /* ContentView.swift in Sources */,
+				F694C5E129B5682F00536551 /* Planner.swift in Sources */,
+				F694C5DF29B5682600536551 /* List.swift in Sources */,
 				F694C5AE29B55E0500536551 /* DayPlannerApp.swift in Sources */,
+				F694C5DA29B560E400536551 /* BottomBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
