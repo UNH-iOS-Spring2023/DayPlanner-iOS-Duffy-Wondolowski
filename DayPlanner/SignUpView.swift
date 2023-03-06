@@ -21,11 +21,11 @@ struct SignUpView: View {
                 
         NavigationView {
             
-            VStack {
+            VStack(spacing: 30){
                 
                 Text("Welcome to Sign Up!")
                 
-                VStack (spacing: 20){
+                VStack (spacing: 30){
                     
                     CustomTextField(
                         placeHolder: "Email",
@@ -76,14 +76,7 @@ struct SignUpView: View {
                 }
                 
                 HStack{
-                    
-                    NavigationLink(destination: SignInView(), isActive: $isLinkActive) {
-                        Button(action: {self.isLinkActive = true}){
-                            Text("Login")
-                        }.buttonStyle(.borderedProminent)
-                            .buttonBorderShape(.roundedRectangle(radius: 10))
-                    }
-                    
+                                    
                     Button(action: signUp){
                         Text("Sign Up")
                     }.buttonStyle(.borderedProminent)
