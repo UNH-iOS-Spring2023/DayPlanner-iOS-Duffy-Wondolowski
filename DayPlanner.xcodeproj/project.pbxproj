@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF94702929B581F60049BA4A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94702829B581F60049BA4A /* SignInView.swift */; };
+		AF94702B29B582160049BA4A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94702A29B582160049BA4A /* SignUpView.swift */; };
 		F694C5AE29B55E0500536551 /* DayPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5AD29B55E0500536551 /* DayPlannerApp.swift */; };
 		F694C5B029B55E0500536551 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5AF29B55E0500536551 /* ContentView.swift */; };
 		F694C5B229B55E0700536551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F694C5B129B55E0700536551 /* Assets.xcassets */; };
@@ -31,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF94702829B581F60049BA4A /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		AF94702A29B582160049BA4A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		F694C5AA29B55E0500536551 /* DayPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F694C5AD29B55E0500536551 /* DayPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPlannerApp.swift; sourceTree = "<group>"; };
 		F694C5AF29B55E0500536551 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 			children = (
 				F694C5AD29B55E0500536551 /* DayPlannerApp.swift */,
 				F694C5AF29B55E0500536551 /* ContentView.swift */,
+				AF94702829B581F60049BA4A /* SignInView.swift */,
+				AF94702A29B582160049BA4A /* SignUpView.swift */,
 				F694C5B129B55E0700536551 /* Assets.xcassets */,
 				F694C5B329B55E0700536551 /* Preview Content */,
 			);
@@ -232,6 +238,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF94702B29B582160049BA4A /* SignUpView.swift in Sources */,
+				AF94702929B581F60049BA4A /* SignInView.swift in Sources */,
 				F694C5B029B55E0500536551 /* ContentView.swift in Sources */,
 				F694C5AE29B55E0500536551 /* DayPlannerApp.swift in Sources */,
 			);
