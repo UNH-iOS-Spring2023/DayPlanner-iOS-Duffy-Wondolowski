@@ -18,7 +18,7 @@ struct SignInView: View {
         
         NavigationView {
             
-            VStack{
+            VStack (spacing: 30){
                 
                 Text("Welcome to DayPlanner!")
                 
@@ -45,22 +45,22 @@ struct SignInView: View {
                     
                 }
                 
-                HStack{
+                VStack (spacing: 30){
                     
                     Button(action: signIn){
                         Text("Login")
                     }.buttonStyle(.borderedProminent)
                         .buttonBorderShape(.roundedRectangle(radius: 10))
+                    
+                    NavigationLink(destination: SignUpView(), isActive: $isLinkActive) {
+                        Button(action: {self.isLinkActive = true}){
+                            Text("SignUp")
+                        }.buttonStyle(.borderedProminent)
+                            .buttonBorderShape(.roundedRectangle(radius: 10))
+                    }
                                        
                 }
-                
-                NavigationLink(destination: SignUpView(), isActive: $isLinkActive) {
-                    Button(action: {self.isLinkActive = true}){
-                        Text("SignUp")
-                    }.buttonStyle(.borderedProminent)
-                        .buttonBorderShape(.roundedRectangle(radius: 10))
-                }
-                
+                                
             }.padding(40)
         }
         
