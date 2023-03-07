@@ -21,11 +21,11 @@ struct SignUpView: View {
                 
         NavigationView {
             
-            VStack(spacing: 30){
+            VStack(spacing: 20){
                 
                 Text("Welcome to Sign Up!")
                 
-                VStack (spacing: 30){
+                VStack (spacing: 20){
                     
                     CustomTextField(
                         placeHolder: "Email",
