@@ -23,13 +23,13 @@ struct CustomElements_Previews: PreviewProvider {
 
 struct CustomTextField: View{
     
-    var placeHolder: String
-    var imageName: String
-    var bColor: String
-    var tOpacity: Double
-    var width: CGFloat
-    var height: CGFloat
-    @Binding var value: String
+    var placeHolder     : String
+    var imageName       : String
+    var bColor          : String
+    var tOpacity        : Double
+    var width           : CGFloat
+    var height          : CGFloat
+    @Binding var value  : String
     
     var body: some View{
         HStack{
@@ -82,3 +82,63 @@ struct CustomTextField: View{
     }
 }
 
+
+
+
+struct Card: View {
+    @State private var isTap: Bool = false
+    
+    let cornerRadius    : CGFloat
+    let elevation       : CGFloat
+    let width           : CGFloat
+    let height          : CGFloat
+    let color           : Color
+    let focusColor      : Color?
+    let views           : ()-> AnyView
+    let click           : ()-> Void
+    let longClick       : ()-> Void
+    
+    init(
+        cornerRadius    : CGFloat = 16,
+        elevation       : CGFloat = 2,
+        width           : CGFloat = CGFloat.infinity,
+        height          : CGFloat = 140,
+        color           : Color = Color(.white),
+        focusColor      : Color? = nil,
+        click           : @escaping () -> Void = {},
+        longClick       : @escaping () -> Void = {},
+        views           : @escaping () -> AnyView
+    ){
+        self.cornerRadius   = cornerRadius
+        self.elevation      = elevation
+        self.width          = width
+        self.height         = height
+        self.color          = color
+        self.focusColor     = focusColor
+        self.click          = click
+        self.longClick      = longClick
+        self.views          = views
+    }
+    
+    var body: some View{
+        ZStack{
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .fill(isTap ? focusColor ?? color : color)
+                .shadow(radius: elevation)
+                .frame(maxWidth: width, maxHeight: height)
+            
+            VStack{
+                views()
+            }
+            .frame(maxWidth: width, maxHeight: height)
+        }
+        .padding(5)
+        .onTapGesture {
+            click()
+        }
+        .onLongPressGesture(minimumDuration: 0.3, pressing: {
+                pressing in isTap = pressing
+            },perform: {longClick()
+        })
+    }
+}
