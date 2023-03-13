@@ -27,7 +27,6 @@ struct SignUpView: View {
                 elevation: 3,
                 height: 450,
                 color: Color(.white),
-                focusColor: Color(.systemRed).opacity(0.05),
                 views: {
                     AnyView(
                         VStack(spacing: 20){
@@ -93,22 +92,16 @@ struct SignUpView: View {
                                 
                             }
                                         
-                        }.padding(10)
+                        }.padding(15)
                     )
                 }
-            ).padding(15)
+            ).padding(25)
             
         }
     }
 }
 
-func signInLink(){
-    
-
-    
-}
-
-func signUpLink(){
+func signUp(){
     
     
     
