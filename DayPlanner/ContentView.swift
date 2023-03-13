@@ -9,6 +9,8 @@ import SwiftUI
 
 class AppVariables: ObservableObject {
     @Published var selectedTab: Int = 0
+    //Determines whether the app goes to the edit event page when the list is selected
+    @Published var isEventEdit: Bool = false
 }
 
 struct ContentView: View {
