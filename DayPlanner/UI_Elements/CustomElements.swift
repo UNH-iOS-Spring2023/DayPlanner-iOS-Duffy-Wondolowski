@@ -29,6 +29,7 @@ struct CustomTextField: View{
     var tOpacity        : Double
     var width           : CGFloat
     var height          : CGFloat
+    var borderColor     : Color
     @Binding var value  : String
     
     var body: some View{
@@ -77,7 +78,7 @@ struct CustomTextField: View{
         .frame(width: width, height: height)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(.blue, lineWidth: 2)
+                .stroke(borderColor, lineWidth: 2)
         )        
     }
 }

@@ -24,14 +24,16 @@ struct SignUpView: View {
             
             Card(
                 cornerRadius: 15,
-                elevation: 3,
+                elevation: 5,
                 height: 450,
                 color: Color(.white),
                 views: {
                     AnyView(
                         VStack(spacing: 20){
                             
-                            Text("Welcome to Sign Up!")
+                            Text("Sign Up!")
+                            
+                            Text("Welcome to DayPlanner!")
                             
                             VStack (spacing: 20){
                                 
@@ -42,6 +44,7 @@ struct SignUpView: View {
                                     tOpacity: 0.6,
                                     width: CGFloat.infinity,
                                     height: 40,
+                                    borderColor: Color(.systemBlue),
                                     value: $txtEmail
                                 )
                                 CustomTextField(
@@ -51,6 +54,7 @@ struct SignUpView: View {
                                     tOpacity: 0.6,
                                     width: CGFloat.infinity,
                                     height: 40,
+                                    borderColor: Color(.systemBlue),
                                     value: $txtFullName
                                 )
                                 CustomTextField(
@@ -60,6 +64,7 @@ struct SignUpView: View {
                                     tOpacity: 0.6,
                                     width: CGFloat.infinity,
                                     height: 40,
+                                    borderColor: Color(.systemBlue),
                                     value: $txtUsername
                                 )
                                 CustomTextField(
@@ -69,6 +74,7 @@ struct SignUpView: View {
                                     tOpacity: 0.6,
                                     width: CGFloat.infinity,
                                     height: 40,
+                                    borderColor: Color(.systemBlue),
                                     value: $txtPassword
                                 )
                                 CustomTextField(
@@ -78,6 +84,7 @@ struct SignUpView: View {
                                     tOpacity: 0.6,
                                     width: CGFloat.infinity,
                                     height: 40,
+                                    borderColor: Color(.systemBlue),
                                     value: $txtPasswordConfirm
                                 )
                                 

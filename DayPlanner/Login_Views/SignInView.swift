@@ -17,12 +17,14 @@ struct SignInView: View {
             
         Card(
             cornerRadius: 15,
-            elevation: 3,
+            elevation: 5,
             height: 300,
             color: Color(.white),
             views: {
                 AnyView(
                     VStack (spacing: 15){
+                        
+                        Text("Sign In!")
                         
                         Text("Welcome to DayPlanner!")
                         
@@ -33,6 +35,7 @@ struct SignInView: View {
                             tOpacity: 0.6,
                             width: CGFloat.infinity,
                             height: 40,
+                            borderColor: Color(.systemBlue),
                             value: $txtUsername
                         )
 
@@ -43,6 +46,7 @@ struct SignInView: View {
                             tOpacity: 0.6,
                             width: CGFloat.infinity,
                             height: 40,
+                            borderColor: Color(.systemBlue),
                             value: $txtPassword
                         )
 
