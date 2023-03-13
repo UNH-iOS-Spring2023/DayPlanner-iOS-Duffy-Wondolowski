@@ -18,55 +18,62 @@ struct SignInView: View {
         
         NavigationView {
             
-            VStack (spacing: 30){
-                
-                Text("Welcome to DayPlanner!")
-                
-                VStack (spacing: 30){
-                    
-                    CustomTextField(
-                        placeHolder: "Username",
-                        imageName: "person",
-                        bColor: "textColorBlack",
-                        tOpacity: 0.6,
-                        width: CGFloat.infinity,
-                        height: 40,
-                        value: $txtUsername
+            Card(
+                cornerRadius: 15,
+                elevation: 3,
+                height: 300,
+                color: Color(.white),
+                focusColor: Color(.systemRed).opacity(0.05),
+                views: {
+                    AnyView(
+                        VStack (spacing: 15){
+                            
+                            Text("Welcome to DayPlanner!")
+                            
+                            CustomTextField(
+                                placeHolder: "Username",
+                                imageName: "person",
+                                bColor: "textColorBlack",
+                                tOpacity: 0.6,
+                                width: CGFloat.infinity,
+                                height: 40,
+                                value: $txtUsername
+                            )
+
+                            CustomTextField(
+                                placeHolder: "Password",
+                                imageName: "lock",
+                                bColor: "textColorBlack",
+                                tOpacity: 0.6,
+                                width: CGFloat.infinity,
+                                height: 40,
+                                value: $txtPassword
+                            )
+   
+                            
+                            Button(action: signIn){
+                                Text("Login")
+                            }.buttonStyle(.borderedProminent)
+                                .buttonBorderShape(.roundedRectangle(radius: 10))
+                            
+                            NavigationLink(destination: SignUpView(), isActive: $isLinkActive) {
+                                Button(action: {self.isLinkActive = true}){
+                                    Text("SignUp")
+                                }.buttonStyle(.borderedProminent)
+                                    .buttonBorderShape(.roundedRectangle(radius: 10))
+                            }
+                            
+                            
+                        }.padding(10)
                     )
-                    CustomTextField(
-                        placeHolder: "Password",
-                        imageName: "lock",
-                        bColor: "textColorBlack",
-                        tOpacity: 0.6,
-                        width: CGFloat.infinity,
-                        height: 40,
-                        value: $txtPassword
-                    )
-                    
                 }
-                
-                VStack (spacing: 30){
-                    
-                    Button(action: signIn){
-                        Text("Login")
-                    }.buttonStyle(.borderedProminent)
-                        .buttonBorderShape(.roundedRectangle(radius: 10))
-                    
-                    NavigationLink(destination: SignUpView(), isActive: $isLinkActive) {
-                        Button(action: {self.isLinkActive = true}){
-                            Text("SignUp")
-                        }.buttonStyle(.borderedProminent)
-                            .buttonBorderShape(.roundedRectangle(radius: 10))
-                    }
-                                       
-                }
-                                
-            }.padding(40)
+            ).padding(15)
+            
+            
         }
-        
     }
-    
 }
+    
 
 func signIn(){
     
