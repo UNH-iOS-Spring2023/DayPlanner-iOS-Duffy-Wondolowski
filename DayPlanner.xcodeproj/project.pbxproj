@@ -15,6 +15,7 @@
 		F694C5DF29B5682600536551 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5DE29B5682600536551 /* List.swift */; };
 		F694C5E129B5682F00536551 /* Planner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5E029B5682F00536551 /* Planner.swift */; };
 		F694C5E329B5683900536551 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5E229B5683900536551 /* Settings.swift */; };
+		F6B0460B29BFCC530058599C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B0460A29BFCC530058599C /* Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		F694C5DE29B5682600536551 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		F694C5E029B5682F00536551 /* Planner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planner.swift; sourceTree = "<group>"; };
 		F694C5E229B5683900536551 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		F6B0460A29BFCC530058599C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,9 +96,7 @@
 		F694C5AC29B55E0500536551 /* DayPlanner */ = {
 			isa = PBXGroup;
 			children = (
-				F694C5DD29B5680A00536551 /* Settings */,
-				F694C5DC29B5680300536551 /* Planner */,
-				F694C5DB29B567FC00536551 /* List */,
+				F6B0460929BFCC440058599C /* Data */,
 				F694C5D729B560A600536551 /* UI */,
 				F694C5AD29B55E0500536551 /* DayPlannerApp.swift */,
 				F694C5AF29B55E0500536551 /* ContentView.swift */,
@@ -117,6 +117,9 @@
 		F694C5D729B560A600536551 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F694C5DB29B567FC00536551 /* List */,
+				F694C5DC29B5680300536551 /* Planner */,
+				F694C5DD29B5680A00536551 /* Settings */,
 				F694C5D929B560E400536551 /* BottomBar.swift */,
 			);
 			path = UI;
@@ -144,6 +147,14 @@
 				F694C5E229B5683900536551 /* Settings.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		F6B0460929BFCC440058599C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F6B0460A29BFCC530058599C /* Event.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +292,7 @@
 				F694C5E129B5682F00536551 /* Planner.swift in Sources */,
 				F694C5DF29B5682600536551 /* List.swift in Sources */,
 				F694C5AE29B55E0500536551 /* DayPlannerApp.swift in Sources */,
+				F6B0460B29BFCC530058599C /* Event.swift in Sources */,
 				F694C5DA29B560E400536551 /* BottomBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
