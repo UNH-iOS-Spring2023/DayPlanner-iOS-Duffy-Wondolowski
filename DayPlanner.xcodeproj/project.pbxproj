@@ -97,9 +97,6 @@
 			isa = PBXGroup;
 			children = (
 				F6B0460929BFCC440058599C /* Data */,
-				F694C5DD29B5680A00536551 /* Settings */,
-				F694C5DC29B5680300536551 /* Planner */,
-				F694C5DB29B567FC00536551 /* List */,
 				F694C5D729B560A600536551 /* UI */,
 				F694C5AD29B55E0500536551 /* DayPlannerApp.swift */,
 				F694C5AF29B55E0500536551 /* ContentView.swift */,
@@ -120,6 +117,9 @@
 		F694C5D729B560A600536551 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F694C5DB29B567FC00536551 /* List */,
+				F694C5DC29B5680300536551 /* Planner */,
+				F694C5DD29B5680A00536551 /* Settings */,
 				F694C5D929B560E400536551 /* BottomBar.swift */,
 			);
 			path = UI;
