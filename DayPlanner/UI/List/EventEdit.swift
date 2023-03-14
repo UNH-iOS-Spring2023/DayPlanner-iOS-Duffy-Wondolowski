@@ -28,6 +28,8 @@ struct EventEdit: View {
     @State private var location: String
     @State private var recurring: Int
     @State private var showStartTime: Bool
+    @State private var createAlert: Bool = false
+    @State private var alertText = ""
     
     init() {
         _eventName = State(initialValue: event.eventName)
@@ -35,13 +37,13 @@ struct EventEdit: View {
         _startTime = State(initialValue: event.startTime)
         _location = State(initialValue: event.location)
         _recurring = State(initialValue: event.recurring)
-        _showStartTime = State(initialValue: event.startTime != nil ? true : false)
+        _showStartTime = State(initialValue: event.startTime != nil)
     }
     
     var body: some View {
         VStack {
             Text("Event Customization")
-            TextField("Event Title", text: $eventName)
+            TextField("Event Name (Required)", text: $eventName)
             
             VStack{
                 Text("Event Duration")
@@ -69,6 +71,9 @@ struct EventEdit: View {
                     .foregroundColor(Color(.systemOrange))
                 Button ("Create", action: create)
                     .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                    .alert(isPresented: $createAlert) {
+                        Alert(title: Text(alertText))
+                    }
                 Button ("Delete", action: delete)
                     .foregroundColor(Color(.systemRed))
             }
@@ -82,20 +87,40 @@ struct EventEdit: View {
     }
     
     private func create() {
-        let newEvent = Event(
-            startTime: showStartTime ? startTime : nil,
-            duration: Int(duration * 60000),
-            eventName: eventName,
-            location: location,
-            recurring: recurring)
         
-        if let eventIndex = app.eventList.firstIndex(where: { $0 == self.event }) {
-            app.eventList[eventIndex] = newEvent
+        if eventName != "" {
+            let newEvent = Event(
+                startTime: showStartTime ? startTime : nil,
+                duration: Int(duration * 60000),
+                eventName: eventName,
+                location: location,
+                recurring: recurring)
+            
+            if let eventIndex = app.eventList.firstIndex(where: { $0 == self.event }) {
+                
+                if !ErrorChecking.checkEventOverlap(newEvent: newEvent, oldEvent: app.eventList[eventIndex]) {
+                    app.eventList[eventIndex] = newEvent
+                } else {
+                    alertText = "Your event overlaps with another!"
+                    createAlert = true
+                }
+            } else {
+                
+                if !ErrorChecking.checkEventOverlap(newEvent: newEvent) {
+                    app.eventList.append(newEvent)
+                } else {
+                    alertText = "Your event overlaps with another!"
+                    createAlert = true
+                }
+            }
+            
+            app.isEventEdit = false
         } else {
-            app.eventList.append(newEvent)
+            alertText = "Your event requires a name!"
+            createAlert = true
         }
         
-        app.isEventEdit = false
+        
     }
     
     private func delete() {
@@ -109,6 +134,6 @@ struct EventEdit: View {
 struct EventEdit_Previews: PreviewProvider {
     static var previews: some View {
         EventEdit()
-            .environmentObject(AppVariables())
+            .environmentObject(ErrorChecking.app)
     }
 }
