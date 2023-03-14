@@ -34,10 +34,14 @@ struct List: View {
             }
         }
         
-        ZStack {
-            Text("List Page")
-                .padding(5)
-            button
+        if (app.isEventEdit) {
+            EventEdit()
+        } else {
+            ZStack {
+                Text("List Page")
+                    .padding(5)
+                button
+            }
         }
     }
 }

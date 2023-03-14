@@ -8,9 +8,9 @@
 import Foundation
 
 struct Event {
-    let startTime: Date? = nil
-    let duration: Int = 90000
-    let eventName: String = ""
-    let location: String = ""
-    let recurring: Int = 0
+    var startTime: Date? = nil
+    var duration: Int = 900000 //Stored in milliseconds for compatibility with android
+    var eventName: String = ""
+    var location: String = ""
+    var recurring: Int = 0
 }
