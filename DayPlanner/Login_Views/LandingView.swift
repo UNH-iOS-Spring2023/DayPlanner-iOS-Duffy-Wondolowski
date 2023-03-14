@@ -16,48 +16,54 @@ struct LandingView: View {
     @State var txtPassword: String = ""
     
     var body: some View {
+
         NavigationView {
             
-            Card(
-                cornerRadius: 15,
-                elevation: 3,
-                height: 150,
-                color: Color(.white),
-                views: {
-                    AnyView(
-                        VStack (spacing: 15){
-                            
-                            Text("Welcome to DayPlanner!")
-                            
-                           
-                            
-                            HStack {
+            ZStack {
+                
+                CustomColor.background
+                    .ignoresSafeArea(.all)
+                
+                Card(
+                    cornerRadius: 15,
+                    elevation: 3,
+                    height: 150,
+                    color: CustomColor.backgroundCard,
+                    views: {
+                        AnyView(
+                            VStack (spacing: 15){
                                 
-                                NavigationLink(destination: SignInView(), isActive: $isLinkActive) {
-                                    Button(action: {self.isLinkActive = true}){
-                                        Text("Login")
-                                    }.buttonStyle(.borderedProminent)
-                                        .buttonBorderShape(.roundedRectangle(radius: 10))
+                                Text("Welcome to DayPlanner!")
+                                    .foregroundColor(.white)
+                                
+                                HStack {
+                                    
+                                    NavigationLink(destination: SignInView(), isActive: $isLinkActive) {
+                                        Button(action: {self.isLinkActive = true}){
+                                            Text("Login")
+                                        }.buttonStyle(.borderedProminent)
+                                            .buttonBorderShape(.roundedRectangle(radius: 10))
+                                    }
+                                    
+                                    NavigationLink(destination: SignUpView(), isActive: $isLinkActive2) {
+                                        Button(action: {self.isLinkActive2 = true}){
+                                            Text("SignUp")
+                                        }.buttonStyle(.borderedProminent)
+                                            .buttonBorderShape(.roundedRectangle(radius: 10))
+                                    }
+                                    
                                 }
-                                
-                                NavigationLink(destination: SignUpView(), isActive: $isLinkActive2) {
-                                    Button(action: {self.isLinkActive2 = true}){
-                                        Text("SignUp")
-                                    }.buttonStyle(.borderedProminent)
-                                        .buttonBorderShape(.roundedRectangle(radius: 10))
-                                }
-                                
-                            }
-                                                       
-                            
-                        }.padding(10)
-                    )
-                }
-            ).padding(25)
-            
-            
+                                                           
+                            }.padding(10)
+                        )
+                    }
+                ).padding(25)
+            }
+        
         }
+        
     }
+
 }
 
 struct LandingView_Previews: PreviewProvider {

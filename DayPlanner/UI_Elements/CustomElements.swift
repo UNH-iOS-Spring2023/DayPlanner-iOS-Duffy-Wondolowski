@@ -21,6 +21,12 @@ struct CustomElements_Previews: PreviewProvider {
     }
 }
 
+struct CustomColor {
+    static let background = Color("backgroundColor")
+    static let backgroundCard = Color("backgroundCard")
+    static let darkGreen = Color("darkGreen")
+}
+
 struct CustomTextField: View{
     
     var placeHolder     : String
