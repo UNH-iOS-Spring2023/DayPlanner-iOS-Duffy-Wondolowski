@@ -36,6 +36,8 @@
 		AF2F49E829BEB87600F7570F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AF2F49E729BEB87600F7570F /* FirebaseStorage */; };
 		AF2F49EA29BEB87600F7570F /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = AF2F49E929BEB87600F7570F /* FirebaseStorageCombine-Community */; };
 		AF2F49EC29BEC0F700F7570F /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F49EB29BEC0F700F7570F /* LandingView.swift */; };
+		AF2F49F229C0DAAC00F7570F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = AF2F49F129C0DAAC00F7570F /* GoogleSignIn */; };
+		AF2F49F429C0DAAC00F7570F /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AF2F49F329C0DAAC00F7570F /* GoogleSignInSwift */; };
 		AF94702929B581F60049BA4A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94702829B581F60049BA4A /* SignInView.swift */; };
 		AF94702B29B582160049BA4A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94702A29B582160049BA4A /* SignUpView.swift */; };
 		AF94702E29B5873D0049BA4A /* CustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94702D29B5873D0049BA4A /* CustomElements.swift */; };
@@ -89,12 +91,14 @@
 				AF2F49B629BEB87500F7570F /* FirebaseAnalytics in Frameworks */,
 				AF2F49B829BEB87500F7570F /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				AF2F49DE29BEB87600F7570F /* FirebaseMLModelDownloader in Frameworks */,
+				AF2F49F429C0DAAC00F7570F /* GoogleSignInSwift in Frameworks */,
 				AF2F49D229BEB87600F7570F /* FirebaseFirestoreSwift in Frameworks */,
 				AF2F49BE29BEB87500F7570F /* FirebaseAppCheck in Frameworks */,
 				AF2F49BC29BEB87500F7570F /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				AF2F49C229BEB87500F7570F /* FirebaseAuth in Frameworks */,
 				AF2F49C629BEB87500F7570F /* FirebaseCrashlytics in Frameworks */,
 				AF2F49E629BEB87600F7570F /* FirebaseRemoteConfigSwift in Frameworks */,
+				AF2F49F229C0DAAC00F7570F /* GoogleSignIn in Frameworks */,
 				AF2F49D829BEB87600F7570F /* FirebaseInAppMessaging-Beta in Frameworks */,
 				AF2F49CA29BEB87500F7570F /* FirebaseDatabaseSwift in Frameworks */,
 				AF2F49D429BEB87600F7570F /* FirebaseFunctions in Frameworks */,
@@ -231,6 +235,8 @@
 				AF2F49E529BEB87600F7570F /* FirebaseRemoteConfigSwift */,
 				AF2F49E729BEB87600F7570F /* FirebaseStorage */,
 				AF2F49E929BEB87600F7570F /* FirebaseStorageCombine-Community */,
+				AF2F49F129C0DAAC00F7570F /* GoogleSignIn */,
+				AF2F49F329C0DAAC00F7570F /* GoogleSignInSwift */,
 			);
 			productName = DayPlanner;
 			productReference = F694C5AA29B55E0500536551 /* DayPlanner.app */;
@@ -306,6 +312,7 @@
 			mainGroup = F694C5A129B55E0500536551;
 			packageReferences = (
 				AF2F49B429BEB87500F7570F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				AF2F49F029C0DAAC00F7570F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = F694C5AB29B55E0500536551 /* Products */;
 			projectDirPath = "";
@@ -681,6 +688,14 @@
 				kind = branch;
 			};
 		};
+		AF2F49F029C0DAAC00F7570F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -818,6 +833,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AF2F49B429BEB87500F7570F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		AF2F49F129C0DAAC00F7570F /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF2F49F029C0DAAC00F7570F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		AF2F49F329C0DAAC00F7570F /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF2F49F029C0DAAC00F7570F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
