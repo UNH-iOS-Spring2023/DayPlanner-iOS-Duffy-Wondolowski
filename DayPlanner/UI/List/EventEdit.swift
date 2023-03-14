@@ -46,7 +46,11 @@ struct EventEdit: View {
             VStack{
                 Text("Event Duration")
                 Slider(value: $duration, in: 5...360)
-                Text("\(Int(duration)) Minutes")
+                if (duration < 60) {
+                    Text("\(Int(duration)) Minutes")
+                } else {
+                    Text("\(Int(duration / 60)) Hours \(Int(duration) % 60) Minutes")
+                }
             }
             
             VStack {
@@ -59,9 +63,46 @@ struct EventEdit: View {
                 }
             }
             Spacer()
+            
+            HStack {
+                Button ("Cancel", action: cancel)
+                    .foregroundColor(Color(.systemOrange))
+                Button ("Create", action: create)
+                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                Button ("Delete", action: delete)
+                    .foregroundColor(Color(.systemRed))
+            }
         }
         .font(.system(.title))
         .padding(EdgeInsets(top: 10, leading: 25, bottom: 25, trailing: 10))
+    }
+    
+    private func cancel() {
+        app.isEventEdit = false
+    }
+    
+    private func create() {
+        let newEvent = Event(
+            startTime: showStartTime ? startTime : nil,
+            duration: Int(duration * 60000),
+            eventName: eventName,
+            location: location,
+            recurring: recurring)
+        
+        if let eventIndex = app.eventList.firstIndex(where: { $0 == self.event }) {
+            app.eventList[eventIndex] = newEvent
+        } else {
+            app.eventList.append(newEvent)
+        }
+        
+        app.isEventEdit = false
+    }
+    
+    private func delete() {
+        if event != Event(), let eventIndex = app.eventList.firstIndex(where: { $0 == self.event }) {
+            app.eventList.remove(at: eventIndex)
+        }
+        app.isEventEdit = false
     }
 }
 
