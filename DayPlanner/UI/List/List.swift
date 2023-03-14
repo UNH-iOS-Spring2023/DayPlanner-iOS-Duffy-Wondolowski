@@ -11,6 +11,8 @@ struct List: View {
     @EnvironmentObject private var app: AppVariables
     
     var body: some View {
+        //Once again the button is largely copied from the professor
+        //But with some changes
         let button = VStack{
             Spacer()
             HStack{
@@ -28,15 +30,18 @@ struct List: View {
                         .foregroundColor(.white)
                     
                 })
-                .ignoresSafeArea()
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 25, trailing: 25))
             }
         }
         
-        ZStack {
-            Text("List Page")
-                .padding(5)
-            button
+        if (app.isEventEdit) {
+            EventEdit()
+        } else {
+            ZStack {
+                Text("List Page")
+                    .padding(5)
+                button
+            }
         }
     }
 }

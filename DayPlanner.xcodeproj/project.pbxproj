@@ -16,6 +16,7 @@
 		F694C5E129B5682F00536551 /* Planner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5E029B5682F00536551 /* Planner.swift */; };
 		F694C5E329B5683900536551 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5E229B5683900536551 /* Settings.swift */; };
 		F6B0460B29BFCC530058599C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B0460A29BFCC530058599C /* Event.swift */; };
+		F6B0460F29BFDF1F0058599C /* EventEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B0460E29BFDF1F0058599C /* EventEdit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		F694C5E029B5682F00536551 /* Planner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planner.swift; sourceTree = "<group>"; };
 		F694C5E229B5683900536551 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		F6B0460A29BFCC530058599C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		F6B0460E29BFDF1F0058599C /* EventEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEdit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				F694C5DE29B5682600536551 /* List.swift */,
+				F6B0460E29BFDF1F0058599C /* EventEdit.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			files = (
 				F694C5E329B5683900536551 /* Settings.swift in Sources */,
 				F694C5B029B55E0500536551 /* ContentView.swift in Sources */,
+				F6B0460F29BFDF1F0058599C /* EventEdit.swift in Sources */,
 				F694C5E129B5682F00536551 /* Planner.swift in Sources */,
 				F694C5DF29B5682600536551 /* List.swift in Sources */,
 				F694C5AE29B55E0500536551 /* DayPlannerApp.swift in Sources */,
