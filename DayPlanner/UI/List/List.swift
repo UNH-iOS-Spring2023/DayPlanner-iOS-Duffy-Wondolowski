@@ -49,6 +49,6 @@ struct List: View {
 struct List_Previews: PreviewProvider {
     static var previews: some View {
         List()
-            .environmentObject(AppVariables())
+            .environmentObject(ErrorChecking.app)
     }
 }
