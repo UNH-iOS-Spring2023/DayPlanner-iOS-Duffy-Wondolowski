@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F600344629C13059008BDD0B /* ErrorChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F600344529C13059008BDD0B /* ErrorChecking.swift */; };
-		F600344829C131F3008BDD0B /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F600344729C131F3008BDD0B /* Popup.swift */; };
 		F694C5AE29B55E0500536551 /* DayPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5AD29B55E0500536551 /* DayPlannerApp.swift */; };
 		F694C5B029B55E0500536551 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5AF29B55E0500536551 /* ContentView.swift */; };
 		F694C5B229B55E0700536551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F694C5B129B55E0700536551 /* Assets.xcassets */; };
@@ -40,7 +39,6 @@
 
 /* Begin PBXFileReference section */
 		F600344529C13059008BDD0B /* ErrorChecking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorChecking.swift; sourceTree = "<group>"; };
-		F600344729C131F3008BDD0B /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
 		F694C5AA29B55E0500536551 /* DayPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F694C5AD29B55E0500536551 /* DayPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPlannerApp.swift; sourceTree = "<group>"; };
 		F694C5AF29B55E0500536551 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 				F694C5DC29B5680300536551 /* Planner */,
 				F694C5DD29B5680A00536551 /* Settings */,
 				F694C5D929B560E400536551 /* BottomBar.swift */,
-				F600344729C131F3008BDD0B /* Popup.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -306,7 +303,6 @@
 			files = (
 				F694C5E329B5683900536551 /* Settings.swift in Sources */,
 				F694C5B029B55E0500536551 /* ContentView.swift in Sources */,
-				F600344829C131F3008BDD0B /* Popup.swift in Sources */,
 				F6B0460F29BFDF1F0058599C /* EventEdit.swift in Sources */,
 				F600344629C13059008BDD0B /* ErrorChecking.swift in Sources */,
 				F694C5E129B5682F00536551 /* Planner.swift in Sources */,
