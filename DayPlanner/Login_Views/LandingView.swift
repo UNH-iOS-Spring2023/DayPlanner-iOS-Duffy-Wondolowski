@@ -21,58 +21,72 @@ struct LandingView: View {
     
     var body: some View {
 
-        NavigationView {
+        ZStack {
             
-            ZStack {
+            CustomColor.background
+                .ignoresSafeArea(.all)
+                .overlay {
+                    Image("Logo")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(.bottom, 450)
+                        .frame(width: 300)
+                }
+            
+            NavigationView {
                 
-                CustomColor.background
-                    .ignoresSafeArea(.all)
-                
-                Card(
-                    cornerRadius: 15,
-                    elevation: 3,
-                    height: 150,
-                    color: CustomColor.backgroundCard,
-                    views: {
-                        AnyView(
-                            VStack (spacing: 15){
-                                
-                                Text("Welcome to DayPlanner!")
-                                    .foregroundColor(.white)
-                                
-                                VStack {
+                ZStack {
+                    
+                    CustomColor.background
+                        .ignoresSafeArea(.all)
+                    
+                    
+                    Card(
+                        cornerRadius: 15,
+                        elevation: 3,
+                        height: 150,
+                        color: CustomColor.backgroundCard,
+                        views: {
+                            AnyView(
+                                VStack (spacing: 15){
                                     
-                                    HStack {
+                                    Text("Welcome to DayPlanner!")
+                                        .foregroundColor(.white)
+                                    
+                                    VStack {
                                         
-                                        NavigationLink(destination: SignInView(), isActive: $isLinkActive) {
-                                            Button(action: {self.isLinkActive = true}){
-                                                Text("Login")
-                                            }.buttonStyle(.borderedProminent)
-                                                .buttonBorderShape(.roundedRectangle(radius: 10))
+                                        HStack {
+                                            
+                                            NavigationLink(destination: SignInView(), isActive: $isLinkActive) {
+                                                Button(action: {self.isLinkActive = true}){
+                                                    Text("Login")
+                                                }.buttonStyle(.borderedProminent)
+                                                    .buttonBorderShape(.roundedRectangle(radius: 10))
+                                            }
+                                            
+                                            NavigationLink(destination: SignUpView(), isActive: $isLinkActive2) {
+                                                Button(action: {self.isLinkActive2 = true}){
+                                                    Text("SignUp")
+                                                }.buttonStyle(.borderedProminent)
+                                                    .buttonBorderShape(.roundedRectangle(radius: 10))
+                                            }
+                                            
                                         }
                                         
-                                        NavigationLink(destination: SignUpView(), isActive: $isLinkActive2) {
-                                            Button(action: {self.isLinkActive2 = true}){
-                                                Text("SignUp")
-                                            }.buttonStyle(.borderedProminent)
-                                                .buttonBorderShape(.roundedRectangle(radius: 10))
-                                        }
+                                        Spacer()
+                                        
+                                        GoogleSignInButton{}
+                                            .cornerRadius(10)
                                         
                                     }
-                                    
-                                    Spacer()
-                                    
-                                    GoogleSignInButton{}
-                                        .cornerRadius(10)
-                                    
-                                }
-                                                           
-                            }.padding(10)
-                        )
-                    }
-                ).padding(25)
-            }
-        
+                                                               
+                                }.padding(10)
+                            )
+                        }
+                    ).padding(25)
+                }
+            
+            }.frame(height: 300)
         }
         
     }
