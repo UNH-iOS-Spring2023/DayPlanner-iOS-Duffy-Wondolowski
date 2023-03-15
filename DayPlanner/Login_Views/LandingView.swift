@@ -60,7 +60,10 @@ struct LandingView: View {
                                         
                                     }
                                     
+                                    Spacer()
+                                    
                                     GoogleSignInButton{}
+                                        .cornerRadius(10)
                                     
                                 }
                                                            
