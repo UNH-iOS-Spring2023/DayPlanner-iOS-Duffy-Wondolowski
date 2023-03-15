@@ -6,6 +6,10 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import FirebaseAuth
+import GoogleSignIn
+import GoogleSignInSwift
 
 struct LandingView: View {
     
@@ -36,21 +40,27 @@ struct LandingView: View {
                                 Text("Welcome to DayPlanner!")
                                     .foregroundColor(.white)
                                 
-                                HStack {
+                                VStack {
                                     
-                                    NavigationLink(destination: SignInView(), isActive: $isLinkActive) {
-                                        Button(action: {self.isLinkActive = true}){
-                                            Text("Login")
-                                        }.buttonStyle(.borderedProminent)
-                                            .buttonBorderShape(.roundedRectangle(radius: 10))
+                                    HStack {
+                                        
+                                        NavigationLink(destination: SignInView(), isActive: $isLinkActive) {
+                                            Button(action: {self.isLinkActive = true}){
+                                                Text("Login")
+                                            }.buttonStyle(.borderedProminent)
+                                                .buttonBorderShape(.roundedRectangle(radius: 10))
+                                        }
+                                        
+                                        NavigationLink(destination: SignUpView(), isActive: $isLinkActive2) {
+                                            Button(action: {self.isLinkActive2 = true}){
+                                                Text("SignUp")
+                                            }.buttonStyle(.borderedProminent)
+                                                .buttonBorderShape(.roundedRectangle(radius: 10))
+                                        }
+                                        
                                     }
                                     
-                                    NavigationLink(destination: SignUpView(), isActive: $isLinkActive2) {
-                                        Button(action: {self.isLinkActive2 = true}){
-                                            Text("SignUp")
-                                        }.buttonStyle(.borderedProminent)
-                                            .buttonBorderShape(.roundedRectangle(radius: 10))
-                                    }
+                                    GoogleSignInButton{}
                                     
                                 }
                                                            

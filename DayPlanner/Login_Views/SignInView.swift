@@ -15,54 +15,61 @@ struct SignInView: View {
     @State var txtPassword: String = ""
     
     var body: some View {
-        
             
-        Card(
-            cornerRadius: 15,
-            elevation: 5,
-            height: 300,
-            color: Color(.white),
-            views: {
-                AnyView(
-                    VStack (spacing: 15){
-                        
-                        Text("Sign In!")
-                        
-                        Text("Welcome to DayPlanner!")
-                        
-                        CustomTextField(
-                            placeHolder: "Username",
-                            imageName: "person",
-                            bColor: "textColorBlack",
-                            tOpacity: 0.6,
-                            width: CGFloat.infinity,
-                            height: 40,
-                            borderColor: Color(.systemBlue),
-                            value: $txtUsername
-                        )
+        ZStack {
+            
+            CustomColor.background
+                .ignoresSafeArea(.all)
+            
+            Card(
+                cornerRadius: 15,
+                elevation: 5,
+                height: 300,
+                color: CustomColor.backgroundCard,
+                views: {
+                    AnyView(
+                        VStack (spacing: 15){
+                            
+                            Text("Sign In!")
+                                .foregroundColor(.white)
+                            
+                            Text("Welcome to DayPlanner!")
+                                .foregroundColor(.white)
+                            
+                            CustomTextField(
+                                placeHolder: "Username",
+                                imageName: "person",
+                                bColor: "textColorBlack",
+                                tOpacity: 0.6,
+                                width: CGFloat.infinity,
+                                height: 40,
+                                borderColor: CustomColor.background,
+                                value: $txtUsername
+                            )
 
-                        CustomTextField(
-                            placeHolder: "Password",
-                            imageName: "lock",
-                            bColor: "textColorBlack",
-                            tOpacity: 0.6,
-                            width: CGFloat.infinity,
-                            height: 40,
-                            borderColor: Color(.systemBlue),
-                            value: $txtPassword
-                        )
+                            CustomTextField(
+                                placeHolder: "Password",
+                                imageName: "lock",
+                                bColor: "textColorBlack",
+                                tOpacity: 0.6,
+                                width: CGFloat.infinity,
+                                height: 40,
+                                borderColor: CustomColor.background,
+                                value: $txtPassword
+                            )
 
-                        
-                        Button(action: signIn){
-                            Text("Login")
-                        }.buttonStyle(.borderedProminent)
-                            .buttonBorderShape(.roundedRectangle(radius: 10))
-                        
-                        
-                    }.padding(15)
-                )
-            }
-        ).padding(25)
+                            
+                            Button(action: signIn){
+                                Text("Login")
+                            }.buttonStyle(.borderedProminent)
+                                .buttonBorderShape(.roundedRectangle(radius: 10))
+                            
+                            
+                        }.padding(15)
+                    )
+                }
+            ).padding(25)
+        }
         
             
 
