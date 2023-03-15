@@ -7,7 +7,6 @@
 
 import SwiftUI
 import FirebaseAuth
-import GoogleSignIn
 
 struct SignUpView: View {
     

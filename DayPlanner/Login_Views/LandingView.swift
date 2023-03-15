@@ -20,26 +20,21 @@ struct LandingView: View {
     @State var txtPassword: String = ""
     
     var body: some View {
-
-        ZStack {
             
-            CustomColor.background
-                .ignoresSafeArea(.all)
-                .overlay {
+        NavigationView {
+            
+            ZStack {
+                
+                CustomColor.background
+                    .ignoresSafeArea(.all)
+                
+                
+                VStack {
+                    
                     Image("Logo")
                         .resizable()
                         .scaledToFit()
-                        .padding(.bottom, 450)
                         .frame(width: 300)
-                }
-            
-            NavigationView {
-                
-                ZStack {
-                    
-                    CustomColor.background
-                        .ignoresSafeArea(.all)
-                    
                     
                     Card(
                         cornerRadius: 15,
@@ -73,10 +68,10 @@ struct LandingView: View {
                                             
                                         }
                                         
-                                        Spacer()
-                                        
-                                        GoogleSignInButton{}
-                                            .cornerRadius(10)
+    //                                        Spacer()
+    //
+    //                                        GoogleSignInButton{}
+    //                                            .cornerRadius(10)
                                         
                                     }
                                                                
@@ -85,8 +80,8 @@ struct LandingView: View {
                         }
                     ).padding(25)
                 }
-            
-            }.frame(height: 300)
+            }
+        
         }
         
     }
