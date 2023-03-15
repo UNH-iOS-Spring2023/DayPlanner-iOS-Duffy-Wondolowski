@@ -52,20 +52,21 @@ struct LandingView: View {
                                         
                                         HStack {
                                             
-                                            NavigationLink(destination: SignInView(), isActive: $isLinkActive) {
-                                                Button(action: {self.isLinkActive = true}){
-                                                    Text("Login")
-                                                }.buttonStyle(.borderedProminent)
-                                                    .buttonBorderShape(.roundedRectangle(radius: 10))
+                                            NavigationLink(destination: SignInView()) {
+                                                Text("Login")
+                                                    .frame(width: 150, height: 35)
+                                                    .background(CustomColor.background)
+                                                    .cornerRadius(15)
+                                                    .foregroundColor(.white)
                                             }
-                                            
-                                            NavigationLink(destination: SignUpView(), isActive: $isLinkActive2) {
-                                                Button(action: {self.isLinkActive2 = true}){
-                                                    Text("SignUp")
-                                                }.buttonStyle(.borderedProminent)
-                                                    .buttonBorderShape(.roundedRectangle(radius: 10))
+                                            NavigationLink(destination: SignUpView()) {
+                                                Text("SignUp")
+                                                    .frame(width: 150, height: 35)
+                                                    .background(CustomColor.background)
+                                                    .cornerRadius(15)
+                                                    .foregroundColor(.white)
                                             }
-                                            
+                                        
                                         }
                                         
     //                                        Spacer()
