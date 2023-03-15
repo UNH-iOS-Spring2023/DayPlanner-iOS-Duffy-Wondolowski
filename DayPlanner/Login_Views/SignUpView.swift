@@ -19,13 +19,18 @@ struct SignUpView: View {
     @State var txtPasswordConfirm: String = ""
     
     var body: some View {
-                
-        NavigationView {
         
-            ZStack {
+        ZStack {
+            
+            CustomColor.background
+                .ignoresSafeArea(.all)
+            
+            VStack {
                 
-                CustomColor.background
-                    .ignoresSafeArea(.all)
+                Image("Logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300)
                 
                 Card(
                     cornerRadius: 15,
@@ -112,8 +117,9 @@ struct SignUpView: View {
                     }
                 ).padding(25)
             }
-            
         }
+            
+        
     }
     
     func signUp(){
