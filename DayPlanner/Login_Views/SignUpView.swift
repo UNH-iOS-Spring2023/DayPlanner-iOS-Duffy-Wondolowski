@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import FirebaseAuth
+//import FirebaseAuth
 
 struct SignUpView: View {
     

@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
-import FirebaseCore
-import FirebaseAuth
-import GoogleSignIn
-import GoogleSignInSwift
+//import FirebaseCore
+//import FirebaseAuth
+//import GoogleSignIn
+//import GoogleSignInSwift
 
 struct LandingView: View {
     
