@@ -12,10 +12,15 @@ class AppVariables: ObservableObject {
     //Determines whether the app goes to the edit event page when the list is selected
     @Published var isEventEdit: Bool = false
     @Published var eventList: [Event] = []
+    let errorCheck: ErrorChecking = ErrorChecking() //Use this for error checking functions
+    
+    init () {
+        errorCheck.eventList = eventList
+    }
 }
 
 struct ContentView: View {
-    @StateObject var app = AppVariables() //TODO: Make this less crude
+    @StateObject var app = AppVariables()
     
     var body: some View {
         VStack{
