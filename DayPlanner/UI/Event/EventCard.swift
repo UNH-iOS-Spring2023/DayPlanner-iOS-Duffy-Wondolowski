@@ -32,7 +32,6 @@ struct EventCard: View {
                                                        
                         }.padding(10)
                         
-                        
                         Card(
                             cornerRadius: 15,
                             elevation: 3,
