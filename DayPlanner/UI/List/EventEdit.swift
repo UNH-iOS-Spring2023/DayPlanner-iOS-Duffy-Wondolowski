@@ -21,7 +21,10 @@ import SwiftUI
 //}
 struct EventEdit: View {
     @EnvironmentObject private var app: AppVariables
+    
     var event: Event = Event()
+    let errorCheck = ErrorChecking()
+    
     @State private var eventName: String
     @State private var duration: Double
     @State private var startTime: Date?
@@ -78,6 +81,9 @@ struct EventEdit: View {
                     .foregroundColor(Color(.systemRed))
             }
         }
+        .onAppear() {
+            errorCheck.eventList = app.eventList
+        }
         .font(.system(.title))
         .padding(EdgeInsets(top: 10, leading: 25, bottom: 25, trailing: 10))
     }
@@ -98,7 +104,7 @@ struct EventEdit: View {
             
             if let eventIndex = app.eventList.firstIndex(where: { $0 == self.event }) {
                 
-                if !ErrorChecking.checkEventOverlap(newEvent: newEvent, oldEvent: app.eventList[eventIndex]) {
+                if !errorCheck.checkEventOverlap(newEvent: newEvent, oldEvent: app.eventList[eventIndex]) {
                     app.eventList[eventIndex] = newEvent
                 } else {
                     alertText = "Your event overlaps with another!"
@@ -106,7 +112,7 @@ struct EventEdit: View {
                 }
             } else {
                 
-                if !ErrorChecking.checkEventOverlap(newEvent: newEvent) {
+                if !errorCheck.checkEventOverlap(newEvent: newEvent) {
                     app.eventList.append(newEvent)
                 } else {
                     alertText = "Your event overlaps with another!"
@@ -134,6 +140,6 @@ struct EventEdit: View {
 struct EventEdit_Previews: PreviewProvider {
     static var previews: some View {
         EventEdit()
-            .environmentObject(ErrorChecking.app)
+            .environmentObject(AppVariables())
     }
 }

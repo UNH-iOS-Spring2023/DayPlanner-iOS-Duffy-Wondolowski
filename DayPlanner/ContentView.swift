@@ -15,7 +15,7 @@ class AppVariables: ObservableObject {
 }
 
 struct ContentView: View {
-    let app = ErrorChecking.app //TODO: Make this less crude
+    @StateObject var app = AppVariables() //TODO: Make this less crude
     
     var body: some View {
         VStack{

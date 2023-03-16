@@ -34,11 +34,17 @@ struct List: View {
             }
         }
         
+        let list = ScrollView {
+            ForEach(app.eventList, id: \.self.id) {
+                (event: Event) in EventCard(event: event)
+            }
+        }
+        
         if (app.isEventEdit) {
             EventEdit()
         } else {
             ZStack {
-                Text("List Page")
+                list
                     .padding(5)
                 button
             }
@@ -49,6 +55,6 @@ struct List: View {
 struct List_Previews: PreviewProvider {
     static var previews: some View {
         List()
-            .environmentObject(ErrorChecking.app)
+            .environmentObject(AppVariables())
     }
 }
