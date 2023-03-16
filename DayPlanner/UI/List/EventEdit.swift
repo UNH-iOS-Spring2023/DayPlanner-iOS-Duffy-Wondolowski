@@ -102,6 +102,7 @@ struct EventEdit: View {
                 
                 if !app.errorCheck.checkEventOverlap(newEvent: newEvent, oldEvent: app.eventList[eventIndex]) {
                     app.eventList[eventIndex] = newEvent
+                    app.isEventEdit = false
                 } else {
                     alertText = "Your event overlaps with another!"
                     createAlert = true
@@ -110,13 +111,12 @@ struct EventEdit: View {
                 
                 if !app.errorCheck.checkEventOverlap(newEvent: newEvent) {
                     app.eventList.append(newEvent)
+                    app.isEventEdit = false
                 } else {
                     alertText = "Your event overlaps with another!"
                     createAlert = true
                 }
             }
-            
-            app.isEventEdit = false
         } else {
             alertText = "Your event requires a name!"
             createAlert = true
