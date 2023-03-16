@@ -35,7 +35,7 @@ struct List: View {
         }
         
         let list = ScrollView {
-            ForEach(app.eventList, id: \.self.id) {
+            ForEach(app.eventList, id: \.self) {
                 (event: Event) in EventCard(event: event)
             }
         }

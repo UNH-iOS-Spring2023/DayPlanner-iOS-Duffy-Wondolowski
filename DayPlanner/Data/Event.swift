@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct Event: Equatable, Identifiable {
-    let id: String = UUID().uuidString
+struct Event: Equatable, Hashable {
     var startTime: Date? = nil
     var duration: Int = 900000 //Stored in milliseconds for compatibility with android
     var eventName: String = ""
