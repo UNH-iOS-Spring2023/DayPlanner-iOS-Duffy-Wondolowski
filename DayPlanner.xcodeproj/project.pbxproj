@@ -173,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				AF94702D29B5873D0049BA4A /* CustomElements.swift */,
-				AF2F49FA29C2B2D600F7570F /* EventCard.swift */,
 			);
 			path = UI_Elements;
 			sourceTree = "<group>";
@@ -189,6 +188,7 @@
 		AF9DF89529C2C6BF00C676E7 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				AF9DF8AE29C2C97A00C676E7 /* Event */,
 				AF2F49ED29BEC10E00F7570F /* Login_Views */,
 				AF9DF89629C2C6BF00C676E7 /* Settings */,
 				AF9DF89829C2C6BF00C676E7 /* BottomBar.swift */,
@@ -231,6 +231,14 @@
 				AF9DF8A129C2C6BF00C676E7 /* ErrorChecking.swift */,
 			);
 			path = Background;
+			sourceTree = "<group>";
+		};
+		AF9DF8AE29C2C97A00C676E7 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				AF2F49FA29C2B2D600F7570F /* EventCard.swift */,
+			);
+			path = Event;
 			sourceTree = "<group>";
 		};
 		F694C5A129B55E0500536551 = {
