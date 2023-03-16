@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AF2F49B329BEB7AF00F7570F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF2F49B229BEB7AF00F7570F /* GoogleService-Info.plist */; };
 		AF2F49B629BEB87500F7570F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AF2F49B529BEB87500F7570F /* FirebaseAnalytics */; };
 		AF2F49B829BEB87500F7570F /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = AF2F49B729BEB87500F7570F /* FirebaseAnalyticsOnDeviceConversion */; };
 		AF2F49BA29BEB87500F7570F /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AF2F49B929BEB87500F7570F /* FirebaseAnalyticsSwift */; };
@@ -41,19 +40,10 @@
 		AF2F49F729C20A4800F7570F /* +View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F49F629C20A4700F7570F /* +View.swift */; };
 		AF2F49F929C2180100F7570F /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F49F829C2180100F7570F /* SplashScreenView.swift */; };
 		AF2F49FB29C2B2D600F7570F /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F49FA29C2B2D600F7570F /* EventCard.swift */; };
+		AF3068CC29C2B9EA000808C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF3068CB29C2B9E9000808C1 /* GoogleService-Info.plist */; };
 		AF94702929B581F60049BA4A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94702829B581F60049BA4A /* SignInView.swift */; };
 		AF94702B29B582160049BA4A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94702A29B582160049BA4A /* SignUpView.swift */; };
 		AF94702E29B5873D0049BA4A /* CustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94702D29B5873D0049BA4A /* CustomElements.swift */; };
-		AF9DF87A29C2C12600C676E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF9DF87929C2C12600C676E7 /* GoogleService-Info.plist */; };
-		AF9DF87D29C2C22000C676E7 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF87C29C2C22000C676E7 /* Event.swift */; };
-		AF9DF88929C2C23700C676E7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF88029C2C23700C676E7 /* Settings.swift */; };
-		AF9DF88A29C2C23700C676E7 /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF88129C2C23700C676E7 /* BottomBar.swift */; };
-		AF9DF88B29C2C23700C676E7 /* Planner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF88329C2C23700C676E7 /* Planner.swift */; };
-		AF9DF88C29C2C23700C676E7 /* EventAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF88529C2C23700C676E7 /* EventAdd.swift */; };
-		AF9DF88D29C2C23700C676E7 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF88629C2C23700C676E7 /* List.swift */; };
-		AF9DF88E29C2C23700C676E7 /* EventEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF88729C2C23700C676E7 /* EventEdit.swift */; };
-		AF9DF88F29C2C23700C676E7 /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF88829C2C23700C676E7 /* Popup.swift */; };
-		AF9DF89229C2C25D00C676E7 /* ErrorChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF89129C2C25D00C676E7 /* ErrorChecking.swift */; };
 		F694C5AE29B55E0500536551 /* DayPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5AD29B55E0500536551 /* DayPlannerApp.swift */; };
 		F694C5B029B55E0500536551 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5AF29B55E0500536551 /* ContentView.swift */; };
 		F694C5B229B55E0700536551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F694C5B129B55E0700536551 /* Assets.xcassets */; };
@@ -78,25 +68,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AF2F49B229BEB7AF00F7570F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AF2F49EB29BEC0F700F7570F /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
-		AF2F49F529C0DD5E00F7570F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AF2F49F629C20A4700F7570F /* +View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+View.swift"; sourceTree = "<group>"; };
 		AF2F49F829C2180100F7570F /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		AF2F49FA29C2B2D600F7570F /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
+		AF3068CB29C2B9E9000808C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AF94702829B581F60049BA4A /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		AF94702A29B582160049BA4A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		AF94702D29B5873D0049BA4A /* CustomElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomElements.swift; sourceTree = "<group>"; };
-		AF9DF87929C2C12600C676E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		AF9DF87C29C2C22000C676E7 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		AF9DF88029C2C23700C676E7 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		AF9DF88129C2C23700C676E7 /* BottomBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
-		AF9DF88329C2C23700C676E7 /* Planner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planner.swift; sourceTree = "<group>"; };
-		AF9DF88529C2C23700C676E7 /* EventAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventAdd.swift; sourceTree = "<group>"; };
-		AF9DF88629C2C23700C676E7 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
-		AF9DF88729C2C23700C676E7 /* EventEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEdit.swift; sourceTree = "<group>"; };
-		AF9DF88829C2C23700C676E7 /* Popup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
-		AF9DF89129C2C25D00C676E7 /* ErrorChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorChecking.swift; sourceTree = "<group>"; };
 		F694C5AA29B55E0500536551 /* DayPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F694C5AD29B55E0500536551 /* DayPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPlannerApp.swift; sourceTree = "<group>"; };
 		F694C5AF29B55E0500536551 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -180,64 +159,6 @@
 			path = UI_Elements;
 			sourceTree = "<group>";
 		};
-		AF9DF87B29C2C22000C676E7 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				AF9DF87C29C2C22000C676E7 /* Event.swift */,
-			);
-			name = Data;
-			path = DayPlanner/Data;
-			sourceTree = SOURCE_ROOT;
-		};
-		AF9DF87E29C2C23700C676E7 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				AF2F49ED29BEC10E00F7570F /* Login_Views */,
-				AF9DF87F29C2C23700C676E7 /* Settings */,
-				AF9DF88129C2C23700C676E7 /* BottomBar.swift */,
-				AF9DF88229C2C23700C676E7 /* Planner */,
-				AF9DF88429C2C23700C676E7 /* List */,
-				AF9DF88829C2C23700C676E7 /* Popup.swift */,
-			);
-			name = UI;
-			path = DayPlanner/UI;
-			sourceTree = SOURCE_ROOT;
-		};
-		AF9DF87F29C2C23700C676E7 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				AF9DF88029C2C23700C676E7 /* Settings.swift */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		AF9DF88229C2C23700C676E7 /* Planner */ = {
-			isa = PBXGroup;
-			children = (
-				AF9DF88329C2C23700C676E7 /* Planner.swift */,
-			);
-			path = Planner;
-			sourceTree = "<group>";
-		};
-		AF9DF88429C2C23700C676E7 /* List */ = {
-			isa = PBXGroup;
-			children = (
-				AF9DF88529C2C23700C676E7 /* EventAdd.swift */,
-				AF9DF88629C2C23700C676E7 /* List.swift */,
-				AF9DF88729C2C23700C676E7 /* EventEdit.swift */,
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
-		AF9DF89029C2C25D00C676E7 /* Background */ = {
-			isa = PBXGroup;
-			children = (
-				AF9DF89129C2C25D00C676E7 /* ErrorChecking.swift */,
-			);
-			name = Background;
-			path = DayPlanner/Background;
-			sourceTree = SOURCE_ROOT;
-		};
 		F694C5A129B55E0500536551 = {
 			isa = PBXGroup;
 			children = (
@@ -259,18 +180,11 @@
 		F694C5AC29B55E0500536551 /* DayPlanner */ = {
 			isa = PBXGroup;
 			children = (
-				AF2F49F529C0DD5E00F7570F /* Info.plist */,
 				F694C5AD29B55E0500536551 /* DayPlannerApp.swift */,
-				AF9DF89029C2C25D00C676E7 /* Background */,
-				AF9DF87E29C2C23700C676E7 /* UI */,
-				AF9DF87B29C2C22000C676E7 /* Data */,
+				AF2F49ED29BEC10E00F7570F /* Login_Views */,
 				AF94702C29B5871B0049BA4A /* UI_Elements */,
 				F694C5AF29B55E0500536551 /* ContentView.swift */,
-<<<<<<< HEAD
-				AF9DF87929C2C12600C676E7 /* GoogleService-Info.plist */,
-=======
-				AF2F49B229BEB7AF00F7570F /* GoogleService-Info.plist */,
->>>>>>> parent of a749641 (Changes)
+				AF3068CB29C2B9E9000808C1 /* GoogleService-Info.plist */,
 				F694C5B129B55E0700536551 /* Assets.xcassets */,
 				F694C5B329B55E0700536551 /* Preview Content */,
 				AF2F49F629C20A4700F7570F /* +View.swift */,
@@ -427,11 +341,7 @@
 			files = (
 				F694C5B529B55E0700536551 /* Preview Assets.xcassets in Resources */,
 				F694C5B229B55E0700536551 /* Assets.xcassets in Resources */,
-<<<<<<< HEAD
-				AF9DF87A29C2C12600C676E7 /* GoogleService-Info.plist in Resources */,
-=======
-				AF2F49B329BEB7AF00F7570F /* GoogleService-Info.plist in Resources */,
->>>>>>> parent of a749641 (Changes)
+				AF3068CC29C2B9EA000808C1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,21 +368,12 @@
 			files = (
 				AF2F49EC29BEC0F700F7570F /* LandingView.swift in Sources */,
 				AF94702B29B582160049BA4A /* SignUpView.swift in Sources */,
-				AF9DF88E29C2C23700C676E7 /* EventEdit.swift in Sources */,
 				AF94702E29B5873D0049BA4A /* CustomElements.swift in Sources */,
 				AF94702929B581F60049BA4A /* SignInView.swift in Sources */,
-				AF9DF87D29C2C22000C676E7 /* Event.swift in Sources */,
-				AF9DF88B29C2C23700C676E7 /* Planner.swift in Sources */,
 				AF2F49F729C20A4800F7570F /* +View.swift in Sources */,
-				AF9DF88F29C2C23700C676E7 /* Popup.swift in Sources */,
 				F694C5B029B55E0500536551 /* ContentView.swift in Sources */,
-				AF9DF88D29C2C23700C676E7 /* List.swift in Sources */,
 				F694C5AE29B55E0500536551 /* DayPlannerApp.swift in Sources */,
-				AF9DF89229C2C25D00C676E7 /* ErrorChecking.swift in Sources */,
-				AF9DF88A29C2C23700C676E7 /* BottomBar.swift in Sources */,
 				AF2F49FB29C2B2D600F7570F /* EventCard.swift in Sources */,
-				AF9DF88929C2C23700C676E7 /* Settings.swift in Sources */,
-				AF9DF88C29C2C23700C676E7 /* EventAdd.swift in Sources */,
 				AF2F49F929C2180100F7570F /* SplashScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
