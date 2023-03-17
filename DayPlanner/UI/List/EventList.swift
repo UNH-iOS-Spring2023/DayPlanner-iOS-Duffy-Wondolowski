@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EventList: View {
     @EnvironmentObject private var app: AppVariables
-    @State var draggedEvent: Event?
+    @State var draggedEvent: Event? = nil
     
     var body: some View {
         //Once again the button is largely copied from the professor

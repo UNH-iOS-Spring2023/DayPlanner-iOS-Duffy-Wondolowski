@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Event: Equatable, Hashable {
+struct Event: Equatable, Hashable, Codable {
     var startTime: Date? = nil
     var duration: Int = 900000 //Stored in milliseconds for compatibility with android
     var eventName: String = ""
