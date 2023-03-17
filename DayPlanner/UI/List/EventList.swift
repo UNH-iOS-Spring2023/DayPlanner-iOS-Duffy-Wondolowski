@@ -57,10 +57,6 @@ struct EventList: View {
         }
     }
     
-    func move(from source: IndexSet, to destination: Int) {
-        app.eventList.move(fromOffsets: source, toOffset: destination)
-    }
-    
 }
 
 struct List_Previews: PreviewProvider {
