@@ -26,7 +26,7 @@ struct ContentView: View {
     var body: some View {
         VStack{
             BottomBar(
-                AnyView(List()),
+                AnyView(EventList()),
                 AnyView(Planner()),
                 AnyView(Settings())
             )

@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct List: View {
+struct EventList: View {
     @EnvironmentObject private var app: AppVariables
+    @State var draggedEvent: Event?
     
     var body: some View {
         //Once again the button is largely copied from the professor
@@ -35,9 +36,18 @@ struct List: View {
         }
         
         let list = ScrollView {
-            ForEach(app.eventList, id: \.self) {
-                (event: Event) in ListItem(event: event)
+            VStack (spacing: 10) {
+                ForEach(app.eventList, id: \.self) {
+                    (event: Event) in VStack { ListItem(event: event) }
+                        .opacity(event == draggedEvent ? 0.1 : 1)
+                        .onDrag {
+                            draggedEvent = event
+                            return CustomProvider(ended: {draggedEvent = nil})
+                        }
+                        .onDrop(of: [.item], delegate: ScrollDropDelegate(droppedOnEvent: event, eventList: $app.eventList, draggedEvent: $draggedEvent))
+                }
             }
+            .animation(.default, value: app.eventList)
         }
         
         if (app.isEventEdit) {
@@ -45,9 +55,9 @@ struct List: View {
         } else {
             ZStack {
                 list
-                    .padding(5)
                 button
             }
+//            .onDrop(of: [.item], delegate: DropOutsideDelegate(draggedEvent: $draggedEvent))
         }
     }
     
@@ -55,7 +65,7 @@ struct List: View {
 
 struct List_Previews: PreviewProvider {
     static var previews: some View {
-        List()
+        EventList()
             .environmentObject(AppVariables())
     }
 }
