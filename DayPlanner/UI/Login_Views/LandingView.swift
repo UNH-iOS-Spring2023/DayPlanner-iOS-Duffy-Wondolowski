@@ -19,69 +19,87 @@ struct LandingView: View {
     @State var txtUsername: String = ""
     @State var txtPassword: String = ""
     
+    @State var isLoggedIn = false
+    
     var body: some View {
             
         NavigationView {
             
-            ZStack {
-                
-                CustomColor.background
-                    .ignoresSafeArea(.all)
-                
-                
-                VStack {
+            if isLoggedIn{
+                ContentView()
+            } else {
+                ZStack {
                     
-                    Image("Logo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 300)
+                    CustomColor.background
+                        .ignoresSafeArea(.all)
                     
-                    Card(
-                        cornerRadius: 15,
-                        elevation: 3,
-                        height: 150,
-                        color: CustomColor.backgroundCard,
-                        views: {
-                            AnyView(
-                                VStack (spacing: 15){
-                                    
-                                    Text("Welcome to DayPlanner!")
-                                        .foregroundColor(.white)
-                                    
-                                    VStack {
+                    
+                    VStack {
+                        
+                        Image("Logo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 300)
+                        
+                        Card(
+                            cornerRadius: 15,
+                            elevation: 3,
+                            height: 150,
+                            color: CustomColor.backgroundCard,
+                            views: {
+                                AnyView(
+                                    VStack (spacing: 15){
                                         
-                                        HStack {
+                                        Text("Welcome to DayPlanner!")
+                                            .foregroundColor(.white)
+                                        
+                                        VStack {
                                             
-                                            NavigationLink(destination: SignInView()) {
-                                                Text("Login")
-                                                    .frame(width: 150, height: 35)
-                                                    .background(CustomColor.background)
-                                                    .cornerRadius(15)
-                                                    .foregroundColor(.white)
+                                            HStack {
+                                                
+                                                NavigationLink(destination: SignInView()) {
+                                                    Text("Login")
+                                                        .frame(width: 150, height: 35)
+                                                        .background(CustomColor.background)
+                                                        .cornerRadius(15)
+                                                        .foregroundColor(.white)
+                                                }
+                                                NavigationLink(destination: SignUpView()) {
+                                                    Text("SignUp")
+                                                        .frame(width: 150, height: 35)
+                                                        .background(CustomColor.background)
+                                                        .cornerRadius(15)
+                                                        .foregroundColor(.white)
+                                                }
+                                                
+                                            
                                             }
-                                            NavigationLink(destination: SignUpView()) {
-                                                Text("SignUp")
-                                                    .frame(width: 150, height: 35)
-                                                    .background(CustomColor.background)
-                                                    .cornerRadius(15)
-                                                    .foregroundColor(.white)
-                                            }
-                                        
+                                            
+                                            Button(action: {isLoggedIn = true}){
+                                                Text("Continue Without Signing In!")
+                                            }.buttonStyle(.borderedProminent)
+                                                .buttonBorderShape(.roundedRectangle(radius: 10))
+                                                .tint(CustomColor.darkGreen)
+                                            
+        //                                        Spacer()
+        //
+        //                                        GoogleSignInButton{}
+        //                                            .cornerRadius(10)
+                                            
                                         }
-                                        
-    //                                        Spacer()
-    //
-    //                                        GoogleSignInButton{}
-    //                                            .cornerRadius(10)
-                                        
-                                    }
-                                                               
-                                }.padding(10)
-                            )
-                        }
-                    ).padding(25)
+                                                                   
+                                    }.padding(10)
+                                )
+                            }
+                        ).padding(25)
+                    }
                 }
             }
+            
+            
+            
+            
+            
         
         }
         
