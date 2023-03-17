@@ -9,7 +9,8 @@ import SwiftUI
 
 struct EventList: View {
     @EnvironmentObject private var app: AppVariables
-    @State var draggedEvent: Event?
+    @State var draggedEvent: Event? = nil
+    @Environment(\.scenePhase) private var scenePhase
     
     var body: some View {
         //Once again the button is largely copied from the professor
@@ -56,6 +57,15 @@ struct EventList: View {
             ZStack {
                 list
                 button
+            }
+            .onChange(of: scenePhase) { phase in
+                if phase == .inactive {
+                    Persistence.save(events: app.eventList) { result in
+                        if case .failure(let error) = result {
+                        fatalError(error.localizedDescription)
+                        }
+                    }
+                }
             }
 //            .onDrop(of: [.item], delegate: DropOutsideDelegate(draggedEvent: $draggedEvent))
         }

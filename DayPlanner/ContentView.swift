@@ -32,6 +32,16 @@ struct ContentView: View {
             )
             .environmentObject(app)
         }
+        .onAppear() {
+            Persistence.load{ result in
+                                switch result {
+                                case .failure(let error):
+                                    fatalError(error.localizedDescription)
+                                case .success(let events):
+                                    app.eventList = events
+                                }
+                            }
+        }
     }
 }
 
