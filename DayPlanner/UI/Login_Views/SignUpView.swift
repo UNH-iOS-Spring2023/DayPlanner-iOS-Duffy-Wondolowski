@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
-//import FirebaseAuth
+import FirebaseAuth
+import FirebaseFirestore
 
 struct SignUpView: View {
+    
+    let db = Firestore.firestore()
     
     @State var isLinkActive = false;
     
@@ -18,119 +21,177 @@ struct SignUpView: View {
     @State var txtPassword: String = ""
     @State var txtPasswordConfirm: String = ""
     
+    @State var isLoggedIn = false
+    
     var body: some View {
         
-        ZStack {
+        NavigationView {
             
-            CustomColor.background
-                .ignoresSafeArea(.all)
-            
-            VStack {
-                
-                Image("Logo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 300)
-                
-                Card(
-                    cornerRadius: 15,
-                    elevation: 5,
-                    height: 450,
-                    color: CustomColor.backgroundCard,
-                    views: {
-                        AnyView(
-                            
-                            VStack(spacing: 20){
-                                
-                                Text("Sign Up!")
-                                    .foregroundColor(.white)
-                                
-                                Text("Welcome to DayPlanner!")
-                                    .foregroundColor(.white)
-                                
-                                VStack (spacing: 20){
+            if isLoggedIn{
+                ContentView()
+            } else {
+                ZStack {
+                    
+                    CustomColor.background
+                        .ignoresSafeArea(.all)
+                    
+                    VStack {
+                        
+                        Image("Logo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 300)
+                        
+                        Card(
+                            cornerRadius: 15,
+                            elevation: 5,
+                            height: 450,
+                            color: CustomColor.backgroundCard,
+                            views: {
+                                AnyView(
                                     
-                                    CustomTextField(
-                                        placeHolder: "Email",
-                                        imageName: "envelope",
-                                        bColor: "textColorBlack",
-                                        tOpacity: 0.6,
-                                        width: CGFloat.infinity,
-                                        height: 40,
-                                        borderColor: CustomColor.background,
-                                        value: $txtEmail
-                                    )
-                                    CustomTextField(
-                                        placeHolder: "Full Name",
-                                        imageName: "person.fill",
-                                        bColor: "textColorBlack",
-                                        tOpacity: 0.6,
-                                        width: CGFloat.infinity,
-                                        height: 40,
-                                        borderColor: CustomColor.background,
-                                        value: $txtFullName
-                                    )
-                                    CustomTextField(
-                                        placeHolder: "Username",
-                                        imageName: "person",
-                                        bColor: "textColorBlack",
-                                        tOpacity: 0.6,
-                                        width: CGFloat.infinity,
-                                        height: 40,
-                                        borderColor: CustomColor.background,
-                                        value: $txtUsername
-                                    )
-                                    CustomTextField(
-                                        placeHolder: "Password",
-                                        imageName: "lock.fill",
-                                        bColor: "textColorBlack",
-                                        tOpacity: 0.6,
-                                        width: CGFloat.infinity,
-                                        height: 40,
-                                        borderColor: CustomColor.background,
-                                        value: $txtPassword
-                                    )
-                                    CustomTextField(
-                                        placeHolder: "Password Confirm",
-                                        imageName: "lock",
-                                        bColor: "textColorBlack",
-                                        tOpacity: 0.6,
-                                        width: CGFloat.infinity,
-                                        height: 40,
-                                        borderColor: CustomColor.background,
-                                        value: $txtPasswordConfirm
-                                    )
-                                    
-                                }
-                                
-                                HStack{
-                                                    
-                                    Button(action: signUp){
-                                        Text("Sign Up")
-                                    }.buttonStyle(.borderedProminent)
-                                        .buttonBorderShape(.roundedRectangle(radius: 10))
-                                    
-                                }
+                                    VStack(spacing: 20){
+                                        
+                                        Text("Sign Up!")
+                                            .foregroundColor(.white)
+                                        
+                                        Text("Welcome to DayPlanner!")
+                                            .foregroundColor(.white)
+                                        
+                                        VStack (spacing: 20){
                                             
-                            }.padding(15)
-                        )
+                                            CustomTextField(
+                                                placeHolder: "Email",
+                                                imageName: "envelope",
+                                                bColor: "textColorBlack",
+                                                tOpacity: 0.6,
+                                                width: CGFloat.infinity,
+                                                height: 40,
+                                                borderColor: CustomColor.background,
+                                                value: $txtEmail
+                                            )
+                                            CustomTextField(
+                                                placeHolder: "Full Name",
+                                                imageName: "person.fill",
+                                                bColor: "textColorBlack",
+                                                tOpacity: 0.6,
+                                                width: CGFloat.infinity,
+                                                height: 40,
+                                                borderColor: CustomColor.background,
+                                                value: $txtFullName
+                                            )
+                                            CustomTextField(
+                                                placeHolder: "Username",
+                                                imageName: "person",
+                                                bColor: "textColorBlack",
+                                                tOpacity: 0.6,
+                                                width: CGFloat.infinity,
+                                                height: 40,
+                                                borderColor: CustomColor.background,
+                                                value: $txtUsername
+                                            )
+                                            CustomTextField(
+                                                placeHolder: "Password",
+                                                imageName: "lock.fill",
+                                                bColor: "textColorBlack",
+                                                tOpacity: 0.6,
+                                                width: CGFloat.infinity,
+                                                height: 40,
+                                                borderColor: CustomColor.background,
+                                                value: $txtPassword
+                                            )
+                                            CustomTextField(
+                                                placeHolder: "Password Confirm",
+                                                imageName: "lock",
+                                                bColor: "textColorBlack",
+                                                tOpacity: 0.6,
+                                                width: CGFloat.infinity,
+                                                height: 40,
+                                                borderColor: CustomColor.background,
+                                                value: $txtPasswordConfirm
+                                            )
+                                            
+                                        }
+                                        
+                                        HStack{
+                                            
+                                            Button(action: signUp){
+                                                Text("Sign Up")
+                                            }.buttonStyle(.borderedProminent)
+                                                .buttonBorderShape(.roundedRectangle(radius: 10))
+                                            
+                                        }
+                                        
+                                    }.padding(15)
+                                )
+                            }
+                        ).padding(25)
                     }
-                ).padding(25)
+                }
             }
-        }
             
+
+            
+            
+            
+            
+        }
+        
         
     }
     
-    func signUp(){
+    
+    
+    private func signUp(){
+        userAuth()
+    }
+    
+    private func userAuth(){
         
-//        Auth.auth().createUser(withEmail: txtEmail, password: txtPassword){ result, error in
-//            if error != nil{
-//                print(error!.localizedDescription)
-//            }
-//        }
+        Auth.auth().createUser(withEmail: txtEmail, password: txtPassword){ result, error in
+            if error != nil{
+                print(error!.localizedDescription)
+            }
+            print("Successfully created Account: \(result?.user.uid ?? "")")
+            
+            self.userToFirestore()
+            
+            self.isLoggedIn = true 
+
+        }
         
     }
+    
+    private func userToFirestore(){
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let userData = [
+            "email": self.txtEmail,
+            "fullname": self.txtFullName,
+            "username": self.txtUsername,
+            "uid": uid ]
+        db.collection("Users")
+            .document(uid).setData(userData){ err in
+                if let err = err {
+                    print(err)
+                    return
+                }
+                print("Success")
+            }
+        
+        txtEmail = ""
+        txtFullName = ""
+        txtUsername = ""
+        txtPassword = ""
+        txtPasswordConfirm = ""
+        
+    }
+    
+    
+    
+    
+    
+    
+    
     
 }
 

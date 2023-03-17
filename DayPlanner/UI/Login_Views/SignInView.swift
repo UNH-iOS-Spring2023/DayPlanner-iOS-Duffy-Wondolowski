@@ -6,88 +6,116 @@
 //
 
 import SwiftUI
-//import FirebaseCore
-//import FirebaseAuth
+import FirebaseAuth
 
 struct SignInView: View {
     
-    @State var txtUsername: String = ""
+    @State var txtEmail: String = ""
     @State var txtPassword: String = ""
+    
+    @State var isLoggedIn = false
     
     var body: some View {
             
-        ZStack {
+        NavigationView {
             
-            CustomColor.background
-                .ignoresSafeArea(.all)
-            
-            VStack {
-                
-                Image("Logo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 300)
-                
-                Card(
-                    cornerRadius: 15,
-                    elevation: 5,
-                    height: 300,
-                    color: CustomColor.backgroundCard,
-                    views: {
-                        AnyView(
-                            VStack (spacing: 15){
-                                
-                                Text("Sign In!")
-                                    .foregroundColor(.white)
-                                
-                                Text("Welcome to DayPlanner!")
-                                    .foregroundColor(.white)
-                                
-                                CustomTextField(
-                                    placeHolder: "Username",
-                                    imageName: "person",
-                                    bColor: "textColorBlack",
-                                    tOpacity: 0.6,
-                                    width: CGFloat.infinity,
-                                    height: 40,
-                                    borderColor: CustomColor.background,
-                                    value: $txtUsername
-                                )
+            if isLoggedIn{
+                ContentView()
+            } else {
+                ZStack {
+                    
+                    CustomColor.background
+                        .ignoresSafeArea(.all)
+                    
+                    VStack {
+                        
+                        Image("Logo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 300)
+                        
+                        Card(
+                            cornerRadius: 15,
+                            elevation: 5,
+                            height: 300,
+                            color: CustomColor.backgroundCard,
+                            views: {
+                                AnyView(
+                                    VStack (spacing: 15){
+                                        
+                                        Text("Sign In!")
+                                            .foregroundColor(.white)
+                                        
+                                        Text("Welcome to DayPlanner!")
+                                            .foregroundColor(.white)
+                                        
+                                        CustomTextField(
+                                            placeHolder: "Email",
+                                            imageName: "envelope",
+                                            bColor: "textColorBlack",
+                                            tOpacity: 0.6,
+                                            width: CGFloat.infinity,
+                                            height: 40,
+                                            borderColor: CustomColor.background,
+                                            value: $txtEmail
+                                        )
 
-                                CustomTextField(
-                                    placeHolder: "Password",
-                                    imageName: "lock",
-                                    bColor: "textColorBlack",
-                                    tOpacity: 0.6,
-                                    width: CGFloat.infinity,
-                                    height: 40,
-                                    borderColor: CustomColor.background,
-                                    value: $txtPassword
-                                )
+                                        CustomTextField(
+                                            placeHolder: "Password",
+                                            imageName: "lock",
+                                            bColor: "textColorBlack",
+                                            tOpacity: 0.6,
+                                            width: CGFloat.infinity,
+                                            height: 40,
+                                            borderColor: CustomColor.background,
+                                            value: $txtPassword
+                                        )
 
-                                
-                                Button(action: signIn){
-                                    Text("Login")
-                                }.buttonStyle(.borderedProminent)
-                                    .buttonBorderShape(.roundedRectangle(radius: 10))
-                                
-                                
-                            }.padding(15)
-                        )
+                                        
+                                        Button(action: signIn){
+                                            Text("Login")
+                                        }.buttonStyle(.borderedProminent)
+                                            .buttonBorderShape(.roundedRectangle(radius: 10))
+                                                        
+                                        
+                                    }.padding(15)
+                                )
+                            }
+                        ).padding(25)
                     }
-                ).padding(25)
+                }
             }
+            
+            
         }
         
             
 
     }
-}
     
+    
+    
+    
+    func signIn(){
+        Auth.auth().signIn(withEmail: txtEmail, password: txtPassword) { result, err in
+            if let err = err{
+                print("Failed to login user!:", err)
+                return
+            }
+            print("Successfully loggin in the User!")
+            
+            self.isLoggedIn = true
+        }
+        txtEmail = ""
+        txtPassword = ""
+    }
+    
+    
+    
+    
+    
+}
 
-func signIn(){
-    
-}
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
