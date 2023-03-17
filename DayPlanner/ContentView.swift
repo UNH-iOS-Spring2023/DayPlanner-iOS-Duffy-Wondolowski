@@ -12,10 +12,16 @@ class AppVariables: ObservableObject {
     //Determines whether the app goes to the edit event page when the list is selected
     @Published var isEventEdit: Bool = false
     @Published var eventList: [Event] = []
+    @Published var selectedEvent: Event? = nil
+    
+    func checkEventOverlap(newEvent: Event, oldEvent: Event? = nil) -> Bool {
+        //True means there is no overlap
+        return ErrorChecking.checkEventOverlap(eventList: eventList, newEvent: newEvent, oldEvent: oldEvent)
+    }
 }
 
 struct ContentView: View {
-    let app = ErrorChecking.app //TODO: Make this less crude
+    @StateObject var app = AppVariables()
     
     var body: some View {
         VStack{

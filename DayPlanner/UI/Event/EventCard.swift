@@ -9,6 +9,14 @@ import SwiftUI
 
 struct EventCard: View {
     
+    let event: Event
+    let click: ()-> Void
+    
+    init(event: Event, click: @escaping () -> Void = {}) {
+        self.event = event
+        self.click = click
+    }
+    
     var body: some View {
         
         Card(
@@ -16,17 +24,18 @@ struct EventCard: View {
             elevation: 3,
             height: 100,
             color: CustomColor.backgroundCard,
+            click: self.click,
             views: {
                 AnyView(
                     HStack {
                         VStack (spacing: 15){
                             
-                            Text("EventName")
+                            Text(event.eventName)
                                 .foregroundColor(.white)
                                 .font(.system(size:20))
                                 .bold()
                             
-                            Text("Event Duration")
+                            listTime()
                                 .foregroundColor(.white)
                                 .font(.system(size:10))
                                                        
@@ -41,7 +50,7 @@ struct EventCard: View {
                             views: {
                                 AnyView(
                                     
-                                    Text("Event Location")
+                                    location()
                                         .foregroundColor(.white)
                                         .font(.system(size:20))
                                     
@@ -53,12 +62,30 @@ struct EventCard: View {
                     }
                 )
             }
-        ).padding(25)    
+        ).padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))    
+    }
+    
+    func listTime() -> Text {
+        let duration = event.duration / 60000
+        if (duration < 60) {
+            return Text("\(Int(duration)) Minutes")
+        } else {
+            return Text("\(Int(duration / 60)) Hours \(Int(duration) % 60) Minutes")
+        }
+    }
+    
+    func location() -> Text {
+        if event.location == "" {
+            return Text("No Location")
+        } else {
+            return Text(event.location)
+        }
+            
     }
 }
 
 struct EventCard_Previews: PreviewProvider {
     static var previews: some View {
-        EventCard()
+        EventCard(event: Event(eventName: "Event Name", location: "Event Location"))
     }
 }

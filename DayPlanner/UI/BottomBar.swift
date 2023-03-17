@@ -63,7 +63,7 @@ struct BottomBar_Previews: PreviewProvider {
             AnyView(Planner()),
             AnyView(Settings())
         )
-            .environmentObject(AppVariables())
+        .environmentObject(AppVariables())
     }
 }
 
