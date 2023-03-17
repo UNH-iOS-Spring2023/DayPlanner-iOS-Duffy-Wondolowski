@@ -36,7 +36,7 @@ struct List: View {
         
         let list = ScrollView {
             ForEach(app.eventList, id: \.self) {
-                (event: Event) in EventCard(event: event)
+                (event: Event) in ListItem(event: event)
             }
         }
         
@@ -50,6 +50,7 @@ struct List: View {
             }
         }
     }
+    
 }
 
 struct List_Previews: PreviewProvider {

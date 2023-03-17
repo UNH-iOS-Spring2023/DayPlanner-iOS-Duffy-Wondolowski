@@ -10,7 +10,12 @@ import SwiftUI
 struct EventCard: View {
     
     let event: Event
+    let click: ()-> Void
     
+    init(event: Event, click: @escaping () -> Void = {}) {
+        self.event = event
+        self.click = click
+    }
     
     var body: some View {
         
@@ -19,6 +24,7 @@ struct EventCard: View {
             elevation: 3,
             height: 100,
             color: CustomColor.backgroundCard,
+            click: self.click,
             views: {
                 AnyView(
                     HStack {

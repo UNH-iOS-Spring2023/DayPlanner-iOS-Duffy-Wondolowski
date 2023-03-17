@@ -12,10 +12,11 @@ class AppVariables: ObservableObject {
     //Determines whether the app goes to the edit event page when the list is selected
     @Published var isEventEdit: Bool = false
     @Published var eventList: [Event] = []
-    let errorCheck: ErrorChecking = ErrorChecking() //Use this for error checking functions
+    @Published var selectedEvent: Event? = nil
     
-    init () {
-        errorCheck.eventList = eventList
+    func checkEventOverlap(newEvent: Event, oldEvent: Event? = nil) -> Bool {
+        //True means there is no overlap
+        return ErrorChecking.checkEventOverlap(eventList: eventList, newEvent: newEvent, oldEvent: oldEvent)
     }
 }
 

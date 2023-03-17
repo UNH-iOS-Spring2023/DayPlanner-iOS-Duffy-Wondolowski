@@ -52,6 +52,7 @@
 		AF9DF8A929C2C6BF00C676E7 /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF89F29C2C6BF00C676E7 /* Popup.swift */; };
 		AF9DF8AA29C2C6BF00C676E7 /* ErrorChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF8A129C2C6BF00C676E7 /* ErrorChecking.swift */; };
 		AF9DF8AC29C2C76B00C676E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF9DF8AB29C2C76B00C676E7 /* GoogleService-Info.plist */; };
+		F600344D29C3DD26008BDD0B /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F600344C29C3DD26008BDD0B /* ListItem.swift */; };
 		F694C5AE29B55E0500536551 /* DayPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5AD29B55E0500536551 /* DayPlannerApp.swift */; };
 		F694C5B029B55E0500536551 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5AF29B55E0500536551 /* ContentView.swift */; };
 		F694C5B229B55E0700536551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F694C5B129B55E0700536551 /* Assets.xcassets */; };
@@ -93,6 +94,7 @@
 		AF9DF89F29C2C6BF00C676E7 /* Popup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
 		AF9DF8A129C2C6BF00C676E7 /* ErrorChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorChecking.swift; sourceTree = "<group>"; };
 		AF9DF8AB29C2C76B00C676E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F600344C29C3DD26008BDD0B /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
 		F694C5AA29B55E0500536551 /* DayPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F694C5AD29B55E0500536551 /* DayPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPlannerApp.swift; sourceTree = "<group>"; };
 		F694C5AF29B55E0500536551 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			children = (
 				AF9DF89D29C2C6BF00C676E7 /* List.swift */,
 				AF9DF89E29C2C6BF00C676E7 /* EventEdit.swift */,
+				F600344C29C3DD26008BDD0B /* ListItem.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				F694C5B029B55E0500536551 /* ContentView.swift in Sources */,
 				AF9DF8A729C2C6BF00C676E7 /* List.swift in Sources */,
 				F694C5AE29B55E0500536551 /* DayPlannerApp.swift in Sources */,
+				F600344D29C3DD26008BDD0B /* ListItem.swift in Sources */,
 				AF9DF8AA29C2C6BF00C676E7 /* ErrorChecking.swift in Sources */,
 				AF9DF8A429C2C6BF00C676E7 /* BottomBar.swift in Sources */,
 				AF2F49FB29C2B2D600F7570F /* EventCard.swift in Sources */,
