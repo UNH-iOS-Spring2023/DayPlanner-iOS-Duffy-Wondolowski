@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
-//import FirebaseCore
-//import FirebaseAuth
+import FirebaseAuth
 
 struct SignInView: View {
     
-    @State var txtUsername: String = ""
+    @State var txtEmail: String = ""
     @State var txtPassword: String = ""
+    @State var message: String = "Test Message"
     
     var body: some View {
             
@@ -44,14 +44,14 @@ struct SignInView: View {
                                     .foregroundColor(.white)
                                 
                                 CustomTextField(
-                                    placeHolder: "Username",
-                                    imageName: "person",
+                                    placeHolder: "Email",
+                                    imageName: "envelope",
                                     bColor: "textColorBlack",
                                     tOpacity: 0.6,
                                     width: CGFloat.infinity,
                                     height: 40,
                                     borderColor: CustomColor.background,
-                                    value: $txtUsername
+                                    value: $txtEmail
                                 )
 
                                 CustomTextField(
@@ -71,6 +71,8 @@ struct SignInView: View {
                                 }.buttonStyle(.borderedProminent)
                                     .buttonBorderShape(.roundedRectangle(radius: 10))
                                 
+                                Text(message)
+                                
                                 
                             }.padding(15)
                         )
@@ -82,12 +84,30 @@ struct SignInView: View {
             
 
     }
-}
     
+    
+    
+    
+    func signIn(){
+        Auth.auth().signIn(withEmail: txtEmail, password: txtPassword) { result, err in
+            if let err = err{
+                print("Failed to login user!:", err)
+                return
+            }
+            print("Successfully loggin in the User!")
+            
+            message = "You are signed in"
+        }
+        txtEmail = ""
+        txtPassword = ""
+    }
+    
+    
+    
+    
+    
+}
 
-func signIn(){
-    
-}
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {

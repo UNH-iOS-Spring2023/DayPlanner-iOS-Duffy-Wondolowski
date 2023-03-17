@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
-//import FirebaseAuth
+import FirebaseAuth
+import FirebaseFirestore
 
 struct SignUpView: View {
+    
+    let db = Firestore.firestore()
     
     @State var isLinkActive = false;
     
@@ -104,33 +107,74 @@ struct SignUpView: View {
                                 }
                                 
                                 HStack{
-                                                    
+                                    
                                     Button(action: signUp){
                                         Text("Sign Up")
                                     }.buttonStyle(.borderedProminent)
                                         .buttonBorderShape(.roundedRectangle(radius: 10))
                                     
                                 }
-                                            
+                                
                             }.padding(15)
                         )
                     }
                 ).padding(25)
             }
         }
-            
+        
         
     }
     
-    func signUp(){
+    
+    
+    private func signUp(){
+        userAuth()
+    }
+    
+    private func userAuth(){
         
-//        Auth.auth().createUser(withEmail: txtEmail, password: txtPassword){ result, error in
-//            if error != nil{
-//                print(error!.localizedDescription)
-//            }
-//        }
+        Auth.auth().createUser(withEmail: txtEmail, password: txtPassword){ result, error in
+            if error != nil{
+                print(error!.localizedDescription)
+            }
+            print("Successfully created Account: \(result?.user.uid ?? "")")
+            
+            self.userToFirestore()
+
+        }
         
     }
+    
+    private func userToFirestore(){
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let userData = [
+            "email": self.txtEmail,
+            "fullname": self.txtFullName,
+            "username": self.txtUsername,
+            "uid": uid ]
+        db.collection("Users")
+            .document(uid).setData(userData){ err in
+                if let err = err {
+                    print(err)
+                    return
+                }
+                print("Success")
+            }
+        
+        txtEmail = ""
+        txtFullName = ""
+        txtUsername = ""
+        txtPassword = ""
+        txtPasswordConfirm = ""
+        
+    }
+    
+    
+    
+    
+    
+    
+    
     
 }
 
