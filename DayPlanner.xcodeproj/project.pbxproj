@@ -37,7 +37,6 @@
 		AF2F49EC29BEC0F700F7570F /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F49EB29BEC0F700F7570F /* LandingView.swift */; };
 		AF2F49F229C0DAAC00F7570F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = AF2F49F129C0DAAC00F7570F /* GoogleSignIn */; };
 		AF2F49F429C0DAAC00F7570F /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AF2F49F329C0DAAC00F7570F /* GoogleSignInSwift */; };
-		AF2F49F729C20A4800F7570F /* +View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F49F629C20A4700F7570F /* +View.swift */; };
 		AF2F49F929C2180100F7570F /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F49F829C2180100F7570F /* SplashScreenView.swift */; };
 		AF2F49FB29C2B2D600F7570F /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F49FA29C2B2D600F7570F /* EventCard.swift */; };
 		AF94702929B581F60049BA4A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94702829B581F60049BA4A /* SignInView.swift */; };
@@ -47,12 +46,14 @@
 		AF9DF8A329C2C6BF00C676E7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF89729C2C6BF00C676E7 /* Settings.swift */; };
 		AF9DF8A429C2C6BF00C676E7 /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF89829C2C6BF00C676E7 /* BottomBar.swift */; };
 		AF9DF8A529C2C6BF00C676E7 /* Planner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF89A29C2C6BF00C676E7 /* Planner.swift */; };
-		AF9DF8A729C2C6BF00C676E7 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF89D29C2C6BF00C676E7 /* List.swift */; };
+		AF9DF8A729C2C6BF00C676E7 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF89D29C2C6BF00C676E7 /* EventList.swift */; };
 		AF9DF8A829C2C6BF00C676E7 /* EventEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF89E29C2C6BF00C676E7 /* EventEdit.swift */; };
 		AF9DF8A929C2C6BF00C676E7 /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF89F29C2C6BF00C676E7 /* Popup.swift */; };
 		AF9DF8AA29C2C6BF00C676E7 /* ErrorChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF8A129C2C6BF00C676E7 /* ErrorChecking.swift */; };
 		AF9DF8AC29C2C76B00C676E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF9DF8AB29C2C76B00C676E7 /* GoogleService-Info.plist */; };
 		F600344D29C3DD26008BDD0B /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F600344C29C3DD26008BDD0B /* ListItem.swift */; };
+		F600345329C3FBE7008BDD0B /* ScrollDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F600345229C3FBE7008BDD0B /* ScrollDropDelegate.swift */; };
+		F600345529C405A7008BDD0B /* +View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F600345429C405A7008BDD0B /* +View.swift */; };
 		F694C5AE29B55E0500536551 /* DayPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5AD29B55E0500536551 /* DayPlannerApp.swift */; };
 		F694C5B029B55E0500536551 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5AF29B55E0500536551 /* ContentView.swift */; };
 		F694C5B229B55E0700536551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F694C5B129B55E0700536551 /* Assets.xcassets */; };
@@ -79,7 +80,6 @@
 /* Begin PBXFileReference section */
 		AF2F49EB29BEC0F700F7570F /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		AF2F49F529C0DD5E00F7570F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		AF2F49F629C20A4700F7570F /* +View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+View.swift"; sourceTree = "<group>"; };
 		AF2F49F829C2180100F7570F /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		AF2F49FA29C2B2D600F7570F /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
 		AF94702829B581F60049BA4A /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -89,12 +89,14 @@
 		AF9DF89729C2C6BF00C676E7 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		AF9DF89829C2C6BF00C676E7 /* BottomBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
 		AF9DF89A29C2C6BF00C676E7 /* Planner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planner.swift; sourceTree = "<group>"; };
-		AF9DF89D29C2C6BF00C676E7 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		AF9DF89D29C2C6BF00C676E7 /* EventList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventList.swift; sourceTree = "<group>"; };
 		AF9DF89E29C2C6BF00C676E7 /* EventEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEdit.swift; sourceTree = "<group>"; };
 		AF9DF89F29C2C6BF00C676E7 /* Popup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
 		AF9DF8A129C2C6BF00C676E7 /* ErrorChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorChecking.swift; sourceTree = "<group>"; };
 		AF9DF8AB29C2C76B00C676E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F600344C29C3DD26008BDD0B /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
+		F600345229C3FBE7008BDD0B /* ScrollDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollDropDelegate.swift; sourceTree = "<group>"; };
+		F600345429C405A7008BDD0B /* +View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+View.swift"; sourceTree = "<group>"; };
 		F694C5AA29B55E0500536551 /* DayPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F694C5AD29B55E0500536551 /* DayPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPlannerApp.swift; sourceTree = "<group>"; };
 		F694C5AF29B55E0500536551 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				AF9DF89929C2C6BF00C676E7 /* Planner */,
 				AF9DF89B29C2C6BF00C676E7 /* List */,
 				AF9DF89F29C2C6BF00C676E7 /* Popup.swift */,
+				F600345229C3FBE7008BDD0B /* ScrollDropDelegate.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -218,7 +221,7 @@
 		AF9DF89B29C2C6BF00C676E7 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				AF9DF89D29C2C6BF00C676E7 /* List.swift */,
+				AF9DF89D29C2C6BF00C676E7 /* EventList.swift */,
 				AF9DF89E29C2C6BF00C676E7 /* EventEdit.swift */,
 				F600344C29C3DD26008BDD0B /* ListItem.swift */,
 			);
@@ -269,7 +272,7 @@
 				F694C5B329B55E0700536551 /* Preview Content */,
 				AF94702C29B5871B0049BA4A /* UI_Elements */,
 				F694C5AF29B55E0500536551 /* ContentView.swift */,
-				AF2F49F629C20A4700F7570F /* +View.swift */,
+				F600345429C405A7008BDD0B /* +View.swift */,
 				F694C5B129B55E0700536551 /* Assets.xcassets */,
 				AF9DF8AB29C2C76B00C676E7 /* GoogleService-Info.plist */,
 				AF2F49F529C0DD5E00F7570F /* Info.plist */,
@@ -454,20 +457,21 @@
 				AF2F49EC29BEC0F700F7570F /* LandingView.swift in Sources */,
 				AF94702B29B582160049BA4A /* SignUpView.swift in Sources */,
 				AF9DF8A829C2C6BF00C676E7 /* EventEdit.swift in Sources */,
+				F600345329C3FBE7008BDD0B /* ScrollDropDelegate.swift in Sources */,
 				AF94702E29B5873D0049BA4A /* CustomElements.swift in Sources */,
 				AF94702929B581F60049BA4A /* SignInView.swift in Sources */,
 				AF9DF8A229C2C6BF00C676E7 /* Event.swift in Sources */,
 				AF9DF8A529C2C6BF00C676E7 /* Planner.swift in Sources */,
-				AF2F49F729C20A4800F7570F /* +View.swift in Sources */,
 				AF9DF8A929C2C6BF00C676E7 /* Popup.swift in Sources */,
 				F694C5B029B55E0500536551 /* ContentView.swift in Sources */,
-				AF9DF8A729C2C6BF00C676E7 /* List.swift in Sources */,
+				AF9DF8A729C2C6BF00C676E7 /* EventList.swift in Sources */,
 				F694C5AE29B55E0500536551 /* DayPlannerApp.swift in Sources */,
 				F600344D29C3DD26008BDD0B /* ListItem.swift in Sources */,
 				AF9DF8AA29C2C6BF00C676E7 /* ErrorChecking.swift in Sources */,
 				AF9DF8A429C2C6BF00C676E7 /* BottomBar.swift in Sources */,
 				AF2F49FB29C2B2D600F7570F /* EventCard.swift in Sources */,
 				AF9DF8A329C2C6BF00C676E7 /* Settings.swift in Sources */,
+				F600345529C405A7008BDD0B /* +View.swift in Sources */,
 				AF2F49F929C2180100F7570F /* SplashScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

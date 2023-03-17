@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct List: View {
+struct EventList: View {
     @EnvironmentObject private var app: AppVariables
+    @State var draggedEvent: Event?
     
     var body: some View {
         //Once again the button is largely copied from the professor
@@ -36,7 +37,12 @@ struct List: View {
         
         let list = ScrollView {
             ForEach(app.eventList, id: \.self) {
-                (event: Event) in ListItem(event: event)
+                (event: Event) in VStack { ListItem(event: event) }
+                    .onDrag {
+                        draggedEvent = event
+                        return NSItemProvider()
+                    }
+                    .onDrop(of: [.item], delegate: ScrollDropDelegate(droppedOnEvent: event, eventList: $app.eventList, draggedEvent: $draggedEvent))
             }
         }
         
@@ -51,11 +57,15 @@ struct List: View {
         }
     }
     
+    func move(from source: IndexSet, to destination: Int) {
+        app.eventList.move(fromOffsets: source, toOffset: destination)
+    }
+    
 }
 
 struct List_Previews: PreviewProvider {
     static var previews: some View {
-        List()
+        EventList()
             .environmentObject(AppVariables())
     }
 }
