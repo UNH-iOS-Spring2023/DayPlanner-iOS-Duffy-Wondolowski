@@ -37,7 +37,7 @@ struct EventList: View {
         
         let list = ScrollView {
             VStack (spacing: 10) {
-                ForEach(app.eventList, id: \.self) {
+                ForEach(app.eventList, id: \.self.id) {
                     (event: Event) in VStack { ListItem(event: event) }
                         .opacity(event == draggedEvent ? 0.1 : 1)
                         .onDrag {
