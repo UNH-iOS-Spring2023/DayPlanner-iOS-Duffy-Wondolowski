@@ -36,14 +36,18 @@ struct EventList: View {
         }
         
         let list = ScrollView {
-            ForEach(app.eventList, id: \.self) {
-                (event: Event) in VStack { ListItem(event: event) }
-                    .onDrag {
-                        draggedEvent = event
-                        return NSItemProvider()
-                    }
-                    .onDrop(of: [.item], delegate: ScrollDropDelegate(droppedOnEvent: event, eventList: $app.eventList, draggedEvent: $draggedEvent))
+            VStack (spacing: 10) {
+                ForEach(app.eventList, id: \.self) {
+                    (event: Event) in VStack { ListItem(event: event) }
+                        .opacity(event == draggedEvent ? 0.1 : 1)
+                        .onDrag {
+                            draggedEvent = event
+                            return CustomProvider(ended: {draggedEvent = nil})
+                        }
+                        .onDrop(of: [.item], delegate: ScrollDropDelegate(droppedOnEvent: event, eventList: $app.eventList, draggedEvent: $draggedEvent))
+                }
             }
+            .animation(.default, value: app.eventList)
         }
         
         if (app.isEventEdit) {
@@ -51,9 +55,9 @@ struct EventList: View {
         } else {
             ZStack {
                 list
-                    .padding(5)
                 button
             }
+//            .onDrop(of: [.item], delegate: DropOutsideDelegate(draggedEvent: $draggedEvent))
         }
     }
     

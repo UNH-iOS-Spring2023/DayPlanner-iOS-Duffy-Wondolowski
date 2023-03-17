@@ -62,7 +62,7 @@ struct EventCard: View {
                     }
                 )
             }
-        ).padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))    
+        ).padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))    
     }
     
     func listTime() -> Text {

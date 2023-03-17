@@ -48,12 +48,12 @@
 		AF9DF8A529C2C6BF00C676E7 /* Planner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF89A29C2C6BF00C676E7 /* Planner.swift */; };
 		AF9DF8A729C2C6BF00C676E7 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF89D29C2C6BF00C676E7 /* EventList.swift */; };
 		AF9DF8A829C2C6BF00C676E7 /* EventEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF89E29C2C6BF00C676E7 /* EventEdit.swift */; };
-		AF9DF8A929C2C6BF00C676E7 /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF89F29C2C6BF00C676E7 /* Popup.swift */; };
 		AF9DF8AA29C2C6BF00C676E7 /* ErrorChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF8A129C2C6BF00C676E7 /* ErrorChecking.swift */; };
 		AF9DF8AC29C2C76B00C676E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF9DF8AB29C2C76B00C676E7 /* GoogleService-Info.plist */; };
 		F600344D29C3DD26008BDD0B /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F600344C29C3DD26008BDD0B /* ListItem.swift */; };
 		F600345329C3FBE7008BDD0B /* ScrollDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F600345229C3FBE7008BDD0B /* ScrollDropDelegate.swift */; };
 		F600345529C405A7008BDD0B /* +View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F600345429C405A7008BDD0B /* +View.swift */; };
+		F600345729C4F2B8008BDD0B /* CustomProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F600345629C4F2B8008BDD0B /* CustomProvider.swift */; };
 		F694C5AE29B55E0500536551 /* DayPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5AD29B55E0500536551 /* DayPlannerApp.swift */; };
 		F694C5B029B55E0500536551 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5AF29B55E0500536551 /* ContentView.swift */; };
 		F694C5B229B55E0700536551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F694C5B129B55E0700536551 /* Assets.xcassets */; };
@@ -91,12 +91,12 @@
 		AF9DF89A29C2C6BF00C676E7 /* Planner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planner.swift; sourceTree = "<group>"; };
 		AF9DF89D29C2C6BF00C676E7 /* EventList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventList.swift; sourceTree = "<group>"; };
 		AF9DF89E29C2C6BF00C676E7 /* EventEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEdit.swift; sourceTree = "<group>"; };
-		AF9DF89F29C2C6BF00C676E7 /* Popup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
 		AF9DF8A129C2C6BF00C676E7 /* ErrorChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorChecking.swift; sourceTree = "<group>"; };
 		AF9DF8AB29C2C76B00C676E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F600344C29C3DD26008BDD0B /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
 		F600345229C3FBE7008BDD0B /* ScrollDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollDropDelegate.swift; sourceTree = "<group>"; };
 		F600345429C405A7008BDD0B /* +View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+View.swift"; sourceTree = "<group>"; };
+		F600345629C4F2B8008BDD0B /* CustomProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProvider.swift; sourceTree = "<group>"; };
 		F694C5AA29B55E0500536551 /* DayPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F694C5AD29B55E0500536551 /* DayPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPlannerApp.swift; sourceTree = "<group>"; };
 		F694C5AF29B55E0500536551 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -190,14 +190,13 @@
 		AF9DF89529C2C6BF00C676E7 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F600345829C4F56F008BDD0B /* Helpers */,
 				AF9DF8AE29C2C97A00C676E7 /* Event */,
 				AF2F49ED29BEC10E00F7570F /* Login_Views */,
 				AF9DF89629C2C6BF00C676E7 /* Settings */,
 				AF9DF89829C2C6BF00C676E7 /* BottomBar.swift */,
 				AF9DF89929C2C6BF00C676E7 /* Planner */,
 				AF9DF89B29C2C6BF00C676E7 /* List */,
-				AF9DF89F29C2C6BF00C676E7 /* Popup.swift */,
-				F600345229C3FBE7008BDD0B /* ScrollDropDelegate.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -242,6 +241,15 @@
 				AF2F49FA29C2B2D600F7570F /* EventCard.swift */,
 			);
 			path = Event;
+			sourceTree = "<group>";
+		};
+		F600345829C4F56F008BDD0B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F600345229C3FBE7008BDD0B /* ScrollDropDelegate.swift */,
+				F600345629C4F2B8008BDD0B /* CustomProvider.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		F694C5A129B55E0500536551 = {
@@ -462,9 +470,9 @@
 				AF94702929B581F60049BA4A /* SignInView.swift in Sources */,
 				AF9DF8A229C2C6BF00C676E7 /* Event.swift in Sources */,
 				AF9DF8A529C2C6BF00C676E7 /* Planner.swift in Sources */,
-				AF9DF8A929C2C6BF00C676E7 /* Popup.swift in Sources */,
 				F694C5B029B55E0500536551 /* ContentView.swift in Sources */,
 				AF9DF8A729C2C6BF00C676E7 /* EventList.swift in Sources */,
+				F600345729C4F2B8008BDD0B /* CustomProvider.swift in Sources */,
 				F694C5AE29B55E0500536551 /* DayPlannerApp.swift in Sources */,
 				F600344D29C3DD26008BDD0B /* ListItem.swift in Sources */,
 				AF9DF8AA29C2C6BF00C676E7 /* ErrorChecking.swift in Sources */,

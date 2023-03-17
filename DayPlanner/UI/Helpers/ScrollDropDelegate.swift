@@ -31,3 +31,16 @@ struct ScrollDropDelegate: DropDelegate {
     }
     
 }
+
+struct DropOutsideDelegate: DropDelegate {
+    var draggedEvent: Binding<Event?>
+    
+    func performDrop(info: DropInfo) -> Bool {
+        draggedEvent.wrappedValue = nil
+        return true
+    }
+    
+    func dropUpdated(info: DropInfo) -> DropProposal? {
+        return DropProposal(operation: .move)
+    }
+}
