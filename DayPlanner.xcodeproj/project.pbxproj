@@ -55,6 +55,7 @@
 		F600345529C405A7008BDD0B /* +View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F600345429C405A7008BDD0B /* +View.swift */; };
 		F600345729C4F2B8008BDD0B /* CustomProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F600345629C4F2B8008BDD0B /* CustomProvider.swift */; };
 		F600345A29C50B4F008BDD0B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F600345929C50B4F008BDD0B /* Persistence.swift */; };
+		F600345C29C511CC008BDD0B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F600345B29C511CC008BDD0B /* User.swift */; };
 		F694C5AE29B55E0500536551 /* DayPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5AD29B55E0500536551 /* DayPlannerApp.swift */; };
 		F694C5B029B55E0500536551 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694C5AF29B55E0500536551 /* ContentView.swift */; };
 		F694C5B229B55E0700536551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F694C5B129B55E0700536551 /* Assets.xcassets */; };
@@ -99,6 +100,7 @@
 		F600345429C405A7008BDD0B /* +View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+View.swift"; sourceTree = "<group>"; };
 		F600345629C4F2B8008BDD0B /* CustomProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProvider.swift; sourceTree = "<group>"; };
 		F600345929C50B4F008BDD0B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		F600345B29C511CC008BDD0B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F694C5AA29B55E0500536551 /* DayPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F694C5AD29B55E0500536551 /* DayPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPlannerApp.swift; sourceTree = "<group>"; };
 		F694C5AF29B55E0500536551 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				AF9DF89429C2C6BF00C676E7 /* Event.swift */,
+				F600345B29C511CC008BDD0B /* User.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				AF9DF8A329C2C6BF00C676E7 /* Settings.swift in Sources */,
 				F600345529C405A7008BDD0B /* +View.swift in Sources */,
 				AF2F49F929C2180100F7570F /* SplashScreenView.swift in Sources */,
+				F600345C29C511CC008BDD0B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
