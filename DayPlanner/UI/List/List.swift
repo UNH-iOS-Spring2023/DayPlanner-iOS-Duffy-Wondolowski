@@ -22,7 +22,7 @@ struct List: View {
                     Text("+")
                         .background(
                             RoundedRectangle(cornerRadius: 25.0)
-                                .fill(Color(.systemBlue))
+                                .fill(CustomColor.darkGreen)
                                 .frame(width:50, height:50)
                         )
                         .font(.system(.largeTitle))
