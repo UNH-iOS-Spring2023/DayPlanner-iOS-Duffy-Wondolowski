@@ -38,9 +38,16 @@ struct List: View {
             EventEdit()
         } else {
             ZStack {
-                Text("List Page")
-                    .padding(5)
-                button
+                
+                CustomColor.background
+                    .ignoresSafeArea(.all)
+                
+                ZStack {
+                    Text("List Page")
+                        .padding(5)
+                        .foregroundColor(.white)
+                    button
+                }
             }
         }
     }

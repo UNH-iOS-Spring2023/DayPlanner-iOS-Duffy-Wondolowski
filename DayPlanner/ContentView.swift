@@ -18,6 +18,7 @@ struct ContentView: View {
     let app = ErrorChecking.app //TODO: Make this less crude
     
     var body: some View {
+        
         VStack{
             BottomBar(
                 AnyView(List()),

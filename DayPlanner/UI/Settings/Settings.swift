@@ -63,7 +63,7 @@ struct Settings: View {
                 Card(
                     cornerRadius: 15,
                     elevation: 5,
-                    height: 300,
+                    height: 250,
                     color: CustomColor.backgroundCard,
                     views: {
                         AnyView(

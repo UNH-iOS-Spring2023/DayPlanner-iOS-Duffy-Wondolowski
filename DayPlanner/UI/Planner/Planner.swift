@@ -9,7 +9,14 @@ import SwiftUI
 
 struct Planner: View {
     var body: some View {
-        Text("Planner Page")
+        ZStack {
+            
+            CustomColor.background
+                .ignoresSafeArea(.all)
+            
+            Text("Planner Page")
+                .foregroundColor(.white)
+        }
     }
 }
 
