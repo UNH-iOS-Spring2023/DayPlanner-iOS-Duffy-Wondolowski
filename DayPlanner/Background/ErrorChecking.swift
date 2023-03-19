@@ -8,19 +8,15 @@
 import Foundation
 
 struct ErrorChecking {
-    
-    static var app: AppVariables = AppVariables()
-    
-    static func checkEventOverlap(newEvent: Event, oldEvent: Event? = nil) -> Bool { //True means there is no overlap
+    static func checkEventOverlap(eventList: [Event], newEvent: Event, oldEvent: Event? = nil) -> Bool { //True means there is no overlap
         if newEvent.startTime == nil {
-            //The whole point of this is to check for overlap, so it should not be run if that is not possible
-            print("Error: attempting to check overlap for event that does not have a start time")
-            return false
+            //If the new event does not have a start time, then there cannot be an overlap
+            return true
         }
-        if oldEvent != nil, app.eventList.contains(
+        if oldEvent != nil, eventList.contains(
             where: {oldEvent != $0 && !checkTimeOverlap(newEvent: newEvent, oldEvent: $0)}) {
             return false
-        } else if oldEvent == nil, app.eventList.contains(
+        } else if oldEvent == nil, eventList.contains(
             where: {!checkTimeOverlap(newEvent: newEvent, oldEvent: $0)}) {
             return false
         } else {

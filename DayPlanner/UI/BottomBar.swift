@@ -61,11 +61,11 @@ struct BottomBar: View {
 struct BottomBar_Previews: PreviewProvider {
     static var previews: some View {
         BottomBar(
-            AnyView(List()),
+            AnyView(EventList()),
             AnyView(Planner()),
             AnyView(Settings())
         )
-            .environmentObject(AppVariables())
+        .environmentObject(AppVariables())
     }
 }
 

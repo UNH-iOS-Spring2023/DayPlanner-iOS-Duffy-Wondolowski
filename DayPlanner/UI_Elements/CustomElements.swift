@@ -140,7 +140,6 @@ struct Card: View {
             }
             .frame(maxWidth: width, maxHeight: height)
         }
-        .padding(5)
         .onTapGesture {
             click()
         }
