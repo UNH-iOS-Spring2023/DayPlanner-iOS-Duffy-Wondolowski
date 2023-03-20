@@ -9,14 +9,17 @@ import SwiftUI
 
 struct PlannerCard: View {
     
+    let eventName: String
+    let time: String
+    
 //    let event: Event
 //
 //    init(event: Event){
 //        self.event = event
 //    }
     
-    @EnvironmentObject private var app : AppVariables
-    @ObservedObject var plannerModel : PlannerModel
+//    @EnvironmentObject private var app : AppVariables
+//    @ObservedObject var plannerModel : PlannerModel
     
     var body: some View {
         
@@ -38,7 +41,7 @@ struct PlannerCard: View {
                             views: {
                                 AnyView(
                                     
-                                    Text(plannerModel.time)
+                                    Text(time)
                                         .foregroundColor(.white)
                                         .font(.system(size:18))
                                         .multilineTextAlignment(.center)
@@ -49,7 +52,7 @@ struct PlannerCard: View {
                         
                         Spacer()
                         
-                        Text(plannerModel.name)
+                        Text(eventName)
                             .foregroundColor(.white)
                             .font(.system(size:18))
                             .bold()
@@ -67,7 +70,8 @@ struct PlannerCard: View {
 
 struct PlannerCard_Previews: PreviewProvider {
     static var previews: some View {
-        PlannerCard(plannerModel : PlannerModel(id: "1", data: ["name" : "TestName", "time" : "12:00am"]))
-            .environmentObject(AppVariables())
+        PlannerCard(eventName: "Holder", time: "Holder")
+//        PlannerCard(plannerModel : PlannerModel(id: "1", data: ["name" : "TestName", "time" : "12:00am"]))
+//            .environmentObject(AppVariables())
     }
 }
