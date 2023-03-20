@@ -50,6 +50,8 @@
 		AF9DF8A829C2C6BF00C676E7 /* EventEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF89E29C2C6BF00C676E7 /* EventEdit.swift */; };
 		AF9DF8AA29C2C6BF00C676E7 /* ErrorChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9DF8A129C2C6BF00C676E7 /* ErrorChecking.swift */; };
 		AF9DF8AC29C2C76B00C676E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF9DF8AB29C2C76B00C676E7 /* GoogleService-Info.plist */; };
+		AFDE77A329C7FEE800A88B8C /* PlannerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDE77A229C7FEE800A88B8C /* PlannerCard.swift */; };
+		AFDE77A529C805AD00A88B8C /* PlannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDE77A429C805AD00A88B8C /* PlannerModel.swift */; };
 		F600344D29C3DD26008BDD0B /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F600344C29C3DD26008BDD0B /* ListItem.swift */; };
 		F600345329C3FBE7008BDD0B /* ScrollDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F600345229C3FBE7008BDD0B /* ScrollDropDelegate.swift */; };
 		F600345529C405A7008BDD0B /* +View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F600345429C405A7008BDD0B /* +View.swift */; };
@@ -95,6 +97,8 @@
 		AF9DF89E29C2C6BF00C676E7 /* EventEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEdit.swift; sourceTree = "<group>"; };
 		AF9DF8A129C2C6BF00C676E7 /* ErrorChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorChecking.swift; sourceTree = "<group>"; };
 		AF9DF8AB29C2C76B00C676E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AFDE77A229C7FEE800A88B8C /* PlannerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerCard.swift; sourceTree = "<group>"; };
+		AFDE77A429C805AD00A88B8C /* PlannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerModel.swift; sourceTree = "<group>"; };
 		F600344C29C3DD26008BDD0B /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
 		F600345229C3FBE7008BDD0B /* ScrollDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollDropDelegate.swift; sourceTree = "<group>"; };
 		F600345429C405A7008BDD0B /* +View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+View.swift"; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 			children = (
 				AF9DF89429C2C6BF00C676E7 /* Event.swift */,
 				F600345B29C511CC008BDD0B /* User.swift */,
+				AFDE77A429C805AD00A88B8C /* PlannerModel.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				AF9DF89A29C2C6BF00C676E7 /* Planner.swift */,
+				AFDE77A229C7FEE800A88B8C /* PlannerCard.swift */,
 			);
 			path = Planner;
 			sourceTree = "<group>";
@@ -475,12 +481,14 @@
 				AF94702E29B5873D0049BA4A /* CustomElements.swift in Sources */,
 				AF94702929B581F60049BA4A /* SignInView.swift in Sources */,
 				AF9DF8A229C2C6BF00C676E7 /* Event.swift in Sources */,
+				AFDE77A329C7FEE800A88B8C /* PlannerCard.swift in Sources */,
 				AF9DF8A529C2C6BF00C676E7 /* Planner.swift in Sources */,
 				F694C5B029B55E0500536551 /* ContentView.swift in Sources */,
 				F600345A29C50B4F008BDD0B /* Persistence.swift in Sources */,
 				AF9DF8A729C2C6BF00C676E7 /* EventList.swift in Sources */,
 				F600345729C4F2B8008BDD0B /* CustomProvider.swift in Sources */,
 				F694C5AE29B55E0500536551 /* DayPlannerApp.swift in Sources */,
+				AFDE77A529C805AD00A88B8C /* PlannerModel.swift in Sources */,
 				F600344D29C3DD26008BDD0B /* ListItem.swift in Sources */,
 				AF9DF8AA29C2C6BF00C676E7 /* ErrorChecking.swift in Sources */,
 				AF9DF8A429C2C6BF00C676E7 /* BottomBar.swift in Sources */,
