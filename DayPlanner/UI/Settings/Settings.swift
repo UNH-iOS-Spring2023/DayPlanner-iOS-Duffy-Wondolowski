@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import FirebaseFirestore
 
 struct Settings: View {
+    
+    let db = Firestore.firestore()
     
     @State var username: String = "Username"
     @State var fullname: String = "Fullname"
@@ -23,7 +27,7 @@ struct Settings: View {
             CustomColor.background
                 .ignoresSafeArea(.all)
             
-            VStack{
+            VStack (spacing: 20){
                 
                 Text("User Information: ")
                     .foregroundColor(.white)
@@ -86,15 +90,49 @@ struct Settings: View {
                     }
                 )
                 
+                Button(action: {}){
+                    Text("LogOut")
+                }.buttonStyle(.borderedProminent)
+                    .buttonBorderShape(.roundedRectangle(radius: 10))
+                    .tint(.red)
+                
                 
                 
                 
                 
             }.padding(25) // end of VStack
             
-        } // end of ZStack
+        }.onAppear{
+            setUserData()
+            // the Preview crashes but it runs fine in the simnulator
+        }
         
     }
+    
+    private func setUserData(){
+        
+        let userUID = Auth.auth().currentUser?.uid
+        
+        db.collection("Users").document(userUID!).getDocument { (snapshot, error) in
+            if error != nil {
+                print("Error getting userDataString(describing: error)")
+            } else {
+                username = snapshot?.get("username") as! String
+                email = snapshot?.get("email") as! String
+                fullname = snapshot?.get("fullname") as! String
+            }
+        }
+    }
+    
+//    private func signOut(){
+//        let firebaseAuth = Auth.auth()
+//        do {
+//            try firebaseAuth.signOut()
+//        } catch let signOutError as NSError{
+//            print("Error signing out: %@", signOutError)
+//        }
+//    }
+    
 }
 
 struct Settings_Previews: PreviewProvider {
