@@ -9,7 +9,6 @@ import SwiftUI
 
 struct Planner: View {
     
-    @State var AmPm : String = "am"
     @State var event : String = ""
     @State var time : Int = 0
     @State var number : Int = 0
@@ -43,8 +42,15 @@ struct Planner: View {
                     
                     VStack{
                         ForEach(1..<25){ i in
-                            PlannerCard(eventName: "\(event)", time: "\(i):00\(AmPm)")
+                            if i > 12 {
+                                PlannerCard(eventName: "\(event)", time: "\(i - 12):00pm")
+                            } else {
+                                PlannerCard(eventName: "\(event)", time: "\(i):00am")
+                            }
+                        }.onAppear{
+                            
                         }
+                            
                     }
                     
         
@@ -58,15 +64,6 @@ struct Planner: View {
        
         
     } // end of body
-    
-    
-    func addEventToPlanner(){
-        if number > 12{
-            AmPm = "pm"
-        } else{
-            AmPm = "am"
-        }
-    }
     
     
 } // end of View

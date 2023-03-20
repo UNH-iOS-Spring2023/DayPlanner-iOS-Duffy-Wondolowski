@@ -12,15 +12,6 @@ struct PlannerCard: View {
     let eventName: String
     let time: String
     
-//    let event: Event
-//
-//    init(event: Event){
-//        self.event = event
-//    }
-    
-//    @EnvironmentObject private var app : AppVariables
-//    @ObservedObject var plannerModel : PlannerModel
-    
     var body: some View {
         
         Card(
