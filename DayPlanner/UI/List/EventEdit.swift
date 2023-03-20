@@ -124,6 +124,7 @@ struct EventEdit: View {
                     app.isEventEdit = false
                     app.selectedEvent = nil
                     
+                    uploadEvent(newEvent: newEvent)
                     print("Event created with id: \(newEvent.id ?? "Error: no ID")")
                 } else {
                     alertText = "Your event overlaps with another!"
@@ -136,6 +137,7 @@ struct EventEdit: View {
                     app.isEventEdit = false
                     app.selectedEvent = nil
                     
+                    uploadEvent(newEvent: newEvent)
                     print("Event created with id: \(newEvent.id ?? "Error: no ID")")
                 } else {
                     alertText = "Your event overlaps with another!"
@@ -150,6 +152,7 @@ struct EventEdit: View {
     
     private func delete() {
         if event != Event(), let eventIndex = app.eventList.firstIndex(where: { $0 == self.event }) {
+            deleteEvent()
             app.eventList.remove(at: eventIndex)
         }
         app.isEventEdit = false
@@ -158,7 +161,24 @@ struct EventEdit: View {
     
     private func uploadEvent(newEvent: Event) {
         if app.uid != nil {
-            
+            do {
+                try db.collection("Users/\(app.uid!)/events")
+                    .document(newEvent.id!).setData(from:newEvent)
+            }
+            catch {
+                print("Error uploading event to database: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func deleteEvent() {
+        db.collection("Users/\(app.uid!)/events").document(event.id!).delete() {
+            err in
+            if let err = err {
+                print("Error deleting document: \(err.localizedDescription)")
+            } else {
+                print("Document successfully removed")
+            }
         }
     }
 }
