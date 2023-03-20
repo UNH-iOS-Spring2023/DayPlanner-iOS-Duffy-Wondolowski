@@ -12,6 +12,7 @@ struct Planner: View {
     @State var AmPm : String = "am"
     @State var event : String = "Test Event Name"
     @State var time : Int = 0
+    @State var number : Int = 14
         
     var body: some View {
         ZStack (alignment: .top){
@@ -41,14 +42,11 @@ struct Planner: View {
                 ScrollView {
                     
                     VStack{
-                        ForEach(1..<25){ i in
-//                            if i <= 12 {
-//                                AmPm = "pm"
-//                            }  
+                        ForEach(1..<25, id: \.self){ i in
                             PlannerCard(eventName: "\(event)", time: "\(i):00\(AmPm)")
                         }
                     }
-                        
+                    
         
                 } // end of ScrollView
                 
@@ -57,13 +55,17 @@ struct Planner: View {
             
             
         } // end of ZStack
-        
+       
         
     } // end of body
     
     
     func addEventToPlanner(){
-        
+        if number > 12{
+            AmPm = "pm"
+        } else{
+            AmPm = "am"
+        }
     }
     
     
