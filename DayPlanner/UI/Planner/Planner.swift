@@ -10,9 +10,9 @@ import SwiftUI
 struct Planner: View {
     
     @State var AmPm : String = "am"
-    @State var event : String = "Test Event Name"
+    @State var event : String = ""
     @State var time : Int = 0
-    @State var number : Int = 14
+    @State var number : Int = 0
         
     var body: some View {
         ZStack (alignment: .top){
@@ -42,7 +42,7 @@ struct Planner: View {
                 ScrollView {
                     
                     VStack{
-                        ForEach(1..<25, id: \.self){ i in
+                        ForEach(1..<25){ i in
                             PlannerCard(eventName: "\(event)", time: "\(i):00\(AmPm)")
                         }
                     }

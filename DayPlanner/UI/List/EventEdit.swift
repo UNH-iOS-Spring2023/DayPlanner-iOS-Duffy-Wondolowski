@@ -44,57 +44,90 @@ struct EventEdit: View {
     }
     
     var body: some View {
-        VStack {
-            Text("Event Customization")
-            TextField("Event Name (Required)", text: $eventName)
+        ZStack {
             
-            VStack{
-                Text("Event Duration")
-                Slider(value: $duration, in: 5...360)
-                if (duration < 60) {
-                    Text("\(Int(duration)) Minutes")
-                } else {
-                    Text("\(Int(duration / 60)) Hours \(Int(duration) % 60) Minutes")
-                }
-            }
+            CustomColor.background
+                .ignoresSafeArea(.all)
             
             VStack {
-                Toggle("Start Time (Optional)", isOn: $showStartTime)
-                    .onChange(of: showStartTime) { showStartTime in
-                        if showStartTime { startTime = Date()}
-                        else { startTime = nil }
+                Text("Event Customization")
+                    .foregroundColor(.white)
+                
+                Card(
+                    cornerRadius: 15,
+                    elevation: 3,
+                    width: CGFloat.infinity,
+                    height: 80,
+                    color: CustomColor.backgroundCard,
+                    views: {
+                        AnyView(
+                            CustomTextField(
+                                placeHolder: "Event Name (Required)",
+                                imageName: "",
+                                bColor: "textColorWhite",
+                                tOpacity: 0.6,
+                                width: CGFloat.infinity,
+                                height: 40,
+                                borderColor: CustomColor.background,
+                                value: $eventName
+                            ).padding(10)
+                        )
                     }
-                if (showStartTime) {
-                    DatePicker("Please enter a time",
-                               selection: Binding(get: {self.startTime ?? Date()}, set: {self.startTime = $0}),
-                               displayedComponents: .hourAndMinute
-                    )
+                ).padding(5)
+                
+                
+                VStack{
+                    Text("Event Duration")
+                        .foregroundColor(.white)
+                    
+                    
+                    Slider(value: $duration, in: 5...360)
+                    if (duration < 60) {
+                        Text("\(Int(duration)) Minutes")
+                    } else {
+                        Text("\(Int(duration / 60)) Hours \(Int(duration) % 60) Minutes")
+                    }
+                    
+                }
+                
+                VStack {
+                    Toggle("Start Time (Optional)", isOn: $showStartTime)
+                        .onChange(of: showStartTime) { showStartTime in
+                            if showStartTime { startTime = Date()}
+                            else { startTime = nil }
+                        }
+                    if (showStartTime) {
+                        DatePicker("Please enter a time",
+                                   selection: Binding(get: {self.startTime ?? Date()}, set: {self.startTime = $0}),
+                                   displayedComponents: .hourAndMinute
+                        )
+                    }
+                }
+                Spacer()
+                
+                HStack {
+                    Button ("Cancel", action: cancel)
+                        .foregroundColor(Color(.systemOrange))
+                    Button ("Create", action: create)
+                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                        .alert(isPresented: $createAlert) {
+                            Alert(title: Text(alertText))
+                        }
+                    Button ("Delete", action: delete)
+                        .foregroundColor(Color(.systemRed))
                 }
             }
-            Spacer()
-            
-            HStack {
-                Button ("Cancel", action: cancel)
-                    .foregroundColor(Color(.systemOrange))
-                Button ("Create", action: create)
-                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                    .alert(isPresented: $createAlert) {
-                        Alert(title: Text(alertText))
-                    }
-                Button ("Delete", action: delete)
-                    .foregroundColor(Color(.systemRed))
-            }
+            .font(.system(.title))
+            .padding(EdgeInsets(top: 10, leading: 25, bottom: 25, trailing: 10))
+            .onAppear() {
+                event = app.selectedEvent ?? Event()
+                eventName = event.eventName
+                duration = Double(event.duration / 60000)
+                startTime = event.startTime
+                location = event.location
+                recurring = event.recurring
+                showStartTime = event.startTime != nil
         }
-        .font(.system(.title))
-        .padding(EdgeInsets(top: 10, leading: 25, bottom: 25, trailing: 10))
-        .onAppear() {
-            event = app.selectedEvent ?? Event()
-            eventName = event.eventName
-            duration = Double(event.duration / 60000)
-            startTime = event.startTime
-            location = event.location
-            recurring = event.recurring
-            showStartTime = event.startTime != nil
         }
     }
     
