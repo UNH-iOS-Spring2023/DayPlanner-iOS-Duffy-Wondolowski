@@ -42,22 +42,26 @@ struct PlannerCard: View {
                                         .foregroundColor(.white)
                                         .font(.system(size:18))
                                         .multilineTextAlignment(.center)
+                                        .padding(5)
                                 )
                             }
-                        ).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                        ).padding(5)
                         
                         Spacer()
                         
                         Text(plannerModel.name)
                             .foregroundColor(.white)
-                            .font(.system(size:20))
+                            .font(.system(size:18))
                             .bold()
                             .padding(10)
              
                     }
                 )
             }
-        )
+        ).padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10))
+        
+        
+        
     }
 }
 
