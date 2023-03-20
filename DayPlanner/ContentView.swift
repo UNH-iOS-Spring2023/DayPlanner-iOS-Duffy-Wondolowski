@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import FirebaseFirestore
 
 class AppVariables: ObservableObject {
     @Published var selectedTab: Int = 0
@@ -14,6 +16,8 @@ class AppVariables: ObservableObject {
     @Published var eventList: [Event] = []
     @Published var selectedEvent: Event? = nil
     @Published var user: User = User()
+    
+    var uid: String? = nil
     
     func checkEventOverlap(newEvent: Event, oldEvent: Event? = nil) -> Bool {
         //True means there is no overlap
@@ -36,6 +40,7 @@ class AppVariables: ObservableObject {
 struct ContentView: View {
     @StateObject var app = AppVariables()
     @Environment(\.scenePhase) private var scenePhase
+    let db = Firestore.firestore()
     
     var body: some View {
         VStack{
@@ -47,36 +52,83 @@ struct ContentView: View {
             .environmentObject(app)
         }
         .onAppear() {
-            Persistence.load{ (userResult, eventResult) in
-//                                print("Full load user result: \(userResult)")
-//                                print("Full load event result: \(eventResult)")
-                                switch userResult {
-                                case .failure(let error):
-                                    fatalError(error.localizedDescription)
-                                case .success(let user):
-                                    app.user = user
-                                }
-                
-                                switch eventResult {
-                                case .failure(let error):
-                                    fatalError(error.localizedDescription)
-                                case .success(let events):
-                                    app.eventList = events
+            app.uid = Auth.auth().currentUser?.uid
+            
+            if app.uid == nil {
+//                Persistence.load{ (userResult, eventResult) in
+////                                print("Full load user result: \(userResult)")
+////                                print("Full load event result: \(eventResult)")
+//                    switch userResult {
+//                    case .failure(let error):
+//                        print("Error loading users: \(error.localizedDescription)")
+//                    case .success(let user):
+//                        app.user = user
+//                    }
+//
+//                    switch eventResult {
+//                    case .failure(let error):
+//                        print("Error loading events: \(error.localizedDescription)")
+//                    case .success(let events):
+//                        app.eventList = events
+//                    }
+//                }
+//                do {
+//                    let eventData = UserDefaults.standard.value(forKey: "eventList")
+//                    app.eventList = try
+//                    Firestore.Decoder().decode([Event].self, from: eventData ?? [])
+//
+//                    let userData = UserDefaults.standard.value(forKey: "user")
+//                    app.user = try
+//                    Firestore.Decoder().decode(User.self, from: userData ?? User())
+//                } catch {
+//                    print("Error saving data: \(error.localizedDescription)")
+//                }
+            } else {
+                db.collection("Users/\(app.uid!)/events")
+                    .getDocuments() { (events, err) in
+                        if let err = err {
+                            print("Error getting events: \(err)")
+                        } else {
+                            for event in events!.documents {
+                                do {
+                                    app.eventList
+                                        .append(try event.data(as: Event.self))
+                                } catch {
+                                    print("Error converting db event: \(error)")
                                 }
                             }
+                        }
+                    }
+                db.collection("Users").document(app.uid!)
+                    .getDocument(as: User.self) { result in
+                        switch result {
+                        case .success(let user): app.user = user
+                        case.failure(let error):
+                            print("Error getting user: \(error)")
+                        }
+                }
+            }
             app.checkTime()
         }
         .onChange(of: scenePhase) { phase in
             if phase == .inactive {
-                Persistence.save(user: app.user, events: app.eventList) { (userResult, eventResult) in
-                    if case .failure(let error) = userResult {
-                    fatalError(error.localizedDescription)
-                    }
-                    
-                    if case .failure(let error) = eventResult {
-                    fatalError(error.localizedDescription)
-                    }
-                }
+//                Persistence.save(user: app.user, events: app.eventList) { (userResult, eventResult) in
+//                    if case .failure(let error) = userResult {
+//                    print("Error saving users: \(error.localizedDescription)")
+//                    }
+//
+//                    if case .failure(let error) = eventResult {
+//                    print("Error saving events: \(error.localizedDescription)")
+//                    }
+//                do {
+//                    let eventData = try Firestore.Encoder().encode(app.eventList)
+//                    UserDefaults.standard.set(eventData, forKey: "eventList")
+//
+//                    let userData = try Firestore.Encoder().encode(app.user)
+//                    UserDefaults.standard.set(userData, forKey: "user")
+//                } catch {
+//                    print("Error saving data: \(error.localizedDescription)")
+//                }
             }
         }
     }

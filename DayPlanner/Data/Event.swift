@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
 struct Event: Equatable, Identifiable, Codable {
-    var id: String = UUID().uuidString
+    @DocumentID var id: String?
     var startTime: Date? = nil
     var duration: Int = 900000 //Stored in milliseconds for compatibility with android
     var eventName: String = ""
