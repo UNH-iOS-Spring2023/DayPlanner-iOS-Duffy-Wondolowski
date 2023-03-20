@@ -101,10 +101,11 @@ struct SignInView: View {
             if let err = err{
                 print("Failed to login user!:", err)
                 return
+            } else {
+                print("Successfully logged in in the User!")
+                
+                self.isLoggedIn = true
             }
-            print("Successfully loggin in the User!")
-            
-            self.isLoggedIn = true
         }
         txtEmail = ""
         txtPassword = ""

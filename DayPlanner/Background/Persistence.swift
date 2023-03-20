@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 //The saving and loading feature is mostly copied from Apple's developer guide with some modifications
 struct Persistence {

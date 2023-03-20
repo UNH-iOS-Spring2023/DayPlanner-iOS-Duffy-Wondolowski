@@ -151,12 +151,21 @@ struct SignUpView: View {
         Auth.auth().createUser(withEmail: txtEmail, password: txtPassword){ result, error in
             if error != nil{
                 print(error!.localizedDescription)
+            } else {
+                print("Successfully created Account: \(result?.user.uid ?? "")")
+                
+                let changeRequest = result?.user.createProfileChangeRequest()
+                changeRequest?.displayName = self.txtUsername
+                changeRequest?.commitChanges { error in
+                    if error != nil {
+                        print("Error updating username: \(error!.localizedDescription)")
+                    }
+                }
+                
+                self.userToFirestore()
+                
+                self.isLoggedIn = true
             }
-            print("Successfully created Account: \(result?.user.uid ?? "")")
-            
-            self.userToFirestore()
-            
-            self.isLoggedIn = true 
 
         }
         
@@ -164,19 +173,20 @@ struct SignUpView: View {
     
     private func userToFirestore(){
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        let userData = [
-            "email": self.txtEmail,
-            "fullname": self.txtFullName,
-            "username": self.txtUsername,
-            "uid": uid ]
-        db.collection("Users")
-            .document(uid).setData(userData){ err in
-                if let err = err {
-                    print(err)
-                    return
-                }
-                print("Success")
-            }
+        //Next part is disabled because none of this is stuff we should be storing in the database anyway
+//        let userData = [
+//            "email": self.txtEmail,
+//            "fullname": self.txtFullName,
+//            "username": self.txtUsername,
+//            "uid": uid ]
+//        db.collection("Users")
+//            .document(uid).setData(userData){ err in
+//                if let err = err {
+//                    print(err)
+//                    return
+//                }
+//                print("Success")
+//            }
         
         txtEmail = ""
         txtFullName = ""

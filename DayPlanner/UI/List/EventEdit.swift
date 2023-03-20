@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 //extension Int {
 //    //toDouble modified from https://ootips.org/yonat/swiftui-binding-type-conversion/
@@ -32,6 +33,8 @@ struct EventEdit: View {
     @State private var showStartTime: Bool
     @State private var createAlert: Bool = false
     @State private var alertText = ""
+    
+    let db = Firestore.firestore()
     
     init(event: Event = Event()) {
         _eventName = State(initialValue: event.eventName)
@@ -107,6 +110,7 @@ struct EventEdit: View {
         
         if eventName != "" {
             let newEvent = Event(
+                id: event.id ?? db.collection("Users").document().documentID,
                 startTime: showStartTime ? startTime : nil,
                 duration: Int(duration * 60000),
                 eventName: eventName,
@@ -119,6 +123,9 @@ struct EventEdit: View {
                     app.eventList[eventIndex] = newEvent
                     app.isEventEdit = false
                     app.selectedEvent = nil
+                    
+                    uploadEvent(newEvent: newEvent)
+                    print("Event created with id: \(newEvent.id ?? "Error: no ID")")
                 } else {
                     alertText = "Your event overlaps with another!"
                     createAlert = true
@@ -129,6 +136,9 @@ struct EventEdit: View {
                     app.eventList.append(newEvent)
                     app.isEventEdit = false
                     app.selectedEvent = nil
+                    
+                    uploadEvent(newEvent: newEvent)
+                    print("Event created with id: \(newEvent.id ?? "Error: no ID")")
                 } else {
                     alertText = "Your event overlaps with another!"
                     createAlert = true
@@ -138,16 +148,38 @@ struct EventEdit: View {
             alertText = "Your event requires a name!"
             createAlert = true
         }
-        
-        
     }
     
     private func delete() {
         if event != Event(), let eventIndex = app.eventList.firstIndex(where: { $0 == self.event }) {
+            deleteEvent()
             app.eventList.remove(at: eventIndex)
         }
         app.isEventEdit = false
         app.selectedEvent = nil
+    }
+    
+    private func uploadEvent(newEvent: Event) {
+        if app.uid != nil {
+            do {
+                try db.collection("Users/\(app.uid!)/events")
+                    .document(newEvent.id!).setData(from:newEvent)
+            }
+            catch {
+                print("Error uploading event to database: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func deleteEvent() {
+        db.collection("Users/\(app.uid!)/events").document(event.id!).delete() {
+            err in
+            if let err = err {
+                print("Error deleting document: \(err.localizedDescription)")
+            } else {
+                print("Document successfully removed")
+            }
+        }
     }
 }
 
