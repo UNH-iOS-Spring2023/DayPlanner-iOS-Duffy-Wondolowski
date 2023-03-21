@@ -40,10 +40,14 @@ struct Planner: View {
                 ScrollView {
                     VStack{
                         ForEach(1..<25){ i in
-                            if i > 12 {
-                                PlannerCard(eventName: "\(event)", time: "\(i - 12):00pm")
+                            if i > 13 {
+                                PlannerCard(eventName: "\(event)", time: "\(i - 13):00pm")
+                            } else if i == 1 {
+                                PlannerCard(eventName: "\(event)", time: "\(i + 11):00am")
+                            } else if i == 13 {
+                                PlannerCard(eventName: "\(event)", time: "\(i - 1):00pm")
                             } else {
-                                PlannerCard(eventName: "\(event)", time: "\(i):00am")
+                                PlannerCard(eventName: "\(event)", time: "\(i-1):00am")
                             }
                         }.onAppear{
                             
