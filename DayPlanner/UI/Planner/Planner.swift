@@ -29,7 +29,6 @@ struct Planner: View {
                     color: CustomColor.background,
                     views: {
                         AnyView(
-                            
                             Text(Date.now, format: .dateTime.day().month().year())
                                 .foregroundColor(.white)
                                 .font(.system(size:18))
@@ -39,7 +38,6 @@ struct Planner: View {
                 )
                 
                 ScrollView {
-                    
                     VStack{
                         ForEach(1..<25){ i in
                             if i > 12 {
@@ -50,7 +48,6 @@ struct Planner: View {
                         }.onAppear{
                             
                         }
-                            
                     }
                     
         
