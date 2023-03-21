@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import FirebaseStorage
+import FirebaseAuth
 
 //class PlannerModel: ObservableObject{
 //    let id: String
@@ -25,25 +26,39 @@ import FirebaseStorage
 //    }
 //}
 
-class PlannerModel : ObservableObject {
-    @Published var events = [Event]()
-    
-    init(){
-        let eventsRef = Database.database().reference().child("Events")
-        eventsRef.observe(.value) {snapshot in
-            guard let data = snapshot.value as? [String: Any] else {return}
-            var events = [Event]()
-            for (key, value) in data {
-                if let eventData = value as? [String: Any],
-                   let eventName = eventData["name"] as? String,
-                   let eventDate = eventData["date"] as? TimeInterval {
-                    events.append(event)
-                }
-            }
-            self.events = events.sorted {$0.date < $1.date}
-        }
-    }
-}
+//class PlannerModel : ObservableObject {
+//    @Published var events = [Event]()
+//
+//    init(){
+//        let eventsRef = Database.database().reference().child("Events")
+//        eventsRef.observe(.value) {snapshot in
+//            guard let data = snapshot.value as? [String: Any] else {return}
+//            var events = [Event]()
+//            for (key, value) in data {
+//                if let eventData = value as? [String: Any],
+//                   let eventName = eventData["name"] as? String,
+//                   let eventDate = eventData["date"] as? TimeInterval {
+//                    events.append(event)
+//                }
+//            }
+//            self.events = events.sorted {$0.date < $1.date}
+//        }
+//    }
+//}
+
+//let db = Firestore.firestore()
+//
+//private func GetEventDate(){
+//    let userUID = Auth.auth().currentUser?.uid
+//    
+//    db.collection("Users").document(userUID!).collection("Events").getDocument { (snapshot, error) in
+//        if error != nil {
+//            print("Error getting Events")
+//        } else {
+//            
+//        }
+//    }
+//}
 
 
 //@ObservableObject var viewModel = PlannerModel()
