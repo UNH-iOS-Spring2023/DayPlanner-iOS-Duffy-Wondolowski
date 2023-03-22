@@ -113,7 +113,7 @@ struct Settings: View {
                     }
                 )
                 
-                Button(action: {signOut()}){
+                Button(action: {}){
                     Text("LogOut")
                 }.buttonStyle(.borderedProminent)
                     .buttonBorderShape(.roundedRectangle(radius: 10))
@@ -147,14 +147,14 @@ struct Settings: View {
         }
     }
     
-    private func signOut(){
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-        } catch let signOutError as NSError{
-            print("Error signing out: %@", signOutError)
-        }
-    }
+//    func signOut(){
+//        let firebaseAuth = Auth.auth()
+//        do {
+//            try firebaseAuth.signOut()
+//        } catch let signOutError as NSError{
+//            print("Error signing out: %@", signOutError)
+//        }
+//    }
     
 }
 
