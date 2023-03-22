@@ -77,7 +77,7 @@ struct SignUpView: View {
                                         value: $txtPassword
                                     )
                                     CustomTextField(
-                                        placeHolder: "Password Confirm",
+                                        placeHolder: "Confirm Password",
                                         imageName: "lock",
                                         bColor: "textColorBlack",
                                         tOpacity: 0.6,
