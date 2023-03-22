@@ -13,15 +13,9 @@ struct SignUpView: View {
     
     let db = Firestore.firestore()
     
-    @State var isLinkActive = false;
-    
     @State var txtEmail: String = ""
-    @State var txtFullName: String = ""
-    @State var txtUsername: String = ""
     @State var txtPassword: String = ""
     @State var txtPasswordConfirm: String = ""
-    
-    @State var isLoggedIn = false
     
     var body: some View {
         
@@ -105,12 +99,7 @@ struct SignUpView: View {
             }
         
             
-
-            
-            
-            
-            
-        }
+        } // End of ZStack
         
         
     }
@@ -128,18 +117,7 @@ struct SignUpView: View {
                 print(error!.localizedDescription)
             } else {
                 print("Successfully created Account: \(result?.user.uid ?? "")")
-                
-                let changeRequest = result?.user.createProfileChangeRequest()
-                changeRequest?.displayName = self.txtUsername
-                changeRequest?.commitChanges { error in
-                    if error != nil {
-                        print("Error updating username: \(error!.localizedDescription)")
-                    }
-                }
-                
                 self.userToFirestore()
-                
-                self.isLoggedIn = true
             }
 
         }
@@ -147,7 +125,7 @@ struct SignUpView: View {
     }
     
     private func userToFirestore(){
-//        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let uid = Auth.auth().currentUser?.uid else { return }
         //Next part is disabled because none of this is stuff we should be storing in the database anyway
 //        let userData = [
 //            "email": self.txtEmail,
@@ -164,8 +142,6 @@ struct SignUpView: View {
 //            }
         
         txtEmail = ""
-        txtFullName = ""
-        txtUsername = ""
         txtPassword = ""
         txtPasswordConfirm = ""
         
