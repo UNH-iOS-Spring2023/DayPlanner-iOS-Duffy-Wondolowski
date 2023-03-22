@@ -29,36 +29,59 @@ struct Settings: View {
             
             VStack (spacing: 20){
                 
-                Text("User Information: ")
-                    .foregroundColor(.white)
-                    .font(.system(size:20))
+                Image("Logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300)
                 
-                Card(
-                    cornerRadius: 15,
-                    elevation: 5,
-                    height: 125,
-                    color: CustomColor.backgroundCard,
-                    views: {
-                        AnyView(
-                            
-                            HStack {
-                                
-                                VStack {
-                                    Text(username)
+                VStack {
+                                   
+                    Card(
+                        cornerRadius: 15,
+                        elevation: 3,
+                        height: 150,
+                        color: CustomColor.backgroundCard,
+                        views: {
+                            AnyView(
+                                VStack (spacing: 15){
+                                    
+                                    Text("Welcome to DayPlanner!")
                                         .foregroundColor(.white)
-                                    Text(email)
-                                        .foregroundColor(.white)
+                                    
+                                    VStack {
+                                        
+                                        HStack {
+                                            
+                                            NavigationLink(destination: SignInView()) {
+                                                Text("Login")
+                                                    .frame(width: 150, height: 35)
+                                                    .background(CustomColor.background)
+                                                    .cornerRadius(15)
+                                                    .foregroundColor(.white)
+                                            }
+                                            NavigationLink(destination: SignUpView()) {
+                                                Text("SignUp")
+                                                    .frame(width: 150, height: 35)
+                                                    .background(CustomColor.background)
+                                                    .cornerRadius(15)
+                                                    .foregroundColor(.white)
+                                            }
+                                            
+                                            
+                                        }
+                                        
+                                        //                                        Spacer()
+                                        //
+                                        //                                        GoogleSignInButton{}
+                                        //                                            .cornerRadius(10)
+                                        
+                                    }
+                                    
                                 }
-                                
-                                Text(fullname)
-                                    .foregroundColor(.white)
-                                
-                            }
-                            
-                        )
-                        
-                    }
-                )
+                            )
+                        }
+                    )
+                }
                 
                 Text("Preferences: ")
                     .foregroundColor(.white)
@@ -90,7 +113,7 @@ struct Settings: View {
                     }
                 )
                 
-                Button(action: {}){
+                Button(action: {signOut()}){
                     Text("LogOut")
                 }.buttonStyle(.borderedProminent)
                     .buttonBorderShape(.roundedRectangle(radius: 10))
@@ -103,7 +126,7 @@ struct Settings: View {
             }.padding(25) // end of VStack
             
         }.onAppear{
-            setUserData()
+            // setUserData()
             // the Preview crashes but it runs fine in the simnulator
         }
         
@@ -124,14 +147,14 @@ struct Settings: View {
         }
     }
     
-//    private func signOut(){
-//        let firebaseAuth = Auth.auth()
-//        do {
-//            try firebaseAuth.signOut()
-//        } catch let signOutError as NSError{
-//            print("Error signing out: %@", signOutError)
-//        }
-//    }
+    private func signOut(){
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError{
+            print("Error signing out: %@", signOutError)
+        }
+    }
     
 }
 

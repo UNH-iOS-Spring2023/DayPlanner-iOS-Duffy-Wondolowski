@@ -34,7 +34,6 @@
 		AF2F49E629BEB87600F7570F /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AF2F49E529BEB87600F7570F /* FirebaseRemoteConfigSwift */; };
 		AF2F49E829BEB87600F7570F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AF2F49E729BEB87600F7570F /* FirebaseStorage */; };
 		AF2F49EA29BEB87600F7570F /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = AF2F49E929BEB87600F7570F /* FirebaseStorageCombine-Community */; };
-		AF2F49EC29BEC0F700F7570F /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F49EB29BEC0F700F7570F /* LandingView.swift */; };
 		AF2F49F229C0DAAC00F7570F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = AF2F49F129C0DAAC00F7570F /* GoogleSignIn */; };
 		AF2F49F429C0DAAC00F7570F /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AF2F49F329C0DAAC00F7570F /* GoogleSignInSwift */; };
 		AF2F49F929C2180100F7570F /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F49F829C2180100F7570F /* SplashScreenView.swift */; };
@@ -82,7 +81,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AF2F49EB29BEC0F700F7570F /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		AF2F49F529C0DD5E00F7570F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AF2F49F829C2180100F7570F /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		AF2F49FA29C2B2D600F7570F /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 			children = (
 				AF94702829B581F60049BA4A /* SignInView.swift */,
 				AF94702A29B582160049BA4A /* SignUpView.swift */,
-				AF2F49EB29BEC0F700F7570F /* LandingView.swift */,
 				AF2F49F829C2180100F7570F /* SplashScreenView.swift */,
 			);
 			path = Login_Views;
@@ -474,7 +471,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF2F49EC29BEC0F700F7570F /* LandingView.swift in Sources */,
 				AF94702B29B582160049BA4A /* SignUpView.swift in Sources */,
 				AF9DF8A829C2C6BF00C676E7 /* EventEdit.swift in Sources */,
 				F600345329C3FBE7008BDD0B /* ScrollDropDelegate.swift in Sources */,

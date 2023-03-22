@@ -25,110 +25,85 @@ struct SignUpView: View {
     
     var body: some View {
         
-        NavigationView {
             
-            if isLoggedIn{
-                ContentView()
-            } else {
-                ZStack {
-                    
-                    CustomColor.background
-                        .ignoresSafeArea(.all)
-                    
-                    VStack {
-                        
-                        Image("Logo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 300)
-                        
-                        Card(
-                            cornerRadius: 15,
-                            elevation: 5,
-                            height: 450,
-                            color: CustomColor.backgroundCard,
-                            views: {
-                                AnyView(
+        ZStack {
+            
+            CustomColor.background
+                .ignoresSafeArea(.all)
+            
+            VStack {
+                
+                Image("Logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300)
+                
+                Card(
+                    cornerRadius: 15,
+                    elevation: 5,
+                    height: 375,
+                    color: CustomColor.backgroundCard,
+                    views: {
+                        AnyView(
+                            
+                            VStack(spacing: 20){
+                                
+                                Text("Sign Up!")
+                                    .foregroundColor(.white)
+                                
+                                Text("Welcome to DayPlanner!")
+                                    .foregroundColor(.white)
+                                
+                                VStack (spacing: 20){
                                     
-                                    VStack(spacing: 20){
-                                        
-                                        Text("Sign Up!")
-                                            .foregroundColor(.white)
-                                        
-                                        Text("Welcome to DayPlanner!")
-                                            .foregroundColor(.white)
-                                        
-                                        VStack (spacing: 20){
-                                            
-                                            CustomTextField(
-                                                placeHolder: "Email",
-                                                imageName: "envelope",
-                                                bColor: "textColorBlack",
-                                                tOpacity: 0.6,
-                                                width: CGFloat.infinity,
-                                                height: 40,
-                                                borderColor: CustomColor.background,
-                                                value: $txtEmail
-                                            )
-                                            CustomTextField(
-                                                placeHolder: "Full Name",
-                                                imageName: "person.fill",
-                                                bColor: "textColorBlack",
-                                                tOpacity: 0.6,
-                                                width: CGFloat.infinity,
-                                                height: 40,
-                                                borderColor: CustomColor.background,
-                                                value: $txtFullName
-                                            )
-                                            CustomTextField(
-                                                placeHolder: "Username",
-                                                imageName: "person",
-                                                bColor: "textColorBlack",
-                                                tOpacity: 0.6,
-                                                width: CGFloat.infinity,
-                                                height: 40,
-                                                borderColor: CustomColor.background,
-                                                value: $txtUsername
-                                            )
-                                            CustomTextField(
-                                                placeHolder: "Password",
-                                                imageName: "lock.fill",
-                                                bColor: "textColorBlack",
-                                                tOpacity: 0.6,
-                                                width: CGFloat.infinity,
-                                                height: 40,
-                                                borderColor: CustomColor.background,
-                                                value: $txtPassword
-                                            )
-                                            CustomTextField(
-                                                placeHolder: "Password Confirm",
-                                                imageName: "lock",
-                                                bColor: "textColorBlack",
-                                                tOpacity: 0.6,
-                                                width: CGFloat.infinity,
-                                                height: 40,
-                                                borderColor: CustomColor.background,
-                                                value: $txtPasswordConfirm
-                                            )
-                                            
-                                        }
-                                        
-                                        HStack{
-                                            
-                                            Button(action: signUp){
-                                                Text("Sign Up")
-                                            }.buttonStyle(.borderedProminent)
-                                                .buttonBorderShape(.roundedRectangle(radius: 10))
-                                            
-                                        }
-                                        
-                                    }.padding(15)
-                                )
-                            }
-                        ).padding(25)
+                                    CustomTextField(
+                                        placeHolder: "Email",
+                                        imageName: "envelope",
+                                        bColor: "textColorBlack",
+                                        tOpacity: 0.6,
+                                        width: CGFloat.infinity,
+                                        height: 40,
+                                        borderColor: CustomColor.background,
+                                        value: $txtEmail
+                                    )
+                                    CustomTextField(
+                                        placeHolder: "Password",
+                                        imageName: "lock.fill",
+                                        bColor: "textColorBlack",
+                                        tOpacity: 0.6,
+                                        width: CGFloat.infinity,
+                                        height: 40,
+                                        borderColor: CustomColor.background,
+                                        value: $txtPassword
+                                    )
+                                    CustomTextField(
+                                        placeHolder: "Password Confirm",
+                                        imageName: "lock",
+                                        bColor: "textColorBlack",
+                                        tOpacity: 0.6,
+                                        width: CGFloat.infinity,
+                                        height: 40,
+                                        borderColor: CustomColor.background,
+                                        value: $txtPasswordConfirm
+                                    )
+                                    
+                                }
+                                
+                                HStack{
+                                    
+                                    Button(action: signUp){
+                                        Text("Sign Up")
+                                    }.buttonStyle(.borderedProminent)
+                                        .buttonBorderShape(.roundedRectangle(radius: 10))
+                                    
+                                }
+                                
+                            }.padding(15)
+                        )
                     }
-                }
+                ).padding(25)
             }
+        
             
 
             
@@ -172,7 +147,7 @@ struct SignUpView: View {
     }
     
     private func userToFirestore(){
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+//        guard let uid = Auth.auth().currentUser?.uid else { return }
         //Next part is disabled because none of this is stuff we should be storing in the database anyway
 //        let userData = [
 //            "email": self.txtEmail,
