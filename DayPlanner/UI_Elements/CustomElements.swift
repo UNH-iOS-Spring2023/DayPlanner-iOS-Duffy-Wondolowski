@@ -78,6 +78,7 @@ struct CustomTextField: View{
                         .font(.system(size: 20))
                         .frame(height: 45)
                         .foregroundColor(Color(bColor))
+                        .autocapitalization(.none)
                     
                 }
             }
