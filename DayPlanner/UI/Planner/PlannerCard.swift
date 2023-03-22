@@ -39,7 +39,7 @@ struct PlannerCard: View {
                                         .padding(5)
                                 )
                             }
-                        ).padding(5)
+                        ).padding(8)
                         
                         Spacer()
                         
