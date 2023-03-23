@@ -21,6 +21,9 @@ struct Settings: View {
     @State private var location = false
     @State private var startNotifications = false
     
+    @State private var alertText = ""
+    @State private var createAlert: Bool = false
+    
     var body: some View {
         
         ZStack{
@@ -113,11 +116,14 @@ struct Settings: View {
                     }
                 )
                 
-                Button(action: {}){
+                Button(action: signOut){
                     Text("LogOut")
                 }.buttonStyle(.borderedProminent)
                     .buttonBorderShape(.roundedRectangle(radius: 10))
                     .tint(.red)
+                    .alert(isPresented: $createAlert){
+                        Alert(title: Text(alertText))
+                    }
                 
                 
                 
@@ -147,14 +153,15 @@ struct Settings: View {
         }
     }
     
-//    func signOut(){
-//        let firebaseAuth = Auth.auth()
-//        do {
-//            try firebaseAuth.signOut()
-//        } catch let signOutError as NSError{
-//            print("Error signing out: %@", signOutError)
-//        }
-//    }
+    func signOut(){
+        do {
+            try Auth.auth().signOut()
+            alertText = "User Logged Out"
+            createAlert = true
+        } catch {
+            print("Error signing out:")
+        }
+    }
     
 }
 
