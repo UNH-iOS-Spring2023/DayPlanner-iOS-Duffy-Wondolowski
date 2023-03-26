@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 
@@ -116,7 +117,7 @@ struct Settings: View {
                     }
                 )
                 
-                Button(action: signOut){
+                Button(action: signOutFunc){
                     Text("LogOut")
                 }.buttonStyle(.borderedProminent)
                     .buttonBorderShape(.roundedRectangle(radius: 10))
@@ -153,13 +154,13 @@ struct Settings: View {
         }
     }
     
-    func signOut(){
+    func signOutFunc(){
         do {
-            try Auth.auth().signOut()
+            try! Auth.auth().signOut()
             alertText = "User Logged Out"
             createAlert = true
-        } catch {
-            print("Error signing out:")
+        } catch let signOutError as NSError{
+            print("Error signing out: %@", signOutError)
         }
     }
     
