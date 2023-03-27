@@ -156,7 +156,7 @@ struct Settings: View {
     
     func signOutFunc(){
         do {
-            try! Auth.auth().signOut()
+            try Auth.auth().signOut()
             alertText = "User Logged Out"
             createAlert = true
         } catch let signOutError as NSError{

@@ -17,6 +17,9 @@ struct SignUpView: View {
     @State var txtPassword: String = ""
     @State var txtPasswordConfirm: String = ""
     
+    @State private var alertText = ""
+    @State private var createAlert: Bool = false
+    
     var body: some View {
         
             
@@ -89,6 +92,9 @@ struct SignUpView: View {
                                         Text("Sign Up")
                                     }.buttonStyle(.borderedProminent)
                                         .buttonBorderShape(.roundedRectangle(radius: 10))
+                                        .alert(isPresented: $createAlert){
+                                            Alert(title: Text(alertText))
+                                        }
                                     
                                 }
                                 
@@ -107,13 +113,18 @@ struct SignUpView: View {
     
     
     private func signUp(){
-        userAuth()
+        if txtPassword == txtPasswordConfirm {
+            userAuth()
+        } else {
+            alertText = "Your Passwords Don't Match!"
+            createAlert = true
+        }
     }
     
     private func userAuth(){
         
         Auth.auth().createUser(withEmail: txtEmail, password: txtPassword){ result, error in
-            if error != nil{
+            if error != nil {
                 print(error!.localizedDescription)
             } else {
                 print("Successfully created Account: \(result?.user.uid ?? "")")
