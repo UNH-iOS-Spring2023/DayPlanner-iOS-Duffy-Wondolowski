@@ -47,6 +47,7 @@ struct ContentView: View {
     let db = Firestore.firestore()
     
     var body: some View {
+        
         VStack{
             BottomBar(
                 AnyView(EventList()),
