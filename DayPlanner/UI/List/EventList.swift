@@ -23,7 +23,7 @@ struct EventList: View {
                     Text("+")
                         .background(
                             RoundedRectangle(cornerRadius: 25.0)
-                                .fill(Color(.systemBlue))
+                                .fill(CustomColor.lightGreen)
                                 .frame(width:50, height:50)
                         )
                         .font(.system(.largeTitle))
@@ -54,6 +54,8 @@ struct EventList: View {
             EventEdit()
         } else {
             ZStack {
+                CustomColor.background
+                    .ignoresSafeArea(.all)
                 list
                 button
             }
@@ -69,3 +71,5 @@ struct List_Previews: PreviewProvider {
             .environmentObject(AppVariables())
     }
 }
+
+

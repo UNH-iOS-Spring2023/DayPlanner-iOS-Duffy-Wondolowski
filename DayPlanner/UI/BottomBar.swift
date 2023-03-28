@@ -25,6 +25,8 @@ struct BottomBar: View {
         self.ListView = ListView
         self.PlannerView = PlannerView
         self.SettingsView = SettingsView
+        
+        UITabBar.appearance().unselectedItemTintColor = UIColor.white
     }
     
     
@@ -52,7 +54,7 @@ struct BottomBar: View {
                     Text("Settings")
                 }
                 .tag(2)
-        }
+        }.accentColor(CustomColor.darkGreen)
     }
 }
 

@@ -25,6 +25,7 @@ struct CustomColor {
     static let background = Color("backgroundColor")
     static let backgroundCard = Color("backgroundCard")
     static let darkGreen = Color("darkGreen")
+    static let lightGreen = Color("lightGreen")
 }
 
 struct CustomTextField: View{
