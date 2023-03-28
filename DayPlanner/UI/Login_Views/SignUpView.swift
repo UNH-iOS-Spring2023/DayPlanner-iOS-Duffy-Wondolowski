@@ -111,7 +111,10 @@ struct SignUpView: View {
     }
     
     
-    
+    /// This function checks to see if the two password fields match one another.
+    ///    If the fields match then it calls the userAuth() function
+    ///    If the fields do not match then it sends an alert to the user informing them their passwords dont match
+
     private func signUp(){
         if txtPassword == txtPasswordConfirm {
             userAuth()
@@ -120,6 +123,9 @@ struct SignUpView: View {
             createAlert = true
         }
     }
+    
+    /// This function creates a user's account to Firebase
+    ///    The account is created with the Users Email and their password
     
     private func userAuth(){
         
@@ -135,22 +141,10 @@ struct SignUpView: View {
         
     }
     
+    /// This function addes a users UID to the FireStore database
+
     private func userToFirestore(){
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        //Next part is disabled because none of this is stuff we should be storing in the database anyway
-//        let userData = [
-//            "email": self.txtEmail,
-//            "fullname": self.txtFullName,
-//            "username": self.txtUsername,
-//            "uid": uid ]
-//        db.collection("Users")
-//            .document(uid).setData(userData){ err in
-//                if let err = err {
-//                    print(err)
-//                    return
-//                }
-//                print("Success")
-//            }
         
         txtEmail = ""
         txtPassword = ""

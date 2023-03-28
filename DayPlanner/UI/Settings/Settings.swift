@@ -14,10 +14,6 @@ struct Settings: View {
     
     let db = Firestore.firestore()
     
-    @State var username: String = "Username"
-    @State var fullname: String = "Fullname"
-    @State var email: String = "Email"
-    
     @State private var endNotifications = false
     @State private var location = false
     @State private var startNotifications = false
@@ -139,20 +135,22 @@ struct Settings: View {
         
     }
     
-    private func setUserData(){
-        
-        let userUID = Auth.auth().currentUser?.uid
-        
-        db.collection("Users").document(userUID!).getDocument { (snapshot, error) in
-            if error != nil {
-                print("Error getting userDataString(describing: error)")
-            } else {
-                username = snapshot?.get("username") as! String
-                email = snapshot?.get("email") as! String
-                fullname = snapshot?.get("fullname") as! String
-            }
-        }
-    }
+//    private func setUserData(){
+//
+//        let userUID = Auth.auth().currentUser?.uid
+//
+//        db.collection("Users").document(userUID!).getDocument { (snapshot, error) in
+//            if error != nil {
+//                print("Error getting userDataString(describing: error)")
+//            } else {
+//                username = snapshot?.get("username") as! String
+//                email = snapshot?.get("email") as! String
+//                fullname = snapshot?.get("fullname") as! String
+//            }
+//        }
+//    }
+    
+    /// This function signs a user out of their account through firebase
     
     func signOutFunc(){
         do {

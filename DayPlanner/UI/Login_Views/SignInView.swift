@@ -83,6 +83,7 @@ struct SignInView: View {
         }
     }
     
+    /// This function logs a users into their account using the emnail and password they have entered
     
     func signIn(){
         Auth.auth().signIn(withEmail: txtEmail, password: txtPassword) { result, err in
