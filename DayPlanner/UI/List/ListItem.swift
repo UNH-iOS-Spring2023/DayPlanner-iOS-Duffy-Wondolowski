@@ -16,6 +16,7 @@ struct ListItem: View {
     }
     
     
+    ///Trigger the change to the event edit page
     func clickEvent() {
         app.selectedEvent = event
         app.isEventEdit = true

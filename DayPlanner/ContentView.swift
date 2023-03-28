@@ -19,11 +19,15 @@ class AppVariables: ObservableObject {
     
     var uid: String? = nil
     
+    ///Check to ensure that there is no overlap in time between a new event to be added and the already existing events
+    /// - Parameter oldEvent: If the new event is overwriting an old event, the old event is passed so it can be excluded from the check
+    /// - Returns: True if there is no overlap, false if there is
     func checkEventOverlap(newEvent: Event, oldEvent: Event? = nil) -> Bool {
         //True means there is no overlap
         return ErrorChecking.checkEventOverlap(eventList: eventList, newEvent: newEvent, oldEvent: oldEvent)
     }
     
+    ///Check if the day has changed since the last time events were cleared, and clear non-recurring events if it has
     func checkTime() {
         let calendar = Calendar(identifier: .gregorian)
         let date = calendar.startOfDay(for: Date())

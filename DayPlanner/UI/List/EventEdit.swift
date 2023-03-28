@@ -134,11 +134,13 @@ struct EventEdit: View {
         }
     }
     
+    ///Forget any changes made and return to the event list view
     private func cancel() {
         app.isEventEdit = false
         app.selectedEvent = nil
     }
     
+    ///Create the event. Automatically checks to see if this event is a modification of an old event, and acts accordingly
     private func create() {
         
         if eventName != "" {
@@ -183,6 +185,7 @@ struct EventEdit: View {
         }
     }
     
+    ///Delete the currently edited event. Works the same as cancel if the event is a new one
     private func delete() {
         if event != Event(), let eventIndex = app.eventList.firstIndex(where: { $0 == self.event }) {
             deleteEvent()
@@ -192,6 +195,7 @@ struct EventEdit: View {
         app.selectedEvent = nil
     }
     
+    ///Upload the event to Firestore
     private func uploadEvent(newEvent: Event) {
         if app.uid != nil {
             do {
@@ -204,6 +208,7 @@ struct EventEdit: View {
         }
     }
     
+    ///Delete the event from Firestore
     private func deleteEvent() {
         db.collection("Users/\(app.uid!)/events").document(event.id!).delete() {
             err in

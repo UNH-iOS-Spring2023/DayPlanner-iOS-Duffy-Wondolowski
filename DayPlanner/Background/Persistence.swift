@@ -10,11 +10,13 @@ import FirebaseFirestore
 
 //The saving and loading feature is mostly copied from Apple's developer guide with some modifications
 struct Persistence {
+    ///Returns the URL for the file where the event list is stored
     private static func eventFileURL() throws -> URL {
             try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
                 .appendingPathComponent("events.data")
     }
     
+    ///Save the event list to local storage
     static func eventSave(events: [Event], completion: @escaping (Result<Int, Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
             do {
@@ -32,6 +34,7 @@ struct Persistence {
         }
     }
     
+    ///Load the event list from local storage
     static func eventLoad(completion: @escaping (Result<[Event], Error>)->Void) {
             DispatchQueue.global(qos: .background).async {
                 do {
@@ -54,11 +57,13 @@ struct Persistence {
         }
     }
     
+    ///Returns the URL for the file where the user data is stored
     private static func userFileURL() throws -> URL {
             try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
                 .appendingPathComponent("user.data")
     }
     
+    ///Save the user data to local storage
     static func userSave(user: User, completion: @escaping (Result<Int, Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
             do {
@@ -76,6 +81,7 @@ struct Persistence {
         }
     }
     
+    ///Load the user data from local storage
     static func userLoad(completion: @escaping (Result<User, Error>)->Void) {
             DispatchQueue.global(qos: .background).async {
                 do {
@@ -97,6 +103,8 @@ struct Persistence {
             }
         }
     }
+    
+    ///Save both the user data and event list to local storage
     static func save(user: User, events: [Event], completion: @escaping (Result<Int, Error>, Result<Int, Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
             var userResult: Result<Int, Error> = .success(0)
@@ -118,6 +126,7 @@ struct Persistence {
         }
     }
     
+    ///Load both the user data and event list from local storage
     static func load(completion: @escaping (Result<User, Error>, Result<[Event], Error>)->Void) {
             DispatchQueue.global(qos: .background).async {
                 var userResult: Result<User, Error> = .success(User())
