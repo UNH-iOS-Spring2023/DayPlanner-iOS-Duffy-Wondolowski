@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+/// This is the UI element for the PlannerCard
+/// - Parameters:
+///     - eventName: The name of the event
+///     - time: The time that the event begins
+
 struct PlannerCard: View {
     
     let eventName: String
@@ -39,7 +44,7 @@ struct PlannerCard: View {
                                         .padding(5)
                                 )
                             }
-                        ).padding(5)
+                        ).padding(8)
                         
                         Spacer()
                         

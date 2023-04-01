@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+/// This is the UI element for the EventCard
+/// - Parameters:
+///     - event: The name of the event
+///     - click: The function that is called after the card is clicked
+
 struct EventCard: View {
     
     let event: Event

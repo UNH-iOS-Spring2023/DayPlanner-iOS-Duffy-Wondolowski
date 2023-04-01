@@ -198,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				F600345829C4F56F008BDD0B /* Helpers */,
-				AF9DF8AE29C2C97A00C676E7 /* Event */,
 				AF2F49ED29BEC10E00F7570F /* Login_Views */,
 				AF9DF89629C2C6BF00C676E7 /* Settings */,
 				AF9DF89829C2C6BF00C676E7 /* BottomBar.swift */,
@@ -230,6 +229,7 @@
 			children = (
 				AF9DF89D29C2C6BF00C676E7 /* EventList.swift */,
 				AF9DF89E29C2C6BF00C676E7 /* EventEdit.swift */,
+				AF2F49FA29C2B2D600F7570F /* EventCard.swift */,
 				F600344C29C3DD26008BDD0B /* ListItem.swift */,
 			);
 			path = List;
@@ -242,14 +242,6 @@
 				F600345929C50B4F008BDD0B /* Persistence.swift */,
 			);
 			path = Background;
-			sourceTree = "<group>";
-		};
-		AF9DF8AE29C2C97A00C676E7 /* Event */ = {
-			isa = PBXGroup;
-			children = (
-				AF2F49FA29C2B2D600F7570F /* EventCard.swift */,
-			);
-			path = Event;
 			sourceTree = "<group>";
 		};
 		F600345829C4F56F008BDD0B /* Helpers */ = {

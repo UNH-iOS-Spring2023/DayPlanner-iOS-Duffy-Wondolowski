@@ -13,15 +13,12 @@ struct SignUpView: View {
     
     let db = Firestore.firestore()
     
-    @State var isLinkActive = false;
-    
     @State var txtEmail: String = ""
-    @State var txtFullName: String = ""
-    @State var txtUsername: String = ""
     @State var txtPassword: String = ""
     @State var txtPasswordConfirm: String = ""
     
-    @State var isLoggedIn = false
+    @State private var alertText = ""
+    @State private var createAlert: Bool = false
     
     var body: some View {
         
@@ -77,7 +74,7 @@ struct SignUpView: View {
                                         value: $txtPassword
                                     )
                                     CustomTextField(
-                                        placeHolder: "Password Confirm",
+                                        placeHolder: "Confirm Password",
                                         imageName: "lock",
                                         bColor: "textColorBlack",
                                         tOpacity: 0.6,
@@ -95,6 +92,9 @@ struct SignUpView: View {
                                         Text("Sign Up")
                                     }.buttonStyle(.borderedProminent)
                                         .buttonBorderShape(.roundedRectangle(radius: 10))
+                                        .alert(isPresented: $createAlert){
+                                            Alert(title: Text(alertText))
+                                        }
                                     
                                 }
                                 
@@ -105,67 +105,48 @@ struct SignUpView: View {
             }
         
             
+        } // End of ZStack
+        
+        
+    }
+    
+    
+    /// This function checks to see if the two password fields match one another.
+    ///    If the fields match then it calls the userAuth() function
+    ///    If the fields do not match then it sends an alert to the user informing them their passwords dont match
 
-            
-            
-            
-            
-        }
-        
-        
-    }
-    
-    
-    
     private func signUp(){
-        userAuth()
+        if txtPassword == txtPasswordConfirm {
+            userAuth()
+        } else {
+            alertText = "Your Passwords Don't Match!"
+            createAlert = true
+        }
     }
+    
+    /// This function creates a user's account to Firebase
+    ///    The account is created with the Users Email and their password
     
     private func userAuth(){
         
         Auth.auth().createUser(withEmail: txtEmail, password: txtPassword){ result, error in
-            if error != nil{
+            if error != nil {
                 print(error!.localizedDescription)
             } else {
                 print("Successfully created Account: \(result?.user.uid ?? "")")
-                
-                let changeRequest = result?.user.createProfileChangeRequest()
-                changeRequest?.displayName = self.txtUsername
-                changeRequest?.commitChanges { error in
-                    if error != nil {
-                        print("Error updating username: \(error!.localizedDescription)")
-                    }
-                }
-                
                 self.userToFirestore()
-                
-                self.isLoggedIn = true
             }
 
         }
         
     }
     
+    /// This function addes a users UID to the FireStore database
+
     private func userToFirestore(){
-//        guard let uid = Auth.auth().currentUser?.uid else { return }
-        //Next part is disabled because none of this is stuff we should be storing in the database anyway
-//        let userData = [
-//            "email": self.txtEmail,
-//            "fullname": self.txtFullName,
-//            "username": self.txtUsername,
-//            "uid": uid ]
-//        db.collection("Users")
-//            .document(uid).setData(userData){ err in
-//                if let err = err {
-//                    print(err)
-//                    return
-//                }
-//                print("Success")
-//            }
+        guard let uid = Auth.auth().currentUser?.uid else { return }
         
         txtEmail = ""
-        txtFullName = ""
-        txtUsername = ""
         txtPassword = ""
         txtPasswordConfirm = ""
         

@@ -21,12 +21,28 @@ struct CustomElements_Previews: PreviewProvider {
     }
 }
 
+/// This is the UI element for the CustomColor
+///   This lists the custom colors in the assests and makes them callable
+
 struct CustomColor {
     static let background = Color("backgroundColor")
     static let backgroundCard = Color("backgroundCard")
     static let darkGreen = Color("darkGreen")
     static let lightGreen = Color("lightGreen")
 }
+
+
+
+
+/// This is the UI element for the CustomeTextField
+/// - Parameters:
+///     - placeHolder: the text that is displayed
+///     - imageName: the icon image name
+///     - bColor: the text color
+///     - tOpacity: the opacity of the text
+///     - width: the width of the entire view
+///     - height: the height of the entire view
+///     - borderColor: the color of the border
 
 struct CustomTextField: View{
     
@@ -78,6 +94,7 @@ struct CustomTextField: View{
                         .font(.system(size: 20))
                         .frame(height: 45)
                         .foregroundColor(Color(bColor))
+                        .autocapitalization(.none)
                     
                 }
             }
@@ -92,6 +109,18 @@ struct CustomTextField: View{
 
 
 
+
+/// This is the UI element for the Card View
+/// - Parameters:
+///     - cornerRadius: how rounded the corner will be
+///     - elevation: how high the card will be above the view (shadow)
+///     - width: how wide the card will be
+///     - height: how tall the card will be
+///     - color: what the background color of the card is
+///     - focusColor: what the color of the card will be when active
+///     - views: the content that is added to the card
+///     - click: the function that will be called when the card is pressed
+///     - longclick: the fucntion called when the card is pressed long
 
 struct Card: View {
     @State private var isTap: Bool = false

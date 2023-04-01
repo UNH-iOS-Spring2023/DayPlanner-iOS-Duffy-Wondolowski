@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 
@@ -13,13 +14,12 @@ struct Settings: View {
     
     let db = Firestore.firestore()
     
-    @State var username: String = "Username"
-    @State var fullname: String = "Fullname"
-    @State var email: String = "Email"
-    
     @State private var endNotifications = false
     @State private var location = false
     @State private var startNotifications = false
+    
+    @State private var alertText = ""
+    @State private var createAlert: Bool = false
     
     var body: some View {
         
@@ -113,11 +113,14 @@ struct Settings: View {
                     }
                 )
                 
-                Button(action: {signOut()}){
+                Button(action: signOutFunc){
                     Text("LogOut")
                 }.buttonStyle(.borderedProminent)
                     .buttonBorderShape(.roundedRectangle(radius: 10))
                     .tint(.red)
+                    .alert(isPresented: $createAlert){
+                        Alert(title: Text(alertText))
+                    }
                 
                 
                 
@@ -132,25 +135,28 @@ struct Settings: View {
         
     }
     
-    private func setUserData(){
-        
-        let userUID = Auth.auth().currentUser?.uid
-        
-        db.collection("Users").document(userUID!).getDocument { (snapshot, error) in
-            if error != nil {
-                print("Error getting userDataString(describing: error)")
-            } else {
-                username = snapshot?.get("username") as! String
-                email = snapshot?.get("email") as! String
-                fullname = snapshot?.get("fullname") as! String
-            }
-        }
-    }
+//    private func setUserData(){
+//
+//        let userUID = Auth.auth().currentUser?.uid
+//
+//        db.collection("Users").document(userUID!).getDocument { (snapshot, error) in
+//            if error != nil {
+//                print("Error getting userDataString(describing: error)")
+//            } else {
+//                username = snapshot?.get("username") as! String
+//                email = snapshot?.get("email") as! String
+//                fullname = snapshot?.get("fullname") as! String
+//            }
+//        }
+//    }
     
-    private func signOut(){
-        let firebaseAuth = Auth.auth()
+    /// This function signs a user out of their account through firebase
+    
+    func signOutFunc(){
         do {
-            try firebaseAuth.signOut()
+            try Auth.auth().signOut()
+            alertText = "User Logged Out"
+            createAlert = true
         } catch let signOutError as NSError{
             print("Error signing out: %@", signOutError)
         }
