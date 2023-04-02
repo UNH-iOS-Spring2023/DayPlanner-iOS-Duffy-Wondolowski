@@ -9,11 +9,13 @@ import SwiftUI
 import FirebaseAuth
 
 struct SignInView: View {
+    @EnvironmentObject private var app: AppVariables
     
     @State var txtEmail: String = ""
     @State var txtPassword: String = ""
     
-    @State var isLoggedIn = false
+    @State private var alertText = ""
+    @State private var createAlert: Bool = false
     
     var body: some View {
         
@@ -73,6 +75,9 @@ struct SignInView: View {
                                     Text("Login")
                                 }.buttonStyle(.borderedProminent)
                                     .buttonBorderShape(.roundedRectangle(radius: 10))
+                                    .alert(isPresented: $createAlert){
+                                        Alert(title: Text(alertText))
+                                    }
                                 
                                 
                             }.padding(15)
@@ -88,12 +93,16 @@ struct SignInView: View {
     func signIn(){
         Auth.auth().signIn(withEmail: txtEmail, password: txtPassword) { result, err in
             if let err = err{
-                print("Failed to login user!:", err)
+                print("Failed to login user!: ", err)
+                alertText = "Failed to login! The username or password is incorrect!"
+                createAlert = true
                 return
             } else {
                 print("Successfully logged in in the User!")
                 
-                self.isLoggedIn = true
+                app.uid = result?.user.uid ?? nil
+                
+                print("User ID: " + (app.uid ?? "None"))
             }
         }
         txtEmail = ""
@@ -107,5 +116,6 @@ struct SignInView: View {
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
         SignInView()
+            .environmentObject(AppVariables())
     }
 }

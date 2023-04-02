@@ -17,7 +17,7 @@ class AppVariables: ObservableObject {
     @Published var selectedEvent: Event? = nil
     @Published var user: User = User()
     
-    var uid: String? = nil
+    @Published var uid: String? = nil
     
     ///Check to ensure that there is no overlap in time between a new event to be added and the already existing events
     /// - Parameter oldEvent: If the new event is overwriting an old event, the old event is passed so it can be excluded from the check
