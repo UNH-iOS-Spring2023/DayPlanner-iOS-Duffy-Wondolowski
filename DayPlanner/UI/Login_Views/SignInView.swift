@@ -7,9 +7,12 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseFirestore
 
 struct SignInView: View {
     @EnvironmentObject private var app: AppVariables
+    
+    let db = Firestore.firestore()
     
     @State var txtEmail: String = ""
     @State var txtPassword: String = ""
@@ -103,6 +106,16 @@ struct SignInView: View {
                 app.uid = result?.user.uid ?? nil
                 
                 print("User ID: " + (app.uid ?? "None"))
+                
+                for event in app.eventList {
+                    do {
+                        try db.collection("Users/\(app.uid!)/events")
+                            .document(event.id!).setData(from:event)
+                    }
+                    catch {
+                        print("Error uploading event to database: \(error.localizedDescription)")
+                    }
+                }
             }
         }
         txtEmail = ""

@@ -136,8 +136,58 @@ struct Settings: View {
             }.padding(25) // end of VStack
             
         }.onAppear{
+            startNotifications = app.user.startNotifications
+            endNotifications = app.user.endNotifications
+            location = app.user.locationServices
+            
             // setUserData()
             // the Preview crashes but it runs fine in the simnulator
+        }
+        .onChange(of: startNotifications) { _ in
+            app.user.startNotifications = startNotifications
+            
+//            db.collection("Users")
+//                    .document(app.uid!)
+//                    .setData(["startNotifications": startNotifications], merge: true) { error in
+//                        print("Error uploading startNotifications to database: "
+//                              + (error?.localizedDescription ?? "No localized description"))
+//            }
+            
+            do {
+                try db.collection("Users")
+                    .document(app.uid!).setData(from:app.user)
+                
+                print("Start notifications updated")
+            }
+            catch {
+                print("Error uploading event to database: \(error.localizedDescription)")
+            }
+        }
+        .onChange(of: endNotifications) { _ in
+            app.user.endNotifications = endNotifications
+            
+            do {
+                try db.collection("Users")
+                    .document(app.uid!).setData(from:app.user)
+                
+                print("End notifications updated")
+            }
+            catch {
+                print("Error uploading event to database: \(error.localizedDescription)")
+            }
+        }
+        .onChange(of: location) { _ in
+            app.user.locationServices = location
+            
+            do {
+                try db.collection("Users")
+                    .document(app.uid!).setData(from:app.user)
+                
+                print("Locations updated")
+            }
+            catch {
+                print("Error uploading event to database: \(error.localizedDescription)")
+            }
         }
         
     }
@@ -164,6 +214,8 @@ struct Settings: View {
             try Auth.auth().signOut()
             
             app.uid = nil
+            app.eventList = []
+            
             print ("User logged out.")
             
 //            alertText = "User Logged Out"

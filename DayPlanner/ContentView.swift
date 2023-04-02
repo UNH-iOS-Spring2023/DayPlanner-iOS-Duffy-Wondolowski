@@ -89,6 +89,7 @@ struct ContentView: View {
 //                    print("Error saving data: \(error.localizedDescription)")
 //                }
             } else {
+                app.eventList = []
                 db.collection("Users/\(app.uid!)/events")
                     .getDocuments() { (events, err) in
                         if let err = err {
