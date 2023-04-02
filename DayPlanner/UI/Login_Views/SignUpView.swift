@@ -10,7 +10,8 @@ import FirebaseAuth
 import FirebaseFirestore
 
 struct SignUpView: View {
-    
+    @EnvironmentObject private var app: AppVariables
+
     let db = Firestore.firestore()
     
     @State var txtEmail: String = ""
@@ -132,8 +133,13 @@ struct SignUpView: View {
         Auth.auth().createUser(withEmail: txtEmail, password: txtPassword){ result, error in
             if error != nil {
                 print(error!.localizedDescription)
+                
+                alertText = "Failed to sign up! " + (error?.localizedDescription ?? "") 
+                createAlert = true
             } else {
                 print("Successfully created Account: \(result?.user.uid ?? "")")
+                
+                app.uid = result?.user.uid ?? nil
                 self.userToFirestore()
             }
 
@@ -150,6 +156,16 @@ struct SignUpView: View {
         txtPassword = ""
         txtPasswordConfirm = ""
         
+        for event in app.eventList {
+            do {
+                try db.collection("Users/\(app.uid!)/events")
+                    .document(event.id!).setData(from:event)
+            }
+            catch {
+                print("Error uploading event to database: \(error.localizedDescription)")
+            }
+        }
+        
     }
     
     
@@ -164,5 +180,6 @@ struct SignUpView: View {
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
         SignUpView()
+            .environmentObject(AppVariables())
     }
 }
