@@ -9,9 +9,11 @@ import SwiftUI
 
 struct Planner: View {
     
-    @State var event : String = ""
-    @State var time : Int = 0
-    @State var number : Int = 0
+    @EnvironmentObject private var app: AppVariables
+    
+//    @State var event : String = ""
+//    @State var time : Int = 0
+//    @State var number : Int = 0
         
     var body: some View {
         ZStack (alignment: .top){
@@ -38,21 +40,28 @@ struct Planner: View {
                 )
                 
                 ScrollView {
-                    VStack{
-                        ForEach(1..<25){ i in
-                            if i > 13 {
-                                PlannerCard(eventName: "\(event)", time: "\(i - 13):00pm")
-                            } else if i == 1 {
-                                PlannerCard(eventName: "\(event)", time: "\(i + 11):00am")
-                            } else if i == 13 {
-                                PlannerCard(eventName: "\(event)", time: "\(i - 1):00pm")
-                            } else {
-                                PlannerCard(eventName: "\(event)", time: "\(i-1):00am")
-                            }
-                        }.onAppear{
-                            
-                        }
-                    }
+                    
+//                    VStack{
+//                        ForEach(1..<5){i in
+//                            PlannerCard(eventName: "test", startTime: "1:00am", endTime: "2:00pm")
+//                        }
+//                    }
+                    
+//                    VStack{
+//                        ForEach(1..<25){ i in
+//                            if i > 13 {
+//                                PlannerCard(eventName: "\(event)", time: "\(i - 13):00pm")
+//                            } else if i == 1 {
+//                                PlannerCard(eventName: "\(event)", time: "\(i + 11):00am")
+//                            } else if i == 13 {
+//                                PlannerCard(eventName: "\(event)", time: "\(i - 1):00pm")
+//                            } else {
+//                                PlannerCard(eventName: "\(event)", time: "\(i-1):00am")
+//                            }
+//                        }.onAppear{
+//                            
+//                        }
+//                    } // end of VStack
                     
         
                 } // end of ScrollView
