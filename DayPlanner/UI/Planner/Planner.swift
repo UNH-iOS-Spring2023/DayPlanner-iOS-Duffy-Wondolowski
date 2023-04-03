@@ -41,11 +41,11 @@ struct Planner: View {
                 
                 ScrollView {
                     
-//                    VStack{
-//                        ForEach(1..<5){i in
-//                            PlannerCard(eventName: "test", startTime: "1:00am", endTime: "2:00pm")
-//                        }
-//                    }
+                    VStack(spacing: 10) {
+                        ForEach($app.planner, id: \.self.id) {
+                            (planner: PlannerModel) in VStack { PlannerItem(planner: planner) }
+                        }
+                    }
                     
 //                    VStack{
 //                        ForEach(1..<25){ i in
@@ -81,5 +81,6 @@ struct Planner: View {
 struct Planner_Previews: PreviewProvider {
     static var previews: some View {
         Planner()
+            .environmentObject(AppVariables())
     }
 }

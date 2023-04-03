@@ -138,6 +138,7 @@ struct PlannerCard: View {
 struct PlannerCard_Previews: PreviewProvider {
     static var previews: some View {
         PlannerCard(planner: PlannerModel(startTime: "1:00am", endTime: "2:00am", eventName: "Holder"))
+            .environmentObject(AppVariables())
 //        PlannerCard(plannerModel : PlannerModel(id: "1", data: ["name" : "TestName", "time" : "12:00am"]))
 //            .environmentObject(AppVariables())
     }
