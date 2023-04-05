@@ -10,7 +10,7 @@ import FirebaseFirestoreSwift
 
 struct PlannerModel: Equatable, Identifiable, Codable {
     @DocumentID var id: String?
-    var startTime: String = ""
+//    var startTime: Date? = nil
 //    var endTime: String = ""
     var eventName: String = ""
 }

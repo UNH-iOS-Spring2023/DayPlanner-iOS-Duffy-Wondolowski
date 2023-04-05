@@ -45,7 +45,12 @@ struct Planner: View {
                         ForEach(app.planner, id: \.self.id) {
                             (planner: PlannerModel) in PlannerItem(planner: planner)
                         }
+//                        ForEach(app.eventList, id: \.self.id){
+//                            (event: Event) in ListItem(event: event)
+//                        }
                     }
+                    
+                    
                     
 //                    VStack{
 //                        ForEach(1..<25){ i in

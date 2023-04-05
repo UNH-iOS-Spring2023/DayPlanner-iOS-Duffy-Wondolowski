@@ -39,11 +39,11 @@ struct PlannerCard: View {
                                 AnyView(
                                     
                                     VStack {
-                                        Text(planner.startTime)
-                                            .foregroundColor(.white)
-                                            .font(.system(size:18))
-                                            .multilineTextAlignment(.center)
-                                        .padding(5)
+//                                        Text(planner.startTime)
+//                                            .foregroundColor(.white)
+//                                            .font(.system(size:18))
+//                                            .multilineTextAlignment(.center)
+//                                        .padding(5)
                                         
                                         Spacer()
                                         
@@ -137,8 +137,12 @@ struct PlannerCard: View {
 
 struct PlannerCard_Previews: PreviewProvider {
     static var previews: some View {
-        PlannerCard(planner: PlannerModel(startTime: "1:00am", eventName: "Holder"))
+        PlannerCard(planner: PlannerModel(eventName: "Holder"))
             .environmentObject(AppVariables())
+        
+        
+//        PlannerCard(planner: PlannerModel(startTime: "1:00am", eventName: "Holder"))
+//            .environmentObject(AppVariables())
         
         
 //        PlannerCard(planner: PlannerModel(startTime: "1:00am", endTime: "2:00am", eventName: "Holder"))
