@@ -10,10 +10,6 @@ import SwiftUI
 struct Planner: View {
     
     @EnvironmentObject private var app: AppVariables
-    
-//    @State var event : String = ""
-//    @State var time : Int = 0
-//    @State var number : Int = 0
         
     var body: some View {
         ZStack (alignment: .top){
@@ -45,9 +41,6 @@ struct Planner: View {
                         ForEach(app.eventList, id: \.self.id) {
                             (event: Event) in PlannerItem(event: event)
                         }
-//                        ForEach(app.eventList, id: \.self.id){
-//                            (event: Event) in ListItem(event: event)
-//                        }
                     }
                     
                     

@@ -27,6 +27,7 @@ struct PlannerCard: View {
     var body: some View {
         
         var date: Date? = event.startTime
+        
         var dateFormatter: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateStyle = .long
@@ -65,12 +66,6 @@ struct PlannerCard: View {
                                             
                                         }
                                         
-//                                        Text(dateFormatter.string(from: date))
-//                                            .foregroundColor(.white)
-//                                            .font(.system(size:18))
-//                                            .multilineTextAlignment(.center)
-//                                        .padding(5)
-                                        
                                         Spacer()
                                         
 //                                        Text(planner.endTime)
@@ -99,19 +94,7 @@ struct PlannerCard: View {
         
         
     }
-    
-//    var dateFormatter: DateFormatter = {
-//        let formatter = DateFormatter()
-//        formatter.dateStyle = .long
-//        formatter.timeStyle = .medium
-//        return formatter
-//    }()
-
-//    func startTime() -> Text {
-//        let time = event.startTime
-//        return Text("\(time.string)")
-//    }
-    
+      
     
     
     
