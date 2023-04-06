@@ -20,11 +20,11 @@ struct PlannerCard: View {
     
     var body: some View {
         
-        var date: Date? = event.startTime
-        var duration = event.duration / 1000 // has to be divided by 1000 since the TimeInterval method is in seconds
-        var timeInterval: TimeInterval = TimeInterval(duration)
+        let date: Date? = event.startTime
+        let duration = event.duration / 1000 // has to be divided by 1000 since the TimeInterval method is in seconds
+        let timeInterval: TimeInterval = TimeInterval(duration)
         
-        var endTime: Date? = date?.addingTimeInterval(timeInterval)
+        let endTime: Date? = date?.addingTimeInterval(timeInterval)
         
         Card(
             cornerRadius: 15,
