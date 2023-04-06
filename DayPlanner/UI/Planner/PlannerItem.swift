@@ -10,16 +10,16 @@ import SwiftUI
 struct PlannerItem: View {
     
     @EnvironmentObject var app: AppVariables
-    let planner: PlannerModel
+    let event: Event
     
     var body: some View {
-        PlannerCard(planner: planner)
+        PlannerCard(event: event)
     }
 }
 
 struct PlannerItem_Previews: PreviewProvider {
     static var previews: some View {
-        PlannerItem(planner: PlannerModel())
+        PlannerItem(event: Event())
             .environmentObject(AppVariables())
     }
 }

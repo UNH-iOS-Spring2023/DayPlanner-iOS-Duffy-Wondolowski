@@ -42,8 +42,8 @@ struct Planner: View {
                 ScrollView {
                     
                     VStack(spacing: 10) {
-                        ForEach(app.planner, id: \.self.id) {
-                            (planner: PlannerModel) in PlannerItem(planner: planner)
+                        ForEach(app.eventList, id: \.self.id) {
+                            (event: Event) in PlannerItem(event: event)
                         }
 //                        ForEach(app.eventList, id: \.self.id){
 //                            (event: Event) in ListItem(event: event)

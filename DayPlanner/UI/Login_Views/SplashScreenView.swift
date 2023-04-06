@@ -178,22 +178,22 @@ struct SplashScreenView: View {
                     
                     
                     
-                    app.planner = []
-                    db.collection("Users/\(app.uid!)/events")
-                        .getDocuments() { (planners, err) in
-                            if let err = err {
-                                print("Error getting events: \(err)")
-                            } else {
-                                for planner in planners!.documents {
-                                    do {
-                                        app.planner
-                                            .append(try planner.data(as: PlannerModel.self))
-                                    } catch {
-                                        print("Error converting db event: \(error)")
-                                    }
-                                }
-                            }
-                        }
+//                    app.planner = []
+//                    db.collection("Users/\(app.uid!)/events")
+//                        .getDocuments() { (planners, err) in
+//                            if let err = err {
+//                                print("Error getting events: \(err)")
+//                            } else {
+//                                for planner in planners!.documents {
+//                                    do {
+//                                        app.planner
+//                                            .append(try planner.data(as: PlannerModel.self))
+//                                    } catch {
+//                                        print("Error converting db event: \(error)")
+//                                    }
+//                                }
+//                            }
+//                        }
                     
                     
                     
