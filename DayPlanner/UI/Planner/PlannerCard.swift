@@ -18,22 +18,13 @@ struct PlannerCard: View {
         self.event = event
     }
     
-//    let planner: PlannerModel
-//
-//    init(planner: PlannerModel) {
-//        self.planner = planner
-//    }
-    
     var body: some View {
         
         var date: Date? = event.startTime
+        var duration = event.duration / 1000 // has to be divided by 1000 since the TimeInterval method is in seconds
+        var timeInterval: TimeInterval = TimeInterval(duration)
         
-        var dateFormatter: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateStyle = .long
-            formatter.timeStyle = .medium
-            return formatter
-        }()
+        var endTime: Date? = date?.addingTimeInterval(timeInterval)
         
         Card(
             cornerRadius: 15,
@@ -64,15 +55,17 @@ struct PlannerCard: View {
                                                 .multilineTextAlignment(.center)
                                             .padding(5)
                                             
+                                            Spacer()
+                                                                                        
+                                            let dateStringEnd = DateFormatter.localizedString(from: endTime!, dateStyle: .none, timeStyle: .short)
+                                            
+                                            Text(dateStringEnd)
+                                                .foregroundColor(.white)
+                                                .font(.system(size:18))
+                                                .multilineTextAlignment(.center)
+                                            .padding(5)
+                                            
                                         }
-                                        
-                                        Spacer()
-                                        
-//                                        Text(planner.endTime)
-//                                            .foregroundColor(.white)
-//                                            .font(.system(size:18))
-//                                            .multilineTextAlignment(.center)
-//                                        .padding(5)
                                     }
                                 )
                             }
@@ -94,6 +87,8 @@ struct PlannerCard: View {
         
         
     }
+    
+    
       
     
     
