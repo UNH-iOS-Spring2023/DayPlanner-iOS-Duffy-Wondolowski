@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 /// This is the UI element for the PlannerCard
 /// - Parameters:
@@ -13,6 +14,8 @@ import SwiftUI
 ///     - time: The time that the event begins
 
 struct PlannerCard: View {
+    
+    let currentDate = Date()
     
     let event: Event
     
@@ -22,11 +25,16 @@ struct PlannerCard: View {
     
     var body: some View {
         
-        let date: Date? = event.startTime
+//        let content = UNMutableNotificationContent()
+//        content.title = "Your Event Has Begun!"
+//        content.subtitle = event.eventName
+//        content.sound = UNNotificationSound.default
+        
+        let startTime: Date? = event.startTime
         let duration = event.duration / 1000 // has to be divided by 1000 since the TimeInterval method is in seconds
         let timeInterval: TimeInterval = TimeInterval(duration)
         
-        let endTime: Date? = date?.addingTimeInterval(timeInterval)
+        let endTime: Date? = startTime?.addingTimeInterval(timeInterval)
         
         Card(
             cornerRadius: 15,
@@ -48,8 +56,8 @@ struct PlannerCard: View {
                                     
                                     VStack {
                                         
-                                        if let date = date{
-                                            let dateString = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short)
+                                        if let startTime = startTime{
+                                            let dateString = DateFormatter.localizedString(from: startTime, dateStyle: .none, timeStyle: .short)
                                             
                                             Text(dateString)
                                                 .foregroundColor(.white)
@@ -66,6 +74,10 @@ struct PlannerCard: View {
                                                 .font(.system(size:18))
                                                 .multilineTextAlignment(.center)
                                             .padding(5)
+                                            
+                                            if currentDate == startTime {
+                                                
+                                            }
                                             
                                         }
                                     }
