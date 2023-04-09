@@ -87,8 +87,10 @@ struct EventEdit: View {
                     Slider(value: $duration, in: 5...360)
                     if (duration < 60) {
                         Text("\(Int(duration)) Minutes")
+                            .foregroundColor(.white)
                     } else {
                         Text("\(Int(duration / 60)) Hours \(Int(duration) % 60) Minutes")
+                            .foregroundColor(.white)
                     }
                     
                 }
@@ -99,12 +101,28 @@ struct EventEdit: View {
                             if showStartTime { startTime = Date()}
                             else { startTime = nil }
                         }
+                        .foregroundColor(.white)
                     if (showStartTime) {
                         DatePicker("Please enter a time",
                                    selection: Binding(get: {self.startTime ?? Date()}, set: {self.startTime = $0}),
                                    displayedComponents: .hourAndMinute
                         )
                     }
+                }
+                if app.user.locationServices == true {
+                    HStack {
+                        CustomTextField(
+                            placeHolder: "Location (Optional)",
+                            imageName: "",
+                            bColor: "textColorWhite",
+                            tOpacity: 0.6,
+                            width: CGFloat.infinity,
+                            height: 40,
+                            borderColor: CustomColor.backgroundCard,
+                            value: $location
+                        )
+                        Button(action: maps, label: { Image(systemName: "location.circle") })
+                    }.padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
                 }
                 Spacer()
                 
@@ -132,6 +150,11 @@ struct EventEdit: View {
                 showStartTime = event.startTime != nil
         }
         }
+    }
+    
+    ///Enter the google maps view
+    private func maps() {
+        
     }
     
     ///Forget any changes made and return to the event list view
