@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseFirestore
+import GooglePlaces
 
 //extension Int {
 //    //toDouble modified from https://ootips.org/yonat/swiftui-binding-type-conversion/
@@ -34,6 +35,11 @@ struct EventEdit: View {
     @State private var createAlert: Bool = false
     @State private var alertText = ""
     
+    //    @State private var placeSearch = false
+    
+    @State private var predictions: [String] = []
+    @FocusState private var locationFocused: Bool
+    
     let db = Firestore.firestore()
     
     init(event: Event = Event()) {
@@ -51,7 +57,6 @@ struct EventEdit: View {
             
             CustomColor.background
                 .ignoresSafeArea(.all)
-            
             VStack {
                 Text("Event Customization")
                     .foregroundColor(.white)
@@ -110,19 +115,41 @@ struct EventEdit: View {
                     }
                 }
                 if app.user.locationServices == true {
-                    HStack {
-                        CustomTextField(
-                            placeHolder: "Location (Optional)",
-                            imageName: "",
-                            bColor: "textColorWhite",
-                            tOpacity: 0.6,
-                            width: CGFloat.infinity,
-                            height: 40,
-                            borderColor: CustomColor.backgroundCard,
-                            value: $location
-                        )
-                        Button(action: maps, label: { Image(systemName: "location.circle") })
-                    }.padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
+                    VStack {
+                        HStack {
+                            CustomTextField(
+                                placeHolder: "Location (Optional)",
+                                imageName: "",
+                                bColor: "textColorWhite",
+                                tOpacity: 0.6,
+                                width: CGFloat.infinity,
+                                height: 40,
+                                borderColor: CustomColor.backgroundCard,
+                                value: $location
+                            )
+                            .focused($locationFocused)
+                            //                                Button(action: maps, label: { Image(systemName: "location.circle") })
+                        }.padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
+                        if locationFocused {
+                            List {
+                                ForEach(predictions, id: \.self) { prediction in
+                                    HStack {
+                                        Text(prediction)
+                                            .font(.system(size: 14))
+                                            .foregroundColor(.white)
+                                    }
+                                    .onTapGesture {
+                                        location = prediction
+                                    }
+                                    //                                        .listRowInsets(EdgeInsets(top: -20, leading: -20, bottom: -20, trailing: -20))
+                                    .listRowBackground(CustomColor.backgroundCard)
+                                }
+                            }
+                            .listStyle(PlainListStyle())
+                            .background(CustomColor.background)
+                            .onChange(of: location) { location in updateLocPredictions()}
+                        }
+                    }
                 }
                 Spacer()
                 
@@ -148,13 +175,32 @@ struct EventEdit: View {
                 location = event.location
                 recurring = event.recurring
                 showStartTime = event.startTime != nil
+            }
         }
-        }
+    }
+    
+    ///Updates location predictions based on the location variable that was typed
+    private func updateLocPredictions() {
+        app.placesClient.findAutocompletePredictions(fromQuery: location,
+                                                     filter: GMSAutocompleteFilter(),
+                                                     sessionToken: app.token,
+                                                     callback: { (results, error) in
+            if let error = error {
+                print("Autocomplete error: \(error)")
+                return
+            }
+            if let results = results {
+                predictions = []
+                for result in results {
+                    predictions.append(result.attributedFullText.string)
+                }
+            }
+        })
     }
     
     ///Enter the google maps view
     private func maps() {
-        
+        //        placeSearch = true
     }
     
     ///Forget any changes made and return to the event list view

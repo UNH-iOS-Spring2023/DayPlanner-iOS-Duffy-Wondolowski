@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
+import GooglePlaces
 
 class AppVariables: ObservableObject {
     @Published var selectedTab: Int = 0
@@ -18,6 +19,9 @@ class AppVariables: ObservableObject {
     @Published var user: User = User()
     
     @Published var uid: String? = nil
+    
+    let token = GMSAutocompleteSessionToken.init()
+    let placesClient = GMSPlacesClient.shared()
     
     ///Check to ensure that there is no overlap in time between a new event to be added and the already existing events
     /// - Parameter oldEvent: If the new event is overwriting an old event, the old event is passed so it can be excluded from the check

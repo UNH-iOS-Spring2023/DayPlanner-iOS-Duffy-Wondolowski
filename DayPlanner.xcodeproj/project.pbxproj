@@ -82,6 +82,9 @@
 		F69DE8DB29E3648F0021D1C7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69DE8D729E3648B0021D1C7 /* QuartzCore.framework */; };
 		F69DE8DC29E364900021D1C7 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69DE8D829E3648B0021D1C7 /* OpenGLES.framework */; };
 		F69DE8DE29E370AD0021D1C7 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69DE8DD29E370AD0021D1C7 /* Map.swift */; };
+		F69DE8E029E390650021D1C7 /* GooglePlaces.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69DE8DF29E390650021D1C7 /* GooglePlaces.xcframework */; };
+		F69DE8E629E390ED0021D1C7 /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F69DE8E529E390ED0021D1C7 /* GooglePlaces.bundle */; };
+		F69DE8EA29E4B2920021D1C7 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69DE8E929E4B2920021D1C7 /* Places.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +155,9 @@
 		F69DE8D729E3648B0021D1C7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F69DE8D829E3648B0021D1C7 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		F69DE8DD29E370AD0021D1C7 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		F69DE8DF29E390650021D1C7 /* GooglePlaces.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GooglePlaces.xcframework; path = DayPlanner/GooglePlaces.xcframework; sourceTree = "<group>"; };
+		F69DE8E529E390ED0021D1C7 /* GooglePlaces.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = "DayPlanner/GooglePlaces.xcframework/ios-arm64/GooglePlaces.framework/Resources/GooglePlaces.bundle"; sourceTree = "<group>"; };
+		F69DE8E929E4B2920021D1C7 /* Places.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Places.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +177,7 @@
 				F69DE8C529E364230021D1C7 /* CoreLocation.framework in Frameworks */,
 				F69DE8C629E364240021D1C7 /* CoreTelephony.framework in Frameworks */,
 				F69DE8C729E364260021D1C7 /* CoreText.framework in Frameworks */,
+				F69DE8E029E390650021D1C7 /* GooglePlaces.xcframework in Frameworks */,
 				F69DE8C829E364270021D1C7 /* CoreImage.framework in Frameworks */,
 				F69DE8C929E364280021D1C7 /* CoreGraphics.framework in Frameworks */,
 				F69DE8CA29E364290021D1C7 /* CoreData.framework in Frameworks */,
@@ -293,6 +300,7 @@
 				AF2F49FA29C2B2D600F7570F /* EventCard.swift */,
 				F600344C29C3DD26008BDD0B /* ListItem.swift */,
 				F69DE8DD29E370AD0021D1C7 /* Map.swift */,
+				F69DE8E929E4B2920021D1C7 /* Places.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -318,6 +326,7 @@
 		F694C5A129B55E0500536551 = {
 			isa = PBXGroup;
 			children = (
+				F69DE8E529E390ED0021D1C7 /* GooglePlaces.bundle */,
 				F69DE8BB29E363D30021D1C7 /* GoogleMaps.bundle */,
 				F694C5AC29B55E0500536551 /* DayPlanner */,
 				F694C5AB29B55E0500536551 /* Products */,
@@ -364,6 +373,7 @@
 		F69DE8A629E3633E0021D1C7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F69DE8DF29E390650021D1C7 /* GooglePlaces.xcframework */,
 				F69DE8D829E3648B0021D1C7 /* OpenGLES.framework */,
 				F69DE8D729E3648B0021D1C7 /* QuartzCore.framework */,
 				F69DE8D629E3648B0021D1C7 /* SystemConfiguration.framework */,
@@ -530,6 +540,7 @@
 				F694C5B229B55E0700536551 /* Assets.xcassets in Resources */,
 				AF9DF8AC29C2C76B00C676E7 /* GoogleService-Info.plist in Resources */,
 				F69DE8BC29E363D30021D1C7 /* GoogleMaps.bundle in Resources */,
+				F69DE8E629E390ED0021D1C7 /* GooglePlaces.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +588,7 @@
 				F600345529C405A7008BDD0B /* +View.swift in Sources */,
 				AF2F49F929C2180100F7570F /* SplashScreenView.swift in Sources */,
 				F600345C29C511CC008BDD0B /* User.swift in Sources */,
+				F69DE8EA29E4B2920021D1C7 /* Places.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,6 +747,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DayPlanner/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires your location to use location services";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -765,6 +778,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DayPlanner/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires your location to use location services";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
