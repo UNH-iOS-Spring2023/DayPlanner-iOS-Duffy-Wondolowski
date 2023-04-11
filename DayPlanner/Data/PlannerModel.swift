@@ -6,9 +6,15 @@
 //
 
 import Foundation
-import Firebase
-import FirebaseStorage
-import FirebaseAuth
+import FirebaseFirestoreSwift
+
+struct PlannerModel: Equatable, Identifiable, Codable {
+    @DocumentID var id: String?
+//    var startTime: Date? = nil
+//    var endTime: String = ""
+    var eventName: String = ""
+}
+
 
 //class PlannerModel: ObservableObject{
 //    let id: String

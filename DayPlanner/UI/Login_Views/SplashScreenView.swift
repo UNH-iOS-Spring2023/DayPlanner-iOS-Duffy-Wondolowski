@@ -15,6 +15,9 @@ class AppVariables: ObservableObject {
     //Determines whether the app goes to the edit event page when the list is selected
     @Published var isEventEdit: Bool = false
     @Published var eventList: [Event] = []
+    
+    @Published var planner: [PlannerModel] = []
+    
     @Published var selectedEvent: Event? = nil
     @Published var user: User = User()
     
@@ -176,6 +179,28 @@ struct SplashScreenView: View {
                                 }
                             }
                         }
+                    
+                    
+                    
+//                    app.planner = []
+//                    db.collection("Users/\(app.uid!)/events")
+//                        .getDocuments() { (planners, err) in
+//                            if let err = err {
+//                                print("Error getting events: \(err)")
+//                            } else {
+//                                for planner in planners!.documents {
+//                                    do {
+//                                        app.planner
+//                                            .append(try planner.data(as: PlannerModel.self))
+//                                    } catch {
+//                                        print("Error converting db event: \(error)")
+//                                    }
+//                                }
+//                            }
+//                        }
+                    
+                    
+                    
                 }
                 
             }
