@@ -52,6 +52,7 @@ struct EventCard: View {
                             width: 150,
                             height: 50,
                             color: CustomColor.background,
+                            click: self.openMaps,
                             views: {
                                 AnyView(
                                     
@@ -62,7 +63,6 @@ struct EventCard: View {
                                 )
                             }
                         )
-                        
              
                     }
                 )
@@ -86,6 +86,21 @@ struct EventCard: View {
             return Text(event.location)
         }
             
+    }
+    
+    private func openMaps() {
+        let preppedAddress = event.location.replacingOccurrences(of: " ", with: "+")
+        
+        let googleMapsUrl = URL(string: "comgooglemaps://?saddr=&daddr=\(preppedAddress)&directionsmode=driving")!
+        let appleMapsUrl = URL(string: "maps://?saddr=&daddr=\(preppedAddress)")!
+        
+        if UIApplication.shared.canOpenURL(googleMapsUrl) {
+            UIApplication.shared.open(googleMapsUrl)
+        } else if UIApplication.shared.canOpenURL(appleMapsUrl) {
+            UIApplication.shared.open(appleMapsUrl)
+        } else {
+            UIApplication.shared.open(URL(string: "https://www.google.com/maps/place/\(preppedAddress)")!)
+        }
     }
 }
 
