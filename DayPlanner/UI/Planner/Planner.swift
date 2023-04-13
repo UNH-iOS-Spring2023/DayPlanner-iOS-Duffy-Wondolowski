@@ -50,7 +50,7 @@ struct Planner: View {
                                 return startTime1 > startTime2
                             } else {
                                 return true
-                            }
+                             }
                         }, id: \.id){ event in
                             PlannerItem(event: event)
                         }

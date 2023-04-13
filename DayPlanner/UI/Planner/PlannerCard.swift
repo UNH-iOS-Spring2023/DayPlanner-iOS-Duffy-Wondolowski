@@ -85,6 +85,8 @@ struct PlannerCard: View {
                             }
                         ).padding(8)
                         
+                        Button("Send", action: { self.sendNotification() })
+                        
                         Spacer()
                         
                         Text(event.eventName)
@@ -96,9 +98,35 @@ struct PlannerCard: View {
                     }
                 )
             }
-        ).padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10))
+        ).padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10)) // end of the card
+        
+//        if currentDate == startTime {
+//            sendNotification()
+//        }
    
     } // end of body
+    
+    func sendNotification() { // code in part from Kavsoft tutorial https://www.youtube.com/watch?v=BW9dVMNNpkY
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (_, _) in
+            
+        }
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Your event has begun!"
+        content.body = "This is a notification that your event has begun!"
+        
+        
+        let open = UNNotificationAction(identifier: "open", title: "open", options: .foreground)
+        
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        let req = UNNotificationRequest(identifier: "req", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(req, withCompletionHandler: nil)
+        
+    }
  
 } // end of View
 
