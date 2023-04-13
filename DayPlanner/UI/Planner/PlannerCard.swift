@@ -88,16 +88,25 @@ struct PlannerCard: View {
             }
         ).padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10))
             .onAppear{
+                
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+                    if granted {
+                        print("User granted notification permissions")
+                    } else {
+                        print("User did not grant notification permissions")
+                    }
+                }
+                
                 Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+                    
                     if Date() == startTime {
                         self.sendNotification()
                         timer.invalidate()
                     }
-                }
-//                if currentTime == startTime{
-//                    sendNotification()
-//                }
-            }
+                    
+                } // end of timer
+                
+            } // end of onAppear
         
 
    
@@ -105,32 +114,22 @@ struct PlannerCard: View {
     
     func sendNotification() { // code in part from Kavsoft tutorial https://www.youtube.com/watch?v=BW9dVMNNpkY
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (_, _) in
-            
-        }
-        
         let content = UNMutableNotificationContent()
         content.title = "Event Starting Now!"
         content.body = "This is a notification that your event has begun!"
         
-        
-//        let open = UNNotificationAction(identifier: "open", title: "Open", options: .foreground)
-//        let cancel = UNNotificationAction(identifier: "cancel", title: "Cancel", options: .foreground)
-//
-//        let categories = UNNotificationCategory(identifier: "action", actions: [open,cancel], intentIdentifiers: [])
-//
-//        UNUserNotificationCenter.current().setNotificationCategories([categories])
-//
-//        content.categoryIdentifier = "action"
-        
-        
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        
         let request = UNNotificationRequest(identifier: "eventStartingNow", content: content, trigger: trigger)
         
-        UNUserNotificationCenter.current().add(request)
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error sending notification: \(error.localizedDescription)")
+            } else {
+                print("Notification sent")
+            }
+        }
         
-    }
+    } // end of sendNotifications function
  
 } // end of View
 
