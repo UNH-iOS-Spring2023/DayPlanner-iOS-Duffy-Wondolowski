@@ -15,8 +15,6 @@ import UserNotifications
 
 struct PlannerCard: View {
     
-    let currentDate = Date()
-    
     let event: Event
     
     init(event: Event) {
@@ -25,11 +23,7 @@ struct PlannerCard: View {
     
     var body: some View {
         
-//        let content = UNMutableNotificationContent()
-//        content.title = "Your Event Has Begun!"
-//        content.subtitle = event.eventName
-//        content.sound = UNNotificationSound.default
-        
+        let currentTime = Date()
         let startTime: Date? = event.startTime
         let duration = event.duration / 1000 // has to be divided by 1000 since the TimeInterval method is in seconds
         let timeInterval: TimeInterval = TimeInterval(duration)
@@ -74,18 +68,12 @@ struct PlannerCard: View {
                                                 .font(.system(size:18))
                                                 .multilineTextAlignment(.center)
                                             .padding(5)
-                                            
-                                            if currentDate == startTime {
-                                                
-                                            }
-                                            
+                                                                                        
                                         }
                                     }
                                 )
                             }
                         ).padding(8)
-                        
-                        Button("Send", action: { self.sendNotification() })
                         
                         Spacer()
                         
@@ -98,11 +86,20 @@ struct PlannerCard: View {
                     }
                 )
             }
-        ).padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10)) // end of the card
+        ).padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10))
+            .onAppear{
+                Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+                    if Date() == startTime {
+                        self.sendNotification()
+                        timer.invalidate()
+                    }
+                }
+//                if currentTime == startTime{
+//                    sendNotification()
+//                }
+            }
         
-//        if currentDate == startTime {
-//            sendNotification()
-//        }
+
    
     } // end of body
     
@@ -113,18 +110,25 @@ struct PlannerCard: View {
         }
         
         let content = UNMutableNotificationContent()
-        content.title = "Your event has begun!"
+        content.title = "Event Starting Now!"
         content.body = "This is a notification that your event has begun!"
         
         
-        let open = UNNotificationAction(identifier: "open", title: "open", options: .foreground)
+//        let open = UNNotificationAction(identifier: "open", title: "Open", options: .foreground)
+//        let cancel = UNNotificationAction(identifier: "cancel", title: "Cancel", options: .foreground)
+//
+//        let categories = UNNotificationCategory(identifier: "action", actions: [open,cancel], intentIdentifiers: [])
+//
+//        UNUserNotificationCenter.current().setNotificationCategories([categories])
+//
+//        content.categoryIdentifier = "action"
         
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
-        let req = UNNotificationRequest(identifier: "req", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "eventStartingNow", content: content, trigger: trigger)
         
-        UNUserNotificationCenter.current().add(req, withCompletionHandler: nil)
+        UNUserNotificationCenter.current().add(request)
         
     }
  
