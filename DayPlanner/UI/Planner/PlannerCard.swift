@@ -16,11 +16,9 @@ import UserNotifications
 struct PlannerCard: View {
     
     let event: Event
-    let viewModel: PlannerModel
     
-    init(event: Event, viewModel: PlannerModel) {
+    init(event: Event) {
         self.event = event
-        self.viewModel = viewModel
     }
     
     var body: some View {
@@ -76,8 +74,6 @@ struct PlannerCard: View {
                             }
                         ).padding(8)
                         
-                        //Button("Send", action: viewModel.scheduleNotification(for: currentTime))
-                        
                         Spacer()
                         
                         Text(event.eventName)
@@ -90,11 +86,6 @@ struct PlannerCard: View {
                 )
             }
         ).padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10))
-            .onAppear{
-                
-                viewModel.scheduleNotifications(for: Date())
-                
-            } // end of onAppear
    
     } // end of body
  
@@ -102,7 +93,7 @@ struct PlannerCard: View {
 
 struct PlannerCard_Previews: PreviewProvider {
     static var previews: some View {
-        PlannerCard(event: Event(eventName: "Event Name"), viewModel: PlannerModel())
+        PlannerCard(event: Event(eventName: "Event Name"))
             .environmentObject(AppVariables())
     }
 }

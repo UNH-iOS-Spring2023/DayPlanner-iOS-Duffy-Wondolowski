@@ -7,55 +7,58 @@
 
 import UserNotifications
 
-class PlannerModel{
+class PlannerModel: ObservableObject{
     
-    var events: [Event] = []
+    @Published var events: [Event] = []
     
-    func scheduleNotifications(for time: Date) {
+    func scheduleNotifications() {
         
-        let center = UNUserNotificationCenter.current()
+            let center = UNUserNotificationCenter.current()
         
-        center.requestAuthorization(options: [.alert, .sound]) { granted, error in
-            if let error = error {
-                print("Error requesting notification authorization: \(error.localizedDescription)")
-            } else if granted {
-                print("Notification authorization granted")
-            } else {
-                print("Notification authorization denied")
+            center.requestAuthorization(options: [.alert, .sound]) { granted, error in
+                if let error = error {
+                    print("Error requesting notification authorization: \(error.localizedDescription)")
+                } else if granted {
+                    print("Notification authorization granted")
+                } else {
+                    print("Notification authorization denied")
+                }
+                
             }
             
-        } // end of requestAuthorization
-        
-        let calendar = Calendar.current
-        let eventStartTimeComponents = calendar.dateComponents([.hour, .minute], from: time)
-        
-        for event in events {
+            let calendar = Calendar.current
             
-            let eventStartTime = calendar.date(byAdding: eventStartTimeComponents, to: event.startTime!)!
-            if eventStartTime > time {
-                let content = UNMutableNotificationContent()
-                content.title = "Upcoming Event: \(event.eventName)"
-                content.body = "Your event starts at \(DateFormatter.localizedString(from: event.startTime!, dateStyle: .none, timeStyle: .short))"
-                content.sound = .default
+            for event in events {
                 
-                let triggerDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: eventStartTime)
-                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDateComponents, repeats: false)
+                guard let startTime = event.startTime else { continue }
+                let eventStartTimeComponents = calendar.dateComponents([.hour, .minute], from: startTime)
+                let eventStartTime = calendar.date(byAdding: eventStartTimeComponents, to: startTime)!
                 
-                let request = UNNotificationRequest(identifier: event.eventName, content: content, trigger: trigger)
-                center.add(request) { error in
-                    if let error = error {
-                        print("Error scheduling notification for event \(event.eventName): \(error.localizedDescription)")
-                    } else {
-                        print("Notification scheduled for event \(event.eventName)")
+                if eventStartTime > Date() {
+                    
+                    let content = UNMutableNotificationContent()
+                    content.title = "Upcoming Event: \(event.eventName)"
+                    content.body = "Your event starts at \(DateFormatter.localizedString(from: startTime, dateStyle: .none, timeStyle: .short))"
+                    content.sound = .default
+                    
+                    let triggerDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: eventStartTime)
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDateComponents, repeats: false)
+                    
+                    let request = UNNotificationRequest(identifier: event.eventName, content: content, trigger: trigger)
+                    center.add(request) { error in
+                        if let error = error {
+                            print("Error scheduling notification for event \(event.eventName): \(error.localizedDescription)")
+                        } else {
+                            print("Notification scheduled for event \(event.eventName)")
+                        }
+                        
                     }
                     
                 }
                 
             }
-            
-        } // end of for loop
         
-    } // end of scheduleNotifications function
+        } // end of scheduleNotifications function
     
     
     

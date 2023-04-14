@@ -11,6 +11,8 @@ struct Planner: View {
     
     @EnvironmentObject private var app: AppVariables
     
+    @StateObject var plannerModel = PlannerModel()
+    
     let event: Event
     
     init(event: Event) {
@@ -55,17 +57,8 @@ struct Planner: View {
                             PlannerItem(event: event)
                         }
                         
-//                        ForEach(app.eventList, id: \.self.id) {
-//                            (event: Event) in PlannerItem(event: event)
-//                        }.onAppear{
-//                            app.eventList.sort{$0.startTime! < $1.startTime!}
-//                        }
-                        
-//                        .onAppear{
-//                            app.eventList.sort{$0.startTime! < $1.startTime!}
-//                        }
-                        
-                        
+                    }.onAppear{
+                        plannerModel.scheduleNotifications()
                     }
                     
                     
