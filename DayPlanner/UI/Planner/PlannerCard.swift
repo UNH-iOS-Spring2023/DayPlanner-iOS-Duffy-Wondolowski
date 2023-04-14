@@ -75,6 +75,8 @@ struct PlannerCard: View {
                             }
                         ).padding(8)
                         
+                        Button("Send", action: sendNotification)
+                        
                         Spacer()
                         
                         Text(event.eventName)
