@@ -16,14 +16,15 @@ import UserNotifications
 struct PlannerCard: View {
     
     let event: Event
+    let viewModel: PlannerModel
     
-    init(event: Event) {
+    init(event: Event, viewModel: PlannerModel) {
         self.event = event
+        self.viewModel = viewModel
     }
     
     var body: some View {
         
-        let currentTime = Date()
         let startTime: Date? = event.startTime
         let duration = event.duration / 1000 // has to be divided by 1000 since the TimeInterval method is in seconds
         let timeInterval: TimeInterval = TimeInterval(duration)
@@ -75,7 +76,7 @@ struct PlannerCard: View {
                             }
                         ).padding(8)
                         
-                        Button("Send", action: sendNotification)
+                        //Button("Send", action: viewModel.scheduleNotification(for: currentTime))
                         
                         Spacer()
                         
@@ -91,53 +92,17 @@ struct PlannerCard: View {
         ).padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10))
             .onAppear{
                 
-                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-                    if granted {
-                        print("User granted notification permissions")
-                    } else {
-                        print("User did not grant notification permissions")
-                    }
-                }
-                
-                Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-                    
-                    if Date() == startTime {
-                        self.sendNotification()
-                        timer.invalidate()
-                    }
-                    
-                } // end of timer
+                viewModel.scheduleNotifications(for: Date())
                 
             } // end of onAppear
-        
-
    
     } // end of body
-    
-    func sendNotification() { // code in part from Kavsoft tutorial https://www.youtube.com/watch?v=BW9dVMNNpkY
-        
-        let content = UNMutableNotificationContent()
-        content.title = "Event Starting Now!"
-        content.body = "This is a notification that your event has begun!"
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request = UNNotificationRequest(identifier: "eventStartingNow", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print("Error sending notification: \(error.localizedDescription)")
-            } else {
-                print("Notification sent")
-            }
-        }
-        
-    } // end of sendNotifications function
  
 } // end of View
 
 struct PlannerCard_Previews: PreviewProvider {
     static var previews: some View {
-        PlannerCard(event: Event(eventName: "Event Name"))
+        PlannerCard(event: Event(eventName: "Event Name"), viewModel: PlannerModel())
             .environmentObject(AppVariables())
     }
 }

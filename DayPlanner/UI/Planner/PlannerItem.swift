@@ -13,7 +13,7 @@ struct PlannerItem: View {
     let event: Event
     
     var body: some View {
-        PlannerCard(event: event)
+        PlannerCard(event: event, viewModel: PlannerModel())
     }
 }
 
