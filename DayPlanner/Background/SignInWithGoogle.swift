@@ -9,6 +9,8 @@ import SwiftUI
 import Firebase
 import GoogleSignIn
 
+// code in part from https://www.youtube.com/watch?v=TK36R09l3Oo
+
 class SignInWithGoogle: ObservableObject {
     @Published var isLoginSuccessful = false
     
