@@ -29,23 +29,24 @@ struct ContentView: View {
         }
         .onChange(of: scenePhase) { phase in
             if phase == .inactive {
-//                Persistence.save(user: app.user, events: app.eventList) { (userResult, eventResult) in
-//                    if case .failure(let error) = userResult {
-//                    print("Error saving users: \(error.localizedDescription)")
-//                    }
-//
-//                    if case .failure(let error) = eventResult {
-//                    print("Error saving events: \(error.localizedDescription)")
-//                    }
-//                do {
-//                    let eventData = try Firestore.Encoder().encode(app.eventList)
-//                    UserDefaults.standard.set(eventData, forKey: "eventList")
-//
-//                    let userData = try Firestore.Encoder().encode(app.user)
-//                    UserDefaults.standard.set(userData, forKey: "user")
-//                } catch {
-//                    print("Error saving data: \(error.localizedDescription)")
-//                }
+                Persistence.save(user: app.user, events: app.eventList) { (userResult, eventResult) in
+                    if case .failure(let error) = userResult {
+                        print("Error saving users: \(error.localizedDescription)")
+                    }
+                    
+                    if case .failure(let error) = eventResult {
+                        print("Error saving events: \(error.localizedDescription)")
+                    }
+                    do {
+                        let eventData = try Firestore.Encoder().encode(app.eventList)
+                        UserDefaults.standard.set(eventData, forKey: "eventList")
+                        
+                        let userData = try Firestore.Encoder().encode(app.user)
+                        UserDefaults.standard.set(userData, forKey: "user")
+                    } catch {
+                        print("Error saving data: \(error.localizedDescription)")
+                    }
+                }
             }
         }
     }
