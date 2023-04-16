@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
+import GoogleSignIn
 
 struct SignInView: View {
     @EnvironmentObject private var app: AppVariables
@@ -16,6 +17,8 @@ struct SignInView: View {
     
     @State var txtEmail: String = ""
     @State var txtPassword: String = ""
+    
+    @StateObject private var vm = SignInWithGoogle()
     
     @State private var alertText = ""
     @State private var createAlert: Bool = false
@@ -82,6 +85,16 @@ struct SignInView: View {
                                         Alert(title: Text(alertText))
                                     }
                                 
+                                Button {
+                                    vm.signInGoogle()
+                                } label: {
+                                    Text("Sign in with Google")
+                                        .padding()
+                                        .foregroundColor(.white)
+                                        .frame(maxWidth: .infinity, maxHeight: 40)
+                                        .background(CustomColor.darkGreen)
+                                        .cornerRadius(15)
+                                }
                                 
                             }.padding(15)
                         )
@@ -121,7 +134,6 @@ struct SignInView: View {
         txtEmail = ""
         txtPassword = ""
     }
-    
     
 }
 
