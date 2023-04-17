@@ -40,12 +40,12 @@ class AppVariables: ObservableObject {
         
         let calendar = Calendar(identifier: .gregorian)
         let date = calendar.startOfDay(for: Date())
-//        print("Day Planner: start of day: \(date)")
-//        print("Day Planner: eventsLastCleared: \(user.eventsLastCleared)")
+        //        print("Day Planner: start of day: \(date)")
+        //        print("Day Planner: eventsLastCleared: \(user.eventsLastCleared)")
         
         if user.eventsLastCleared < date {
-//            print("Day Planner: Clearing events due to the day changing")
-//            print(eventList)
+            //            print("Day Planner: Clearing events due to the day changing")
+            //            print(eventList)
             
             user.eventsLastCleared = Date()
             
@@ -124,34 +124,34 @@ struct SplashScreenView: View {
                 app.uid = Auth.auth().currentUser?.uid
                 
                 if app.uid == nil {
-                    //                Persistence.load{ (userResult, eventResult) in
-                    ////                                print("Full load user result: \(userResult)")
-                    ////                                print("Full load event result: \(eventResult)")
-                    //                    switch userResult {
-                    //                    case .failure(let error):
-                    //                        print("Error loading users: \(error.localizedDescription)")
-                    //                    case .success(let user):
-                    //                        app.user = user
-                    //                    }
-                    //
-                    //                    switch eventResult {
-                    //                    case .failure(let error):
-                    //                        print("Error loading events: \(error.localizedDescription)")
-                    //                    case .success(let events):
-                    //                        app.eventList = events
-                    //                    }
-                    //                }
-                    //                do {
-                    //                    let eventData = UserDefaults.standard.value(forKey: "eventList")
-                    //                    app.eventList = try
-                    //                    Firestore.Decoder().decode([Event].self, from: eventData ?? [])
-                    //
-                    //                    let userData = UserDefaults.standard.value(forKey: "user")
-                    //                    app.user = try
-                    //                    Firestore.Decoder().decode(User.self, from: userData ?? User())
-                    //                } catch {
-                    //                    print("Error saving data: \(error.localizedDescription)")
-                    //                }
+                    Persistence.load{ (userResult, eventResult) in
+                        //                                print("Full load user result: \(userResult)")
+                        //                                print("Full load event result: \(eventResult)")
+                        switch userResult {
+                        case .failure(let error):
+                            print("Error loading users: \(error.localizedDescription)")
+                        case .success(let user):
+                            app.user = user
+                        }
+                        
+                        switch eventResult {
+                        case .failure(let error):
+                            print("Error loading events: \(error.localizedDescription)")
+                        case .success(let events):
+                            app.eventList = events
+                        }
+                    }
+//                    do {
+//                        let eventData = UserDefaults.standard.value(forKey: "eventList")
+//                        app.eventList = try
+//                        Firestore.Decoder().decode([Event].self, from: eventData ?? [])
+//                        
+//                        let userData = UserDefaults.standard.value(forKey: "user")
+//                        app.user = try
+//                        Firestore.Decoder().decode(User.self, from: userData ?? User())
+//                    } catch {
+//                        print("Error saving data: \(error.localizedDescription)")
+//                    }
                 } else {
                     db.collection("Users").document(app.uid!)
                         .getDocument(as: User.self) { result in
@@ -171,47 +171,35 @@ struct SplashScreenView: View {
                             } else {
                                 for event in events!.documents {
                                     do {
+                                        var newEvent = try event.data(as: Event.self)
+                                        newEvent.id = event.documentID
                                         app.eventList
-                                            .append(try event.data(as: Event.self))
+                                            .append(newEvent)
                                     } catch {
                                         print("Error converting db event: \(error)")
                                     }
                                 }
                             }
                         }
-                    
-                    
-                    
-//                    app.planner = []
-//                    db.collection("Users/\(app.uid!)/events")
-//                        .getDocuments() { (planners, err) in
-//                            if let err = err {
-//                                print("Error getting events: \(err)")
-//                            } else {
-//                                for planner in planners!.documents {
-//                                    do {
-//                                        app.planner
-//                                            .append(try planner.data(as: PlannerModel.self))
-//                                    } catch {
-//                                        print("Error converting db event: \(error)")
-//                                    }
-//                                }
-//                            }
-//                        }
-                    
-                    
-                    
+                    //                    app.planner = []
+                    //                    db.collection("Users/\(app.uid!)/events")
+                    //                        .getDocuments() { (planners, err) in
+                    //                            if let err = err {
+                    //                                print("Error getting events: \(err)")
+                    //                            } else {
+                    //                                for planner in planners!.documents {
+                    //                                    do {
+                    //                                        app.planner
+                    //                                            .append(try planner.data(as: PlannerModel.self))
+                    //                                    } catch {
+                    //                                        print("Error converting db event: \(error)")
+                    //                                    }
+                    //                                }
+                    //                            }
+                    //                        }
                 }
-                
             }
-            
         }
-        
-        
-        
-        
-        
-        
     }
 }
 
