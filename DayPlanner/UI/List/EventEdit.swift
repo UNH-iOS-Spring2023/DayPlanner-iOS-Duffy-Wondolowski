@@ -54,14 +54,14 @@ struct EventEdit: View {
             
             VStack {
                 Text("Event Customization")
-                    .foregroundColor(.white)
+                    .foregroundColor(CustomColor.darkGreen)
                 
                 Card(
                     cornerRadius: 15,
-                    elevation: 3,
+                    elevation: 10,
                     width: CGFloat.infinity,
                     height: 80,
-                    color: CustomColor.backgroundCard,
+                    color: CustomColor.background,
                     views: {
                         AnyView(
                             CustomTextField(
@@ -76,49 +76,93 @@ struct EventEdit: View {
                             ).padding(10)
                         )
                     }
-                ).padding(5)
+                ).padding(5) // end of Event Name Card
                 
+                Text("Event Duration")
+                    .foregroundColor(CustomColor.darkGreen)
                 
-                VStack{
-                    Text("Event Duration")
-                        .foregroundColor(.white)
-                    
-                    
-                    Slider(value: $duration, in: 5...360)
-                    if (duration < 60) {
-                        Text("\(Int(duration)) Minutes")
-                    } else {
-                        Text("\(Int(duration / 60)) Hours \(Int(duration) % 60) Minutes")
-                    }
-                    
-                }
-                
-                VStack {
-                    Toggle("Start Time (Optional)", isOn: $showStartTime)
-                        .onChange(of: showStartTime) { showStartTime in
-                            if showStartTime { startTime = Date()}
-                            else { startTime = nil }
-                        }
-                    if (showStartTime) {
-                        DatePicker("Please enter a time",
-                                   selection: Binding(get: {self.startTime ?? Date()}, set: {self.startTime = $0}),
-                                   displayedComponents: .hourAndMinute
+                Card(
+                    cornerRadius: 15,
+                    elevation: 10,
+                    width: CGFloat.infinity,
+                    height: 130,
+                    color: CustomColor.background,
+                    views: {
+                        AnyView(
+                            VStack{
+                                
+                                Slider(value: $duration, in: 5...360)
+                                
+                                if (duration < 60) {
+                                    Text("\(Int(duration)) Minutes")
+                                        .foregroundColor(.white)
+                                } else {
+                                    Text("\(Int(duration / 60)) Hours \(Int(duration) % 60) Minutes")
+                                        .foregroundColor(.white)
+                                }
+                                
+                            }.padding(5)
                         )
                     }
-                }
+                ).padding(5) // end of Slider Card
+                
+                
+                Text("Event Start Time")
+                    .foregroundColor(CustomColor.darkGreen)
+                
+                Card(
+                    cornerRadius: 15,
+                    elevation: 10,
+                    width: CGFloat.infinity,
+                    height: 150,
+                    color: CustomColor.background,
+                    views: {
+                        AnyView(
+                            VStack {
+                                Toggle("Start Time (Optional)", isOn: $showStartTime)
+                                    .padding(10)
+                                    .foregroundColor(.white)
+                                    .onChange(of: showStartTime) { showStartTime in
+                                        if showStartTime { startTime = Date()}
+                                        else { startTime = nil }
+                                    }
+                                if (showStartTime) {
+                                    DatePicker("Enter the Time:",
+                                               selection: Binding(get: {self.startTime ?? Date()}, set: {self.startTime = $0}),
+                                               displayedComponents: .hourAndMinute
+                                    ).foregroundColor(.white)
+                                        .padding(10)
+                                }
+                            }
+                        )
+                    }
+                ).padding(5) // end of StartTime Card
+                
                 Spacer()
                 
-                HStack {
-                    Button ("Cancel", action: cancel)
-                        .foregroundColor(Color(.systemOrange))
-                    Button ("Create", action: create)
-                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                        .alert(isPresented: $createAlert) {
-                            Alert(title: Text(alertText))
-                        }
-                    Button ("Delete", action: delete)
-                        .foregroundColor(Color(.systemRed))
-                }
+                Card(
+                    cornerRadius: 15,
+                    elevation: 10,
+                    width: CGFloat.infinity,
+                    height: 80,
+                    color: CustomColor.background,
+                    views: {
+                        AnyView(
+                            HStack {
+                                Button ("Cancel", action: cancel)
+                                    .foregroundColor(Color(.systemOrange))
+                                Button ("Create", action: create)
+                                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                                    .alert(isPresented: $createAlert) {
+                                        Alert(title: Text(alertText))
+                                    }
+                                Button ("Delete", action: delete)
+                                    .foregroundColor(Color(.systemRed))
+                            }
+                        )
+                    }
+                ).padding(5) // end of Button Card
+                
             }
             .font(.system(.title))
             .padding(EdgeInsets(top: 10, leading: 25, bottom: 25, trailing: 10))
