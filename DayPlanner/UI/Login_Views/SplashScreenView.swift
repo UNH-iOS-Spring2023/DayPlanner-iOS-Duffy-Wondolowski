@@ -181,6 +181,7 @@ struct SplashScreenView: View {
                                 }
                             }
                         }
+<<<<<<< HEAD
                     //                    app.planner = []
                     //                    db.collection("Users/\(app.uid!)/events")
                     //                        .getDocuments() { (planners, err) in
@@ -197,6 +198,9 @@ struct SplashScreenView: View {
                     //                                }
                     //                            }
                     //                        }
+=======
+                    
+>>>>>>> spencer-develop
                 }
             }
         }

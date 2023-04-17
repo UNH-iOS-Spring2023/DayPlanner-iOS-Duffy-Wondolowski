@@ -14,9 +14,12 @@ import GooglePlaces
 
 
 class AppDelegate: NSObject, UIApplicationDelegate{
+    
     func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
         FirebaseApp.configure()
+<<<<<<< HEAD
         
         if let mapsApiKey = Bundle.main.infoDictionary?["MAPS_API_KEY"] as? String {
             GMSServices.provideAPIKey(mapsApiKey)
@@ -25,15 +28,26 @@ class AppDelegate: NSObject, UIApplicationDelegate{
             print("Day Planner: Error! Google Maps API key not found in info.plist!")
         }
 
+=======
+        UNUserNotificationCenter.current().delegate = self
+        
+>>>>>>> spencer-develop
         return true
+        
     }
     
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-      return GIDSignIn.sharedInstance.handle(url)
+        return GIDSignIn.sharedInstance.handle(url)
     }
 
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
 }
 
 @main

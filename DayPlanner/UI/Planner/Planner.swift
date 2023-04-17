@@ -10,8 +10,15 @@ import SwiftUI
 struct Planner: View {
     
     @EnvironmentObject private var app: AppVariables
+    
+    let event: Event
+    
+    init(event: Event) {
+        self.event = event
+    }
         
     var body: some View {
+        
         ZStack (alignment: .top){
             
             CustomColor.background
@@ -38,12 +45,18 @@ struct Planner: View {
                 ScrollView {
                     
                     VStack(spacing: 10) {
-                        ForEach(app.eventList, id: \.self.id) {
-                            (event: Event) in PlannerItem(event: event)
+                        
+                        ForEach(app.eventList.sorted {event1, event2 in
+                            if let startTime1 = event1.startTime, let startTime2 = event2.startTime {
+                                return startTime1 > startTime2
+                            } else {
+                                return true
+                             }
+                        }, id: \.id){ event in
+                            PlannerItem(event: event)
                         }
+                        
                     }
-                    
-                    
                     
 //                    VStack{
 //                        ForEach(1..<25){ i in
@@ -78,7 +91,7 @@ struct Planner: View {
 
 struct Planner_Previews: PreviewProvider {
     static var previews: some View {
-        Planner()
+        Planner(event: Event())
             .environmentObject(AppVariables())
     }
 }

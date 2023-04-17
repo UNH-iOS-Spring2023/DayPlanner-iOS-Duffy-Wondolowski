@@ -19,7 +19,7 @@ struct ContentView: View {
         VStack{
             BottomBar(
                 AnyView(EventList()),
-                AnyView(Planner()),
+                AnyView(Planner(event: Event())),
                 AnyView(Settings())
             )
             .environmentObject(app)
