@@ -87,22 +87,22 @@ struct PlannerCard: View {
             }
         ).padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10))
             .onAppear{
-                sendNotifications()
-            }
-             
-        
-        
-   
+                startNotifications()
+                endNotifications()
+            } // end of onAppear
+
     } // end of body
 
     func getTime() -> String {
+        
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         let dateString = formatter.string(from: Date())
         return dateString
+        
     } // end of getTime function
     
-    func sendNotifications() {
+    func startNotifications() {
         
         let start: Date? = event.startTime
         
@@ -111,7 +111,7 @@ struct PlannerCard: View {
         if startTimeShort == getTime(){
             let content = UNMutableNotificationContent()
             content.title = event.eventName
-            content.subtitle = "Your Event Has Begun"
+            content.subtitle = "Your Event Has Begun!"
             content.sound = .default
             content.badge = 1
 
@@ -122,8 +122,33 @@ struct PlannerCard: View {
             UNUserNotificationCenter.current().add(request)
         }
         
-    } // end of sendNotifications function
+    } // end of startNotifications function
     
+    func endNotifications() {
+        
+        let start: Date? = event.startTime
+        let duration = event.duration / 1000 // has to be divided by 1000 since the TimeInterval method is in seconds
+        let timeInterval: TimeInterval = TimeInterval(duration)
+        
+        let end: Date? = start?.addingTimeInterval(timeInterval)
+        
+        let endTimeShort = DateFormatter.localizedString(from: end!, dateStyle: .none, timeStyle: .short)
+        
+        if startTimeShort == getTime(){
+            let content = UNMutableNotificationContent()
+            content.title = event.eventName
+            content.subtitle = "Your Event Has Ended!"
+            content.sound = .default
+            content.badge = 1
+
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+            UNUserNotificationCenter.current().add(request)
+        }
+        
+    } // end of endNotifications function
  
 } // end of View
 

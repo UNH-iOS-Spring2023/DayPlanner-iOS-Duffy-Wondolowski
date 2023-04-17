@@ -11,8 +11,6 @@ struct Planner: View {
     
     @EnvironmentObject private var app: AppVariables
     
-    @StateObject var plannerModel = PlannerModel()
-    
     let event: Event
     
     init(event: Event) {
@@ -58,11 +56,7 @@ struct Planner: View {
                             PlannerItem(event: event)
                         }
                         
-                    }.onAppear{
-                        plannerModel.scheduleNotifications()
                     }
-                    
-                    
                     
 //                    VStack{
 //                        ForEach(1..<25){ i in
