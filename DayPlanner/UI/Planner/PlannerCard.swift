@@ -86,8 +86,44 @@ struct PlannerCard: View {
                 )
             }
         ).padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10))
+            .onAppear{
+                sendNotifications()
+            }
+             
+        
+        
    
     } // end of body
+
+    func getTime() -> String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        let dateString = formatter.string(from: Date())
+        return dateString
+    } // end of getTime function
+    
+    func sendNotifications() {
+        
+        let start: Date? = event.startTime
+        
+        let startTimeShort = DateFormatter.localizedString(from: start!, dateStyle: .none, timeStyle: .short)
+        
+        if startTimeShort == getTime(){
+            let content = UNMutableNotificationContent()
+            content.title = event.eventName
+            content.subtitle = "Your Event Has Begun"
+            content.sound = .default
+            content.badge = 1
+
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+            UNUserNotificationCenter.current().add(request)
+        }
+        
+    } // end of sendNotifications function
+    
  
 } // end of View
 

@@ -20,6 +20,7 @@ struct Planner: View {
     }
         
     var body: some View {
+        
         ZStack (alignment: .top){
             
             CustomColor.background
