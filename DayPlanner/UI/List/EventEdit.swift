@@ -103,7 +103,7 @@ struct EventEdit: View {
                 VStack {
                     Toggle("Start Time (Optional)", isOn: $showStartTime)
                         .onChange(of: showStartTime) { showStartTime in
-                            if showStartTime { startTime = Date()}
+                            if showStartTime { if startTime == nil { startTime = Date()}}
                             else { startTime = nil }
                         }
                         .foregroundColor(.white)
@@ -221,7 +221,8 @@ struct EventEdit: View {
                 location: location,
                 recurring: recurring)
             
-            if let eventIndex = app.eventList.firstIndex(where: { $0 == self.event }) {
+            if event != Event(),
+               let eventIndex = app.eventList.firstIndex(where: { $0.id == self.event.id }) {
                 
                 if app.checkEventOverlap(newEvent: newEvent, oldEvent: app.eventList[eventIndex]) {
                     app.eventList[eventIndex] = newEvent
@@ -256,7 +257,7 @@ struct EventEdit: View {
     
     ///Delete the currently edited event. Works the same as cancel if the event is a new one
     private func delete() {
-        if event != Event(), let eventIndex = app.eventList.firstIndex(where: { $0 == self.event }) {
+        if event != Event(), let eventIndex = app.eventList.firstIndex(where: { $0.id == self.event.id }) {
             deleteEvent()
             app.eventList.remove(at: eventIndex)
         }

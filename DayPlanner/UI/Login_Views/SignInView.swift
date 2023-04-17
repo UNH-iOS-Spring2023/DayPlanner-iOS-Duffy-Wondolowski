@@ -107,15 +107,6 @@ struct SignInView: View {
                 
                 print("User ID: " + (app.uid ?? "None"))
                 
-                for event in app.eventList {
-                    do {
-                        try db.collection("Users/\(app.uid!)/events")
-                            .document(event.id!).setData(from:event)
-                    }
-                    catch {
-                        print("Error uploading event to database: \(error.localizedDescription)")
-                    }
-                }
             }
         }
         txtEmail = ""
