@@ -38,6 +38,7 @@
 		AF2F49F429C0DAAC00F7570F /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AF2F49F329C0DAAC00F7570F /* GoogleSignInSwift */; };
 		AF2F49F929C2180100F7570F /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F49F829C2180100F7570F /* SplashScreenView.swift */; };
 		AF2F49FB29C2B2D600F7570F /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F49FA29C2B2D600F7570F /* EventCard.swift */; };
+		AF39D77D29EE4D480028EA01 /* SignInWithGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF39D77C29EE4D480028EA01 /* SignInWithGoogle.swift */; };
 		AF7548BC29DA720F0025DDA8 /* PlannerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7548BB29DA720F0025DDA8 /* PlannerItem.swift */; };
 		AF94702929B581F60049BA4A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94702829B581F60049BA4A /* SignInView.swift */; };
 		AF94702B29B582160049BA4A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94702A29B582160049BA4A /* SignUpView.swift */; };
@@ -109,6 +110,7 @@
 		AF2F49F529C0DD5E00F7570F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AF2F49F829C2180100F7570F /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		AF2F49FA29C2B2D600F7570F /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
+		AF39D77C29EE4D480028EA01 /* SignInWithGoogle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogle.swift; sourceTree = "<group>"; };
 		AF7548BB29DA720F0025DDA8 /* PlannerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerItem.swift; sourceTree = "<group>"; };
 		AF94702829B581F60049BA4A /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		AF94702A29B582160049BA4A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 			children = (
 				F600345229C3FBE7008BDD0B /* ScrollDropDelegate.swift */,
 				F600345629C4F2B8008BDD0B /* CustomProvider.swift */,
+				AF39D77C29EE4D480028EA01 /* SignInWithGoogle.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				F69DE8DE29E370AD0021D1C7 /* Map.swift in Sources */,
 				F600345529C405A7008BDD0B /* +View.swift in Sources */,
 				AF2F49F929C2180100F7570F /* SplashScreenView.swift in Sources */,
+				AF39D77D29EE4D480028EA01 /* SignInWithGoogle.swift in Sources */,
 				AF7548BC29DA720F0025DDA8 /* PlannerItem.swift in Sources */,
 				F600345C29C511CC008BDD0B /* User.swift in Sources */,
 				F69DE8EA29E4B2920021D1C7 /* Places.swift in Sources */,
