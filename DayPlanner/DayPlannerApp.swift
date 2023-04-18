@@ -38,6 +38,12 @@ class AppDelegate: NSObject, UIApplicationDelegate{
 
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
+}
+
 @main
 struct YourApp: App {
   // register app delegate for Firebase setup
