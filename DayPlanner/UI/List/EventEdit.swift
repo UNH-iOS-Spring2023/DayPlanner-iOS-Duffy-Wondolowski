@@ -59,7 +59,7 @@ struct EventEdit: View {
                 .ignoresSafeArea(.all)
             VStack {
                 Text("Event Customization")
-                    .foregroundColor(.white)
+                    .foregroundColor(CustomColor.darkGreen)
                 
                 Card(
                     cornerRadius: 15,
@@ -81,10 +81,11 @@ struct EventEdit: View {
                             ).padding(10)
                         )
                     }
-                ).padding(5)
+                ).padding(5) // end of name card
                 
-                
-<<<<<<< HEAD
+                Text("Event Duration")
+                    .foregroundColor(CustomColor.darkGreen)
+            
                 Card(
                     cornerRadius: 15,
                     elevation: 10,
@@ -106,38 +107,9 @@ struct EventEdit: View {
                                 }
                                 
                             }.padding(5)
-=======
-                VStack{
-                    Text("Event Duration")
-                        .foregroundColor(.white)
-                    
-                    
-                    Slider(value: $duration, in: 5...360)
-                    if (duration < 60) {
-                        Text("\(Int(duration)) Minutes")
-                            .foregroundColor(.white)
-                    } else {
-                        Text("\(Int(duration / 60)) Hours \(Int(duration) % 60) Minutes")
-                            .foregroundColor(.white)
-                    }
-                    
-                }
-                
-                VStack {
-                    Toggle("Start Time (Optional)", isOn: $showStartTime)
-                        .onChange(of: showStartTime) { showStartTime in
-                            if showStartTime { if startTime == nil { startTime = Date()}}
-                            else { startTime = nil }
-                        }
-                        .foregroundColor(.white)
-                    if (showStartTime) {
-                        DatePicker("Please enter a time",
-                                   selection: Binding(get: {self.startTime ?? Date()}, set: {self.startTime = $0}),
-                                   displayedComponents: .hourAndMinute
->>>>>>> parent of 5332a96 (Changes)
                         )
                     }
-                ).padding(5) // end of Slider Card
+                ) // end of slider card
                 
                 Text("Event Start Time")
                     .foregroundColor(CustomColor.darkGreen)
@@ -169,6 +141,7 @@ struct EventEdit: View {
                         )
                     }
                 ).padding(5) // end of StartTime Card
+                
                 
                 if app.user.locationServices == true {
                     VStack {
@@ -207,10 +180,7 @@ struct EventEdit: View {
                         }
                     }
                 }
-<<<<<<< HEAD
-                
-=======
->>>>>>> parent of 5332a96 (Changes)
+
                 Spacer()
                 
                 HStack {
