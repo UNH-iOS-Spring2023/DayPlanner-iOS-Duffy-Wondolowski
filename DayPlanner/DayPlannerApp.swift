@@ -18,12 +18,12 @@ class AppDelegate: NSObject, UIApplicationDelegate{
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
         
-//        if let mapsApiKey = Bundle.main.infoDictionary?["MAPS_API_KEY"] as? String {
-//            GMSServices.provideAPIKey("mapsApiKey")
-//            GMSPlacesClient.provideAPIKey("mapsApiKey")
-//        } else {
-//            print("Day Planner: Error! Google Maps API key not found in info.plist!")
-//        }
+        if let mapsApiKey = Bundle.main.infoDictionary?["MAPS_API_KEY"] as? String {
+            GMSServices.provideAPIKey("mapsApiKey")
+            GMSPlacesClient.provideAPIKey("mapsApiKey")
+        } else {
+            print("Day Planner: Error! Google Maps API key not found in info.plist!")
+        }
         
         UNUserNotificationCenter.current().delegate = self
 
