@@ -70,7 +70,7 @@ struct EventEdit: View {
                     views: {
                         AnyView(
                             CustomTextField(
-                                placeHolder: "Event Name (Required)",
+                                placeHolder: "Event Name",
                                 imageName: "",
                                 bColor: "textColorWhite",
                                 tOpacity: 0.6,
