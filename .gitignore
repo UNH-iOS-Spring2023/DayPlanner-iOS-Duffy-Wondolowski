@@ -1,5 +1,7 @@
 ### CSCI 6656/4556 .gitignore file ###
-*.plist
+# Modified from *.plist to only include .plist files within the first subdirectory (ex: Info.plist)
+# So that things like Google Services are supported out of the box
+*/*.plist
 
 # Created by https://www.gitignore.io/api/xcode,swift,firebase,cocoapods
 # Edit at https://www.gitignore.io/?templates=xcode,swift,firebase,cocoapods
