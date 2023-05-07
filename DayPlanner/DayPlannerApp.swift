@@ -19,11 +19,13 @@ class AppDelegate: NSObject, UIApplicationDelegate{
         FirebaseApp.configure()
         
         if let mapsApiKey = Bundle.main.infoDictionary?["MAPS_API_KEY"] as? String {
-            GMSServices.provideAPIKey(mapsApiKey)
-            GMSPlacesClient.provideAPIKey(mapsApiKey)
+            GMSServices.provideAPIKey("mapsApiKey")
+            GMSPlacesClient.provideAPIKey("mapsApiKey")
         } else {
             print("Day Planner: Error! Google Maps API key not found in info.plist!")
         }
+        
+        UNUserNotificationCenter.current().delegate = self
 
         return true
     }
@@ -34,6 +36,12 @@ class AppDelegate: NSObject, UIApplicationDelegate{
       return GIDSignIn.sharedInstance.handle(url)
     }
 
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
 }
 
 @main
