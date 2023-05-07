@@ -132,7 +132,7 @@ struct PlannerCard: View {
            
            let endTimeShort = DateFormatter.localizedString(from: end!, dateStyle: .none, timeStyle: .short)
            
-           if startTimeShort == getTime(){
+           if endTimeShort == getTime(){
                
                let content = UNMutableNotificationContent()
                content.title = event.eventName
