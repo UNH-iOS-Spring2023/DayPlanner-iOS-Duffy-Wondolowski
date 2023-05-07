@@ -13,9 +13,11 @@ import SwiftUI
 struct PlannerCard: View {
     
     let event: Event
+    let user: User
     
-    init(event: Event) {
+    init(event: Event, user: User) {
         self.event = event
+        self.user = user
     }
     
     var body: some View {
@@ -84,8 +86,15 @@ struct PlannerCard: View {
             }
         ).padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10))
             .onAppear{
-                startNotifications()
-                endNotifications()
+                
+                if user.startNotifications == true {
+                    startNotifications()
+                    
+                } else if user.endNotifications == true {
+                    endNotifications()
+                    
+                }
+
             }
         
         
@@ -104,48 +113,65 @@ struct PlannerCard: View {
         
         let start: Date? = event.startTime
         
-        let startTimeShort = DateFormatter.localizedString(from: start!, dateStyle: .none, timeStyle: .short)
+        //let startTimeShort = DateFormatter.localizedString(from: start!, dateStyle: .none, timeStyle: .short)
         
-        if startTimeShort == getTime(){
-            let content = UNMutableNotificationContent()
-            content.title = event.eventName
-            content.subtitle = "Your Event Has Begun"
-            content.sound = .default
-            content.badge = 1
+        if let start = start {
+            let startTimeShort = DateFormatter.localizedString(from: start, dateStyle: .none, timeStyle: .short)
+            // Use startTimeShort here
+            if startTimeShort == getTime(){
+                let content = UNMutableNotificationContent()
+                content.title = event.eventName
+                content.subtitle = "Your Event Has Begun"
+                content.sound = .default
+                content.badge = 1
 
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
 
-            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
 
-            UNUserNotificationCenter.current().add(request)
+                UNUserNotificationCenter.current().add(request)
+            }
+            
+        } else {
+            // Handle the case where start is nil
         }
+        
         
     } // end of startNotifications function
     
     func endNotifications() {
            
-           let start: Date? = event.startTime
-           let duration = event.duration / 1000 // has to be divided by 1000 since the TimeInterval method is in seconds
-           let timeInterval: TimeInterval = TimeInterval(duration)
-           
-           let end: Date? = start?.addingTimeInterval(timeInterval)
-           
-           let endTimeShort = DateFormatter.localizedString(from: end!, dateStyle: .none, timeStyle: .short)
-           
-           if endTimeShort == getTime(){
-               
-               let content = UNMutableNotificationContent()
-               content.title = event.eventName
-               content.subtitle = "Your Event Has Ended!"
-               content.sound = .default
-               content.badge = 1
+       let start: Date? = event.startTime
+       let duration = event.duration / 1000 // has to be divided by 1000 since the TimeInterval method is in seconds
+       let timeInterval: TimeInterval = TimeInterval(duration)
+       
+       let end: Date? = start?.addingTimeInterval(timeInterval)
+       
+//           let endTimeShort = DateFormatter.localizedString(from: end!, dateStyle: .none, timeStyle: .short)
+        
+        if let end = end {
+            let endTimeShort = DateFormatter.localizedString(from: end, dateStyle: .none, timeStyle: .short)
+            // Use startTimeShort here
+            
+            if endTimeShort == getTime(){
+                
+                let content = UNMutableNotificationContent()
+                content.title = event.eventName
+                content.subtitle = "Your Event Has Ended!"
+                content.sound = .default
+                content.badge = 1
 
-               let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
 
-               let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
 
-               UNUserNotificationCenter.current().add(request)
-           }
+                UNUserNotificationCenter.current().add(request)
+            }
+        } else {
+            // Handle the case where start is nil
+        }
+           
+        
            
        } // end of endNotifications function
 
