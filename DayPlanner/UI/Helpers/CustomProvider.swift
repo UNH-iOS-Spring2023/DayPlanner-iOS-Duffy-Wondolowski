@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//Idea came from https://github.com/Asperi-Demo/4SwiftUI/blob/master/PlayOn_iOS/PlayOn_iOS/Findings/TestDropCancellingIntercept.swift
 class CustomProvider: NSItemProvider {
     var ended: () -> Void
     
