@@ -128,8 +128,9 @@ struct EventEdit: View {
                                         .padding(10)
                                         .foregroundColor(.white)
                                         .onChange(of: showStartTime) { showStartTime in
-                                            if showStartTime { startTime = Date()}
-                                            else { startTime = nil }
+                                            if showStartTime {
+                                                if startTime == nil { startTime = Date() }
+                                            }
                                         }
                                     if (showStartTime) {
                                         DatePicker("Enter the Time:",

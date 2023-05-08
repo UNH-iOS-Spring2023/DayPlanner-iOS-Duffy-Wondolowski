@@ -216,6 +216,7 @@ struct Settings: View {
             
             app.uid = nil
             app.eventList = []
+            app.user = User()
             
             print ("User logged out.")
             
