@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Codable {
+struct User: Codable, Equatable {
     var defaultScreen: Int = 0
     var startNotifications: Bool = false
     var endNotifications: Bool = false

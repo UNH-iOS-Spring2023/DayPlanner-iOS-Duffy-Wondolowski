@@ -58,128 +58,138 @@ struct EventEdit: View {
             CustomColor.background
                 .ignoresSafeArea(.all)
             VStack {
-                Text("Event Customization")
-                    .foregroundColor(CustomColor.darkGreen)
-                
-                Card(
-                    cornerRadius: 15,
-                    elevation: 3,
-                    width: CGFloat.infinity,
-                    height: 80,
-                    color: CustomColor.backgroundCard,
-                    views: {
-                        AnyView(
-                            CustomTextField(
-                                placeHolder: "Event Name",
-                                imageName: "",
-                                bColor: "textColorWhite",
-                                tOpacity: 0.6,
-                                width: CGFloat.infinity,
-                                height: 40,
-                                borderColor: CustomColor.background,
-                                value: $eventName
-                            ).padding(10)
-                        )
-                    }
-                ).padding(5) // end of name card
-                
-                Text("Event Duration")
-                    .foregroundColor(CustomColor.darkGreen)
-            
-                Card(
-                    cornerRadius: 15,
-                    elevation: 10,
-                    width: CGFloat.infinity,
-                    height: 130,
-                    color: CustomColor.background,
-                    views: {
-                        AnyView(
-                            VStack{
-                                
-                                Slider(value: $duration, in: 5...360)
-                                
-                                if (duration < 60) {
-                                    Text("\(Int(duration)) Minutes")
-                                        .foregroundColor(.white)
-                                } else {
-                                    Text("\(Int(duration / 60)) Hours \(Int(duration) % 60) Minutes")
-                                        .foregroundColor(.white)
-                                }
-                                
-                            }.padding(5)
-                        )
-                    }
-                ) // end of slider card
-                
-                Text("Event Start Time")
-                    .foregroundColor(CustomColor.darkGreen)
-
-                Card(
-                    cornerRadius: 15,
-                    elevation: 10,
-                    width: CGFloat.infinity,
-                    height: 150,
-                    color: CustomColor.background,
-                    views: {
-                        AnyView(
-                            VStack {
-                                Toggle("Start Time (Optional)", isOn: $showStartTime)
-                                    .padding(10)
-                                    .foregroundColor(.white)
-                                    .onChange(of: showStartTime) { showStartTime in
-                                        if showStartTime { startTime = Date()}
-                                        else { startTime = nil }
-                                    }
-                                if (showStartTime) {
-                                    DatePicker("Enter the Time:",
-                                               selection: Binding(get: {self.startTime ?? Date()}, set: {self.startTime = $0}),
-                                               displayedComponents: .hourAndMinute
-                                    ).foregroundColor(.white)
-                                        .padding(10)
-                                }
-                            }
-                        )
-                    }
-                ).padding(5) // end of StartTime Card
-                
-                
-                if app.user.locationServices == true {
-                    VStack {
-                        HStack {
-                            CustomTextField(
-                                placeHolder: "Location (Optional)",
-                                imageName: "",
-                                bColor: "textColorWhite",
-                                tOpacity: 0.6,
-                                width: CGFloat.infinity,
-                                height: 40,
-                                borderColor: CustomColor.backgroundCard,
-                                value: $location
+                ScrollView {
+                    Text("Event Name*")
+                        .foregroundColor(CustomColor.darkGreen)
+                    
+                    Card(
+                        cornerRadius: 15,
+                        elevation: 3,
+                        width: CGFloat.infinity,
+                        height: 80,
+                        color: CustomColor.backgroundCard,
+                        views: {
+                            AnyView(
+                                CustomTextField(
+                                    placeHolder: "My Event",
+                                    imageName: "",
+                                    bColor: "textColorWhite",
+                                    tOpacity: 0.6,
+                                    width: CGFloat.infinity,
+                                    height: 40,
+                                    borderColor: CustomColor.background,
+                                    value: $eventName
+                                ).padding(10)
                             )
-                            .focused($locationFocused)
-                            //                                Button(action: maps, label: { Image(systemName: "location.circle") })
-                        }.padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
-                        if locationFocused {
-                            List {
-                                ForEach(predictions, id: \.self) { prediction in
-                                    HStack {
-                                        Text(prediction)
-                                            .font(.system(size: 14))
+                        }
+                    ).padding(5) // end of name card
+                    
+                    Text("Event Duration")
+                        .foregroundColor(CustomColor.darkGreen)
+                    
+                    Card(
+                        cornerRadius: 15,
+                        elevation: 10,
+                        width: CGFloat.infinity,
+                        height: 130,
+                        color: CustomColor.background,
+                        views: {
+                            AnyView(
+                                VStack{
+                                    
+                                    Slider(value: $duration, in: 5...360)
+                                    
+                                    if (duration < 60) {
+                                        Text("\(Int(duration)) Minutes")
+                                            .foregroundColor(.white)
+                                    } else {
+                                        Text("\(Int(duration / 60)) Hours \(Int(duration) % 60) Minutes")
                                             .foregroundColor(.white)
                                     }
-                                    .onTapGesture {
-                                        location = prediction
+                                    
+                                }.padding(5)
+                            )
+                        }
+                    ) // end of slider card
+                    
+                    Text("Event Start Time")
+                        .foregroundColor(CustomColor.darkGreen)
+                    
+                    Card(
+                        cornerRadius: 15,
+                        elevation: 10,
+                        width: CGFloat.infinity,
+                        height: 140,
+                        color: CustomColor.background,
+                        views: {
+                            AnyView(
+                                VStack {
+                                    Toggle("Start Time", isOn: $showStartTime)
+                                        .padding(10)
+                                        .foregroundColor(.white)
+                                        .onChange(of: showStartTime) { showStartTime in
+                                            if showStartTime {
+                                                if startTime == nil { startTime = Date() }
+                                            }
+                                        }
+                                    if (showStartTime) {
+                                        DatePicker("Enter the Time:",
+                                                   selection: Binding(get: {self.startTime ?? Date()}, set: {self.startTime = $0}),
+                                                   displayedComponents: .hourAndMinute
+                                        )
+                                        .foregroundColor(.white)
+                                        .padding(10)
                                     }
-                                    //                                        .listRowInsets(EdgeInsets(top: -20, leading: -20, bottom: -20, trailing: -20))
-                                    .listRowBackground(CustomColor.backgroundCard)
                                 }
+                            )
+                        }
+                    )
+                    .padding(5) // end of StartTime Card
+                    
+                    if app.user.locationServices == true {
+                        Text("Event Location")
+                            .foregroundColor(CustomColor.darkGreen)
+                        
+                        VStack {
+                            HStack {
+                                CustomTextField(
+                                    placeHolder: "Location",
+                                    imageName: "",
+                                    bColor: "textColorWhite",
+                                    tOpacity: 0.6,
+                                    width: CGFloat.infinity,
+                                    height: 40,
+                                    borderColor: CustomColor.backgroundCard,
+                                    value: $location
+                                )
+                                .focused($locationFocused)
+                                //                                Button(action: maps, label: { Image(systemName: "location.circle") })
+                            }.padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
+                            if locationFocused {
+                                List {
+                                    ForEach(predictions, id: \.self) { prediction in
+                                        HStack {
+                                            Text(prediction)
+                                                .font(.system(size: 14))
+                                                .foregroundColor(.white)
+                                        }
+                                        .onTapGesture {
+                                            location = prediction
+                                            locationFocused = false
+                                        }
+                                        //                                        .listRowInsets(EdgeInsets(top: -20, leading: -20, bottom: -20, trailing: -20))
+                                        .listRowBackground(CustomColor.backgroundCard)
+                                    }
+                                }
+                                .listStyle(PlainListStyle())
+                                .frame(height: 250)
+                                .background(CustomColor.background)
+                                .onChange(of: location) { location in updateLocPredictions()}
                             }
-                            .listStyle(PlainListStyle())
-                            .background(CustomColor.background)
-                            .onChange(of: location) { location in updateLocPredictions()}
                         }
                     }
                 }
+                .animation(.default, value: showStartTime)
 
                 Spacer()
                 

@@ -109,7 +109,7 @@ struct CustomTextField: View{
 
 
 
-
+//Pulled from professor's code and then modified a bit
 /// This is the UI element for the Card View
 /// - Parameters:
 ///     - cornerRadius: how rounded the corner will be
@@ -121,7 +121,6 @@ struct CustomTextField: View{
 ///     - views: the content that is added to the card
 ///     - click: the function that will be called when the card is pressed
 ///     - longclick: the fucntion called when the card is pressed long
-
 struct Card: View {
     @State private var isTap: Bool = false
     
