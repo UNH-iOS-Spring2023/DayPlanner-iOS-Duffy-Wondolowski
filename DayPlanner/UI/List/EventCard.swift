@@ -28,7 +28,7 @@ struct EventCard: View {
             cornerRadius: 15,
             elevation: 3,
             height: 100,
-            color: CustomColor.backgroundCard,
+            color: CustomColor.background,
             click: self.click,
             views: {
                 AnyView(
@@ -46,12 +46,14 @@ struct EventCard: View {
                                                        
                         }.padding(10)
                         
+                        Spacer()
+                        
                         Card(
                             cornerRadius: 15,
                             elevation: 3,
                             width: 150,
                             height: 50,
-                            color: CustomColor.background,
+                            color: CustomColor.darkGreen,
                             click: self.openMaps,
                             views: {
                                 AnyView(
@@ -62,12 +64,12 @@ struct EventCard: View {
                                     
                                 )
                             }
-                        )
+                        ).padding(10)
              
                     }
                 )
             }
-        ).padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))    
+        ).padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10))
     }
     
     func listTime() -> Text {

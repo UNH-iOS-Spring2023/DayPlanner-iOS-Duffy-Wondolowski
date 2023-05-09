@@ -14,12 +14,12 @@ import SwiftUI
 
 struct PlannerCard: View {
     
-    let event: Event
-    let user: User
+    @EnvironmentObject var app: AppVariables
     
-    init(event: Event, user: User = User()) {
+    let event: Event
+    
+    init(event: Event) {
         self.event = event
-        self.user = user
     }
     
     var body: some View {
@@ -89,15 +89,15 @@ struct PlannerCard: View {
         ).padding(EdgeInsets(top: 4, leading: 10, bottom: 0, trailing: 10))
             .onAppear{
                 
-                if user.startNotifications == true {
+                if app.user.startNotifications == true {
                     startNotifications()
-                    
-                } else if user.endNotifications == true {
+                }
+                
+                else if app.user.endNotifications == true {
                     endNotifications()
-                    
                 }
 
-            }
+            } // end of onAppear
         
         
         
@@ -123,7 +123,7 @@ struct PlannerCard: View {
             if startTimeShort == getTime(){
                 let content = UNMutableNotificationContent()
                 content.title = event.eventName
-                content.subtitle = "Your Event Has Begun"
+                content.subtitle = "Your Event Has Begun!"
                 content.sound = .default
                 content.badge = 1
 
@@ -134,10 +134,7 @@ struct PlannerCard: View {
                 UNUserNotificationCenter.current().add(request)
             }
             
-        } else {
-            // Handle the case where start is nil
         }
-        
         
     } // end of startNotifications function
     
@@ -162,20 +159,20 @@ struct PlannerCard: View {
                 content.subtitle = "Your Event Has Ended!"
                 content.sound = .default
                 content.badge = 1
-
+                
                 let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-
+                
                 let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-
+                
                 UNUserNotificationCenter.current().add(request)
             }
-        } else {
-            // Handle the case where start is nil
+            
         }
            
-        
-           
-       } // end of endNotifications function
+   } // end of endNotifications function
+    
+    
+    
 
 } // end of View
 
