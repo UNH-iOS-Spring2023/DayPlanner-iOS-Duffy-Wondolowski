@@ -52,7 +52,19 @@ struct ContentView: View {
         .onChange(of: app.uid) { uid in
             if app.uid == nil {
                 app.eventList = []
+                app.user = User()
             } else {
+                print("Day Planner: UID no longer nil, beginning midsession login sequence")
+                db.collection("Users").document(app.uid!)
+                    .getDocument(as: User.self) { result in
+                        switch result {
+                        case .success(let user): app.user = user
+                            print("Day Planner: Firestore eventsLastCleared: \(user.eventsLastCleared)")
+                        case.failure(let error):
+                            print("Error getting user: \(error)")
+                        }
+                    }
+                
                 for event in app.eventList {
                     do {
                         try db.collection("Users/\(app.uid!)/events")

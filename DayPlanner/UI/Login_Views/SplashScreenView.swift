@@ -123,36 +123,38 @@ struct SplashScreenView: View {
                 
                 app.uid = Auth.auth().currentUser?.uid
                 
-                if app.uid == nil {
-                    Persistence.load{ (userResult, eventResult) in
-                        //                                print("Full load user result: \(userResult)")
-                        //                                print("Full load event result: \(eventResult)")
-                        switch userResult {
-                        case .failure(let error):
-                            print("Error loading users: \(error.localizedDescription)")
-                        case .success(let user):
-                            app.user = user
-                        }
-                        
-                        switch eventResult {
-                        case .failure(let error):
-                            print("Error loading events: \(error.localizedDescription)")
-                        case .success(let events):
-                            app.eventList = events
-                        }
+                Persistence.load{ (userResult, eventResult) in
+//                  print("Full load user result: \(userResult)")
+//                  print("Full load event result: \(eventResult)")
+                    
+                    switch userResult {
+                    case .failure(let error):
+                        print("Error loading users: \(error.localizedDescription)")
+                    case .success(let user):
+                        app.user = user
                     }
+                    
+                    switch eventResult {
+                    case .failure(let error):
+                        print("Error loading events: \(error.localizedDescription)")
+                    case .success(let events):
+                        app.eventList = events
+                    }
+                }
 //                    do {
 //                        let eventData = UserDefaults.standard.value(forKey: "eventList")
 //                        app.eventList = try
 //                        Firestore.Decoder().decode([Event].self, from: eventData ?? [])
-//                        
+//
 //                        let userData = UserDefaults.standard.value(forKey: "user")
 //                        app.user = try
 //                        Firestore.Decoder().decode(User.self, from: userData ?? User())
 //                    } catch {
 //                        print("Error saving data: \(error.localizedDescription)")
 //                    }
-                } else {
+                
+                //Only call to firestore if the user is logged in
+                if app.uid != nil {
                     db.collection("Users").document(app.uid!)
                         .getDocument(as: User.self) { result in
                             switch result {
@@ -171,18 +173,22 @@ struct SplashScreenView: View {
                             } else {
                                 for event in events!.documents {
                                     do {
-                                        var newEvent = try event.data(as: Event.self)
-                                        newEvent.id = event.documentID
-                                        app.eventList
-                                            .append(newEvent)
+                                        //Only download events if they are not already in the list
+                                        //This allows us to save their order, since Firestore does not support reordering
+                                        if app.eventList.firstIndex(where: {$0.id == event.documentID}) == nil
+                                        {
+                                            var newEvent = try event.data(as: Event.self)
+                                            newEvent.id = event.documentID
+                                            
+                                            app.eventList
+                                                .append(newEvent)
+                                        }
                                     } catch {
                                         print("Error converting db event: \(error)")
                                     }
                                 }
                             }
                         }
-                    
-
                 }
             }
         }

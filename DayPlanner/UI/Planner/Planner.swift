@@ -11,6 +11,8 @@ struct Planner: View {
     
     @EnvironmentObject private var app: AppVariables
         
+    @State var plannerList: [Event] = []
+    
     var body: some View {
         ZStack (alignment: .top){
             
@@ -38,7 +40,7 @@ struct Planner: View {
                 ScrollView {
                     
                     VStack(spacing: 10) {
-                        ForEach(app.eventList, id: \.self.id) {
+                        ForEach(plannerList, id: \.self.id) {
                             (event: Event) in PlannerItem(event: event)
                         }
                     }
@@ -66,7 +68,11 @@ struct Planner: View {
                 
                 
             } // end of VStack
-            
+            .onAppear {
+                plannerList = app.eventList.filter { $0.startTime != nil }
+                
+                plannerList = plannerList.sorted { $0.startTime! < $1.startTime! }
+            }
             
         } // end of ZStack
        
