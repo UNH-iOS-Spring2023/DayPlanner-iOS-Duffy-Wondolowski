@@ -114,10 +114,7 @@ struct Settings: View {
                                         Toggle("Enable Location Services:", isOn: $location)
                                             .padding(15)
                                             .foregroundColor(.white)
-                                    }
-                                    
-                                    
-                                )
+                                    }                                )
                             }
                         )
                         
@@ -155,7 +152,7 @@ struct Settings: View {
                             try db.collection("Users")
                                 .document(app.uid!).setData(from:app.user)
                             
-                            print("Start notifications updated")
+                            print("Start notifications updated to \(startNotifications)")
                         }
                         catch {
                             print("Error uploading event to database: \(error.localizedDescription)")
@@ -168,7 +165,7 @@ struct Settings: View {
                             try db.collection("Users")
                                 .document(app.uid!).setData(from:app.user)
                             
-                            print("End notifications updated")
+                            print("End notifications updated to \(endNotifications)")
                         }
                         catch {
                             print("Error uploading event to database: \(error.localizedDescription)")
@@ -181,7 +178,7 @@ struct Settings: View {
                             try db.collection("Users")
                                 .document(app.uid!).setData(from:app.user)
                             
-                            print("Locations updated")
+                            print("Locations updated to \(location)")
                         }
                         catch {
                             print("Error uploading event to database: \(error.localizedDescription)")

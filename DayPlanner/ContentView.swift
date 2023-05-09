@@ -54,7 +54,7 @@ struct ContentView: View {
                 app.eventList = []
                 app.user = User()
             } else {
-                print("Day Planner: UID no longer nil, beginning midsession login sequence")
+//                print("Day Planner: UID no longer nil, beginning midsession login sequence")
                 db.collection("Users").document(app.uid!)
                     .getDocument(as: User.self) { result in
                         switch result {
@@ -94,7 +94,6 @@ struct ContentView: View {
                             }
                         }
                     }
-                
             }
         }
     }

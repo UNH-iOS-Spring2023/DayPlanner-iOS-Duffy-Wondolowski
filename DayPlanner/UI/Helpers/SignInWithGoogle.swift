@@ -44,6 +44,9 @@ class SignInWithGoogle: ObservableObject {
                 }
                 
                 guard let user = res?.user else { return }
+                
+                self.isLoginSuccessful = true
+                
                 print(user)
                 
             } // end of Auth Sign In

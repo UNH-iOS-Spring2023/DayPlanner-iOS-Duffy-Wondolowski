@@ -97,7 +97,12 @@ struct SignInView: View {
                                }
                                 
                                 
-                            }.padding(15)
+                            }
+                            .padding(15)
+                            .onChange(of: vm.isLoginSuccessful, perform: {_ in
+                                app.uid = Auth.auth().currentUser?.uid
+                                print("Login via Google successful")
+                            })
                         )
                     }
                 ).padding(25)
