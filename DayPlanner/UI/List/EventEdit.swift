@@ -146,9 +146,10 @@ struct EventEdit: View {
                     )
                     .padding(5) // end of StartTime Card
                     
-                    Text("Event Location")
-                        .foregroundColor(CustomColor.darkGreen)
                     if app.user.locationServices == true {
+                        Text("Event Location")
+                            .foregroundColor(CustomColor.darkGreen)
+                        
                         VStack {
                             HStack {
                                 CustomTextField(

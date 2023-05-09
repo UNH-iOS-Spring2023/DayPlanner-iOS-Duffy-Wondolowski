@@ -187,6 +187,11 @@ struct Settings: View {
                             print("Error uploading event to database: \(error.localizedDescription)")
                         }
                     }
+                    .onChange(of: app.user) { _ in
+                        startNotifications = app.user.startNotifications
+                        endNotifications = app.user.endNotifications
+                        location = app.user.locationServices
+                    }
                 }
             }.padding(25) // end of VStack
         }
@@ -215,8 +220,6 @@ struct Settings: View {
             try Auth.auth().signOut()
             
             app.uid = nil
-            app.eventList = []
-            app.user = User()
             
             print ("User logged out.")
             
