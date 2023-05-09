@@ -114,7 +114,8 @@ struct Settings: View {
                                         Toggle("Enable Location Services:", isOn: $location)
                                             .padding(15)
                                             .foregroundColor(.white)
-                                    }                                )
+                                    }
+                                )
                             }
                         )
                         
@@ -131,10 +132,15 @@ struct Settings: View {
                         
                     }
                     .onAppear{
-                        startNotifications = app.user.startNotifications
-                        endNotifications = app.user.endNotifications
-                        location = app.user.locationServices
-                        
+                        //There is a stupid bug with Google sign in where the onAppear function will get called again
+                        //Before the user changes due to signing in, which causes the default settings to be set
+                        //And since the toggles changing uploads the user to Firestore, the default user gets uploaded
+                        //Then downloaded again, thus resetting data. So we need to only set the toggles if they're different
+                        //from the defaults, and the defaults are all false
+                        startNotifications = app.user.startNotifications ? app.user.startNotifications : startNotifications
+                        endNotifications = app.user.endNotifications ? app.user.endNotifications : endNotifications
+                        location = app.user.locationServices ? app.user.locationServices : location
+
                         // setUserData()
                         // the Preview crashes but it runs fine in the simnulator
                     }
@@ -185,6 +191,7 @@ struct Settings: View {
                         }
                     }
                     .onChange(of: app.user) { _ in
+                        print("User changed. Current user settings: \(app.user)")
                         startNotifications = app.user.startNotifications
                         endNotifications = app.user.endNotifications
                         location = app.user.locationServices

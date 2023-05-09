@@ -100,8 +100,8 @@ struct SignInView: View {
                             }
                             .padding(15)
                             .onChange(of: vm.isLoginSuccessful, perform: {_ in
-                                app.uid = Auth.auth().currentUser?.uid
-                                print("Login via Google successful")
+                                app.uid = Auth.auth().currentUser?.uid ?? nil
+                                print("Login via Google successful. UID: \(app.uid ?? "None")")
                             })
                         )
                     }

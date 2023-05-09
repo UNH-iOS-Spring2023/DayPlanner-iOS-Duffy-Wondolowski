@@ -59,7 +59,7 @@ struct ContentView: View {
                     .getDocument(as: User.self) { result in
                         switch result {
                         case .success(let user): app.user = user
-                            print("Day Planner: Firestore eventsLastCleared: \(user.eventsLastCleared)")
+                            print("Day Planner: User data: \(user)")
                         case.failure(let error):
                             print("Error getting user: \(error)")
                         }
