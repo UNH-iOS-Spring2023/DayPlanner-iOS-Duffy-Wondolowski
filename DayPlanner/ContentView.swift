@@ -54,12 +54,12 @@ struct ContentView: View {
                 app.eventList = []
                 app.user = User()
             } else {
-                print("Day Planner: UID no longer nil, beginning midsession login sequence")
+//                print("Day Planner: UID no longer nil, beginning midsession login sequence")
                 db.collection("Users").document(app.uid!)
                     .getDocument(as: User.self) { result in
                         switch result {
                         case .success(let user): app.user = user
-                            print("Day Planner: Firestore eventsLastCleared: \(user.eventsLastCleared)")
+                            print("Day Planner: User data: \(user)")
                         case.failure(let error):
                             print("Error getting user: \(error)")
                         }
@@ -94,7 +94,6 @@ struct ContentView: View {
                             }
                         }
                     }
-                
             }
         }
     }

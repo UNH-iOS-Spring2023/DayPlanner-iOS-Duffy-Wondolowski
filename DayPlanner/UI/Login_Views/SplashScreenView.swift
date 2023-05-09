@@ -155,6 +155,7 @@ struct SplashScreenView: View {
                 
                 //Only call to firestore if the user is logged in
                 if app.uid != nil {
+                    print("Day Planner: User already logged in, loading data")
                     db.collection("Users").document(app.uid!)
                         .getDocument(as: User.self) { result in
                             switch result {
