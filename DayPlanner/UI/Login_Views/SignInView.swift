@@ -18,7 +18,7 @@ struct SignInView: View {
     @State var txtEmail: String = ""
     @State var txtPassword: String = ""
     
-    @StateObject private var vm = SignInWithGoogle()
+    @ObservedObject private var vm = SignInWithGoogle()
     
     @State private var alertText = ""
     @State private var createAlert: Bool = false

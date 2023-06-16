@@ -8,8 +8,11 @@
 import SwiftUI
 import Firebase
 import GoogleSignIn
+import FirebaseCore
+import FirebaseAuth 
 
 class SignInWithGoogle: ObservableObject {
+    @EnvironmentObject private var app: AppVariables
     @Published var isLoginSuccessful = false
     
     func signInGoogle() {
@@ -30,21 +33,23 @@ class SignInWithGoogle: ObservableObject {
             
             guard
                 let user = user?.user,
-                let idToken = user.idToken else { return }
+                let idToken = user.idToken?.tokenString else{return}
             
-            let accessToken = user.accessToken
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                           accessToken: user.accessToken.tokenString)
             
-            let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString,
-                                                           accessToken: accessToken.tokenString)
-            
-            Auth.auth().signIn(with: credential) { res, error in
+            Auth.auth().signIn(with: credential) { [self] res, error in
                 if let error = error {
+                    print("FirseBase Sign-in failed with this error")
                     print(error.localizedDescription)
                     return
                 }
                 
-                guard let user = res?.user else { return }
-                print(user)
+                if let user = res?.user {
+                    print("Sign in Complete : \(user.email ?? "")")
+                    self.isLoginSuccessful = true
+                }
+//                app.uid = res?.user.uid ?? nil
                 
             } // end of Auth Sign In
             
